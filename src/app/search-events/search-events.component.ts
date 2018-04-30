@@ -8,13 +8,14 @@ import { NgForm } from '@angular/forms';
 })
 export class SearchEventsComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit() {
   }
 
   onSubmit(){
-    console.log("tyrest")
+    console.log("tyrest");
   }
 
 }
