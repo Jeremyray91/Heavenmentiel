@@ -1,0 +1,48 @@
+<div class="container mt-3">
+    <h2>Rechercher un événement</h2>
+    <p>Bienvenue dans le module de recherche d'événements, entrez les critères que vous souhaitez remplir et lancez la recherche ! 
+      Vous pouvez séléctionnez 1 à n critères, ils seront cumulés !
+    </p>
+    <form class="form pt-2 pl-2 pr-2" style="background-color:rgba(228, 228, 228, 0.842);" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <label for="keyword">Nom de l'événement : </label>
+          <input class="form-control" type="text" id="keywords" />
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group form-inline">
+              <label for="dateMin">Du</label>
+              <input class="form-control ml-2 mr-2" type="text" id="dateMin" />
+              <label for="dateMax">Au </label>
+              <input class="form-control ml-2 mr-2" type="text" id="dateMax" />
+            </div>
+
+            <label for="place">Lieu :</label>
+            <input class="form-control" type="text" id="place" />
+          </div>
+          
+          <div class="form-group col-lg-6 col-md-6">
+            <label for="place">Type d'événement :</label>
+            <select multiple class="form-control" id="exampleFormControlSelect2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+              <input type="text" id="minPrice" />
+              &#60; Prix &#60; <input type="text" id="maxPrice" />
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-success" >Lancer la recherche</button>
+        </div>
+    </form>
+</div>
+
