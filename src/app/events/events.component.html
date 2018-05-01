@@ -1,3 +1,23 @@
-<p>
-  Rechercher un événement
-</p>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th><th>Evenement</th><th>Date/Lieu</th><th>Type</th><th>Stock</th><th>Etat</th>
+            <th>Prix unitaire</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of events">
+            <td><img src="{{e.img}}" style="width:100px;height:auto"/></td>
+            <td><h3>{{e.name}}</h3>
+                <p>{{e.description}}</p>
+            </td>
+            <td>Le {{e.date}} à {{e.place}}</td>
+            <td>{{e.type}}</td>
+            <td>{{e.stock}}</td>
+            <td>{{e.available}}</td>
+            <td>{{e.price}}€</td>
+        </tr>
+    </tbody>
+</table>
+</div>

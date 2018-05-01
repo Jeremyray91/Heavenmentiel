@@ -8,6 +8,7 @@ import { SearchEventsComponent } from './search-events/search-events.component';
 
 const appRoutes : Routes = [
   {path : 'SearchEvents', component : SearchEventsComponent},
+  {path : 'Events', component : EventsComponent}
 ];
 
 @NgModule({
