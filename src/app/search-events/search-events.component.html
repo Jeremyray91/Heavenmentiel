@@ -1,7 +1,7 @@
 <div class="container mt-3">
     <h2>Rechercher un événement</h2>
     <p>Bienvenue dans le module de recherche d'événements, entrez les critères que vous souhaitez remplir et lancez la recherche ! 
-      Vous pouvez séléctionnez 1 à n critères, ils seront cumulés !
+      Vous pouvez séléctionner 1 à n critères, ils seront cumulés !
     </p>
     <form class="form pt-2 pl-2 pr-2" style="background-color:rgba(228, 228, 228, 0.842);" (ngSubmit)="onSubmit()">
 
@@ -49,4 +49,6 @@
         </div>
     </form>
 </div>
+
+<app-events [events]="events"></app-events>
 

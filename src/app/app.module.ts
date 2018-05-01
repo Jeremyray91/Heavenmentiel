@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { SearchEventsComponent } from './search-events/search-events.component';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes : Routes = [
   {path : 'SearchEvents', component : SearchEventsComponent},
@@ -19,7 +20,8 @@ const appRoutes : Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
