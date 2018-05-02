@@ -7,25 +7,25 @@
 
         <div class="form-group">
           <label for="keyword">Nom de l'événement : </label>
-          <input class="form-control" type="text" id="keywords" />
+          <input class="form-control" type="text" id="name" name="name"[(ngModel)]="model.name"/>
         </div>
 
         <div class="row">
           <div class="col-lg-6 col-md-6">
             <div class="form-group form-inline">
               <label for="dateMin">Du</label>
-              <input class="form-control ml-2 mr-2" type="text" id="dateMin" />
-              <label for="dateMax">Au </label>
-              <input class="form-control ml-2 mr-2" type="text" id="dateMax" />
+              <p-calendar id="dateMin" [(ngModel)]="model.dateMin" name="dateMin"></p-calendar>
+              <label for="dateMax">au</label>
+              <p-calendar id="dateMax" [(ngModel)]="model.dateMax" name="dateMax"></p-calendar>
             </div>
 
             <label for="place">Lieu :</label>
-            <input class="form-control" type="text" id="place" />
+            <input class="form-control" type="text" id="place" name="place" [(ngModel)]="model.place"/>
           </div>
           
           <div class="form-group col-lg-6 col-md-6">
-            <label for="place">Type d'événement :</label>
-            <select multiple class="form-control" id="exampleFormControlSelect2">
+            <label for="type">Type d'événement :</label>
+            <select multiple class="form-control" id="type" name="type" [(ngModel)]="model.type">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -36,8 +36,8 @@
 
         <div class="row">
             <div class="form-group">
-              <input type="text" id="minPrice" />
-              &#60; Prix &#60; <input type="text" id="maxPrice" />
+              <input type="text" id="minPrice" name="minPrice" [(ngModel)]="model.minPrice"/>
+              &#60; Prix &#60; <input type="text" id="maxPrice" name="maxPrice" [(ngModel)]="model.maxPrice"/>
             </div>
         </div>
         <div class="row">

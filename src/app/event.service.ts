@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {Event} from './event';
 
@@ -16,10 +16,15 @@ export class EventService {
     this.httpClient.get("http://localhost:8082/events/api/events/"+id);
   }
 
-  getEventMultiCriteria(name:String,dateMin:Date,dateMax:Date,place:String,type:Array<number>,minPrice:number,maxPrice:number) :Observable<Event>{
-    //select e from Event e where name LIKE ? and (date > ? and date < ?) and place like ? and type in (?) and price > ? and price < ?;
-    return this.httpClient.get("http://localhost:8082/events/api/events/"+name+"/"+dateMin+"/"+dateMax+"/"+place+"/"+type+"/"+minPrice+"/"+maxPrice) as Observable<Event>;
-    //URLEncoder l'array type
+  getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<string>,minPrice:number,maxPrice:number) : Observable<Array<Event>>{
+    let params = new HttpParams().set('name', name)
+      .set('datemin',dateMin.toString())
+      .set('datemax',dateMax.toString())
+      .set('place',place)
+      .set('types',type.toString())
+      .set('pricemin',minPrice.toString())
+      .set('pricemax',maxPrice.toString());
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params}) as Observable<Array<Event>>;
   }
 
   createEvent(event:Event):Observable<Event>{

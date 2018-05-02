@@ -11,6 +11,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { EventService } from './event.service';
+import {CalendarModule} from 'primeng/calendar';
 
 
 const appRoutes : Routes = [
@@ -31,9 +33,10 @@ const appRoutes : Routes = [
     ButtonModule,
     InputSwitchModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    CalendarModule
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
