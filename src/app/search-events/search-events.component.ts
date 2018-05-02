@@ -11,7 +11,7 @@ import { EventService } from '../event.service'
 export class SearchEventsComponent implements OnInit {
   eventService : EventService;
   events:Array<Event>;
-  model = {name : null, dateMin : null, dateMax : null, place : null, type: null, minPrice : null, maxPrice : null};
+  model = {name : null, dateMin : new Date(), dateMax : new Date(), place : null, type: null, minPrice : null, maxPrice : null};
 
   constructor(eventService : EventService) {
     this.eventService = eventService;

@@ -18,8 +18,8 @@ export class EventService {
 
   getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<string>,minPrice:number,maxPrice:number) : Observable<Array<Event>>{
     let params = new HttpParams().set('name', name)
-      .set('datemin',dateMin.toString())
-      .set('datemax',dateMax.toString())
+      .set('datemin',dateMin.toLocaleString())
+      .set('datemax',dateMax.toLocaleString())
       .set('place',place)
       .set('types',type.toString())
       .set('pricemin',minPrice.toString())
