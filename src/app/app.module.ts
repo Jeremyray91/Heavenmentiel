@@ -6,6 +6,12 @@ import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
 import { SearchEventsComponent } from './search-events/search-events.component';
 import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 
 const appRoutes : Routes = [
   {path : 'SearchEvents', component : SearchEventsComponent},
@@ -19,9 +25,13 @@ const appRoutes : Routes = [
     SearchEventsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    ButtonModule,
+    InputSwitchModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
