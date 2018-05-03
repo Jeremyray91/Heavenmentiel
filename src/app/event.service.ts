@@ -17,13 +17,19 @@ export class EventService {
   }
 
   getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<string>,minPrice:number,maxPrice:number) : Observable<Array<Event>>{
-    let params = new HttpParams().set('name', name)
-      .set('datemin',dateMin.toLocaleString())
-      .set('datemax',dateMax.toLocaleString())
-      .set('place',place)
-      .set('types',type.toString())
-      .set('pricemin',minPrice.toString())
-      .set('pricemax',maxPrice.toString());
+    let options = {year: "numeric", month: "2-digit", day: "2-digit"};
+    let params = new HttpParams().set('name', name);
+    if(dateMin!=null)
+      params = params.set('datemin',dateMin.toLocaleString('en-GB',options));
+    if(dateMax!=null)
+      params = params.set('datemax',dateMax.toLocaleString('en-GB',options));
+    params = params.set('place',place)
+    if(type!=null)
+      params = params.set('types',type.toString());
+    if(minPrice!=null)
+      params = params.set('pricemin',minPrice.toString())
+    if(maxPrice!=null)
+      params = params.set('pricemax',maxPrice.toString());
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params}) as Observable<Array<Event>>;
   }
 
@@ -35,5 +41,9 @@ export class EventService {
   }
   deleteEvent(id:number):Observable<Event>{
     return this.httpClient.delete("http://localhost:8082/events/api/events/"+id) as Observable<Event>;
+  }
+
+  getTypes() : Observable<Array<String>>{
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/types") as Observable<Array<String>>;
   }
 }
