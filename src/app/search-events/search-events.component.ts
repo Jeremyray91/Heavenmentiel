@@ -23,7 +23,9 @@ export class SearchEventsComponent implements OnInit {
   }
 
   onSubmit(){
-    this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.minPrice,this.model.maxPrice).subscribe(events => this.events = events);
+    this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.minPrice,this.model.maxPrice).subscribe(events => {
+      this.events = events
+    });
     /*this.eventService.getEvents().subscribe(events => {
       this.events = events;
     });*/
