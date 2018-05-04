@@ -11,7 +11,7 @@ import { EventService } from '../event.service'
 export class CreateEventsComponent implements OnInit {
   eventService : EventService;
   events:Array<Event>;
-  model : Event = new Event("", "", "", null, 0.0, null, "", "", false, "");
+  model : Event = new Event("", "", null, null, 0.0, null, "", "", false, "","");
 
   constructor(eventService : EventService) {
     this.eventService = eventService;
@@ -22,6 +22,6 @@ export class CreateEventsComponent implements OnInit {
   onSubmit(){
     console.log(this.model);
     this.eventService.createEvent(this.model);
-    this.model = new Event("", "", "", null, 0.0, 0, "", "", false, "");
+    this.model = new Event("", "", null, null, 0.0, 0, "", "", false, "","");
   }
 }

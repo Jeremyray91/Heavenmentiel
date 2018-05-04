@@ -8,8 +8,9 @@ import { Event } from '../event';
 })
 
 export class EventsComponent implements OnInit {
-  @Input()
+  
   model:Event = new Event("",null,null,null,0,0,"",null,false, "", "");
+  @Input()
   events:Array<Event> = new Array<Event>();
   constructor() { }
 

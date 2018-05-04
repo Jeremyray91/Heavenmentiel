@@ -60,7 +60,8 @@ const appRoutes : Routes = [
     EventNameUpperPipe,
     SearchEventsComponent,
     ConnectionComponent,
-    MenuComponent
+    MenuComponent,
+    CreateEventsComponent
   ],
   imports: [
     HttpClientModule,
