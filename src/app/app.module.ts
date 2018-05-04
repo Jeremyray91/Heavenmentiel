@@ -1,15 +1,14 @@
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Input } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'; 
 import { FormsModule } from '@angular/forms';
 
 import { DataGridModule } from 'primeng/datagrid';
 import { PanelModule } from 'primeng/panel';
 import { CarouselModule } from 'primeng/carousel';
-import { ButtonModule } from 'primeng/button';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { CalendarModule } from 'primeng/calendar';
 
@@ -39,14 +38,13 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { AccordionModule } from 'primeng/accordion';
 
 //---- Connexion avec Spring Imports ----//
-import { HttpClientModule } from '@angular/common/http'
 import { ConnectionService } from './connection.service';
 import { MenuComponent } from './menu/menu.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
   {path : 'SearchEvents', component : SearchEventsComponent},
-  {path : 'CreateEvents', component : CreateEventsComponent}
+  {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
   {path : 'Connection', component : ConnectionComponent},
 ];
@@ -59,7 +57,7 @@ const appRoutes : Routes = [
     DatePipe,
     DateFrMonthPipe,
     DateFrMonthEntirePipe,
-    EventNameUpperPipe
+    EventNameUpperPipe,
     SearchEventsComponent,
     ConnectionComponent,
     MenuComponent
@@ -85,7 +83,7 @@ const appRoutes : Routes = [
     HttpModule,
     InputTextareaModule,
     InputTextModule,
-    SliderModule
+    SliderModule,
     CalendarModule,
     DataGridModule,
     PanelModule,
