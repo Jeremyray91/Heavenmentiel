@@ -1,0 +1,85 @@
+@media(max-width:1490px){
+    .flex-event{
+        display: flex;
+        height: 20em!important;
+        flex-direction: column;
+    }
+}
+
+
+#carouselAccueil h5, #carouselAccueil p {
+    font-weight: 700;
+    text-shadow: 0 0 10px #f59668, 0 0 20px #f59668, 0 0 30px #f59668, 0 0 40px #cc0f07, 0 0 70px #cc0f07, 0 0 80px #cc0f07, 0 0 100px #cc0f07, 0 0 150px #cc0f07;
+    color: #ffb283;
+    letter-spacing: 2px;
+}
+
+.carouselimg{
+    filter: brightness(60%);
+}
+
+.list-events{
+    width:80%!important;
+    margin:auto!important;
+}
+
+.flex-event{
+    display: flex;
+    height:10em;
+}
+
+.event-img{
+    flex: 1;
+}
+
+.flex-event-detail{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 313px;
+    background-color: black;
+    color:white;
+}
+
+.flex-event-date-name{
+    display: flex;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.event-date{
+    width: 35%;
+    border-right : 2px dashed gray;
+    border-bottom : 2px dashed gray;
+}
+
+.event-date p{
+    text-align: center;
+    padding-top: 27%
+}
+
+.event-name-stock{
+    width: 65%;
+    border-bottom : 2px dashed gray;
+}
+
+.event-price{
+    display: flex;
+    justify-content: space-around;
+    height: 30%;
+    align-items: center;
+}
+
+.boutonPageAccueil{
+    border-radius: 50px;
+    box-shadow: 0 0 20px 5px rgba(213,29,39,.4);
+}
+
+.boutonPageAccueil:hover{
+    border-radius: 50px;
+    box-shadow: 0 0 20px 5px rgb(255, 0, 0);
+}
+
+.boutonPageAccueil a{
+    text-decoration: none;
+    color: black;
+}

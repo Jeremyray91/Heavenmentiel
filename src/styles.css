@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
 @import "../node_modules/primeng/resources/themes/omega/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+.ui-panel .ui-panel-content{
+    padding:0!important;
+}
+
+.ui-panel-titlebar{
+    display:none;
+}
 .ui-tabview .ui-tabview-panel
 {
     opacity : 1!important;

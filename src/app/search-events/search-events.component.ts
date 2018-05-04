@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Event } from '../event';
 import { EventService } from '../event.service'
+import { Type } from '../enum-event';
 
 @Component({
   selector: 'app-search-events',

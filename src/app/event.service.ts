@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import {Event} from './event';
+import { Event } from './event';
 
 @Injectable()
 export class EventService {
 
   constructor(private httpClient : HttpClient) { }
   
-  getEvents() : Observable<Array<Event>>{
-    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/") as Observable<Array<Event>>;
+  getEvents() : Observable<Event[]> {
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events") as Observable<Event[]>;
+  }
+
+  getEventsByDate() : Observable<Event[]> {
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsbydate") as Observable<Event[]>;
+  }
+
+  getEventsLastFiveAdd() : Observable<Event[]> {
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsLastFiveAdd") as Observable<Event[]>;
   }
 
   getEventById(id:number){
@@ -40,9 +48,9 @@ export class EventService {
     console.log(this.httpClient.post("http://localhost:8082/heavenmentiel/api/events/",event) as Observable<Event>);
     return this.httpClient.post("http://localhost:8082/heavenmentiel/api/events/",event) as Observable<Event>;
   }
-  updateEvent(event:Event):Observable<Event>{
+  /*updateEvent(event:Event):Observable<Event>{
     return this.httpClient.put("http://localhost:8082/heavenmentiel/api/events/"+event) as Observable<Event>;
-  }
+  }*/
   deleteEvent(event:Event):Observable<Event>{
     return this.httpClient.delete("http://localhost:8082/heavenmentiel/api/events/"+event) as Observable<Event>;
   }

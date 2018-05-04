@@ -1,0 +1,81 @@
+<!--<ul>
+  <li *ngFor="let e of listEvents">
+    {{e.name}}
+    {{e.date}}
+    {{e.type}}
+    {{e.price}}
+    {{e.img}}
+  </li>
+</ul>-->
+
+<!-- Carousel des 5 derniers events -->
+<div id="carouselAccueil" class="carousel slide" data-ride="carousel" data-interval="5000">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselAccueil" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselAccueil" data-slide-to="1"></li>
+    <li data-target="#carouselAccueil" data-slide-to="2"></li>
+    <li data-target="#carouselAccueil" data-slide-to="3"></li>
+    <li data-target="#carouselAccueil" data-slide-to="4"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div *ngFor="let e of listFiveEvents ; let i = index" [ngClass]="(i == 0) ? 'ng-star-inserted carousel-item active' : 'ng-star-inserted carousel-item'">
+      <img class="d-block w-100 carouselimg" src="{{e.img}}" alt="{{e.name}}">
+      <div class="carousel-caption d-none d-md-block">
+        <p>{{e.date | dateFr}} {{e.date | dateFrMonthEntire}} - {{e.date | date:'HH'}}h{{e.date | date:'mm'}}</p>
+        <h5>{{e.name | eventNameUpper}}</h5><br>
+        <button class="boutonPageAccueil"><a href="http://localhost:4200/event">Réserver</a></button>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselAccueil" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselAccueil" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<br>
+
+<!-- Liste de tous les events -->
+<div class="list-events">
+  <p-dataGrid [value]="listEvents" [paginator]="true" [rows]="12">
+    <p-header>
+      Prochains événements
+    </p-header>
+    <ng-template let-event pTemplate="item">
+      <div style="padding:3px" class="ui-lg-4 ui-md-6 ui-sm-12">
+        <p-panel [style]="{'text-align':'center'}">
+          <div class="flex-event">
+            <div class="event-img">
+              <img src="{{event.imgMin}}" width="208,67">
+            </div>
+            <div class="flex-event-detail">
+              <div class="flex-event-date-name">
+                <div class="event-date">
+                  <p>{{event.date | dateFr}}
+                    <br>{{event.date | dateFrMonth}}</p>
+                </div>
+                <div class="event-name-stock">
+                  <div class="event-name">{{event.name}}</div>
+                  <div class="event-type">{{event.date | date:'HH'}}h{{event.date | date:'mm'}} - {{event.type}}</div>
+                  <div class="event-stock">Encore {{event.stock}} places restantes</div>
+                </div>
+              </div>
+              <div class="event-price">
+                <div>
+                  <button class="boutonPageAccueil">
+                    <a href="http://localhost:4200/event">Réserver</a>
+                  </button>
+                </div>
+                <div>Tarif : {{event.price}}€ </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+      </div>
+    </ng-template>
+  </p-dataGrid>
+</div>
+<br>

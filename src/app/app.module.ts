@@ -1,21 +1,32 @@
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Input } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router'; 
+import { FormsModule } from '@angular/forms';
+
+import { DataGridModule } from 'primeng/datagrid';
+import { PanelModule } from 'primeng/panel';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { CalendarModule } from 'primeng/calendar';
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
-import { SearchEventsComponent } from './search-events/search-events.component';
-import { FormsModule } from '@angular/forms';
-import { ConnectionComponent } from './connection/connection.component';
-import {CalendarModule} from 'primeng/calendar';
 import { EventService } from './event.service';
-import { HttpModule } from '@angular/http';
-import {InputSwitchModule} from 'primeng/inputswitch';
+import { SearchEventsComponent } from './search-events/search-events.component';
+import { ConnectionComponent } from './connection/connection.component';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {SliderModule} from 'primeng/slider';
 import {FileUploadModule} from 'primeng/fileupload';
 import { CreateEventsComponent } from './create-events/create-events.component';
+import { AccueilComponent } from './accueil/accueil.component';
+import { DatePipe } from './pipes/date.pipe';
+import { DateFrMonthPipe } from './pipes/date-fr-month.pipe';
+import { DateFrMonthEntirePipe } from './pipes/date-fr-month-entire.pipe';
+import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';
 
 //---- PrimeNG Imports ----//
 import { TabViewModule } from 'primeng/tabview';
@@ -33,6 +44,7 @@ import { ConnectionService } from './connection.service';
 import { MenuComponent } from './menu/menu.component';
 
 const appRoutes : Routes = [
+  {path : '', component : AccueilComponent},
   {path : 'SearchEvents', component : SearchEventsComponent},
   {path : 'CreateEvents', component : CreateEventsComponent}
   {path : 'Events', component : EventsComponent},
@@ -43,20 +55,24 @@ const appRoutes : Routes = [
   declarations: [
     AppComponent,
     EventsComponent,
-    CreateEventsComponent
+    AccueilComponent,
+    DatePipe,
+    DateFrMonthPipe,
+    DateFrMonthEntirePipe,
+    EventNameUpperPipe
     SearchEventsComponent,
     ConnectionComponent,
     MenuComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    //---- PrimeNG Modules ----//
+    /* PrimeNG */
     TabViewModule,
     CardModule,
-    InputTextModule,
     PasswordModule,
     ButtonModule,
     MenuModule,
@@ -67,10 +83,13 @@ const appRoutes : Routes = [
     HttpClientModule,
     InputSwitchModule,
     HttpModule,
-    CalendarModule,
     InputTextareaModule,
     InputTextModule,
     SliderModule
+    CalendarModule,
+    DataGridModule,
+    PanelModule,
+    CarouselModule
   ],
   providers: [ConnectionService, EventService],
   bootstrap: [AppComponent]
