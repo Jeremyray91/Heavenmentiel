@@ -1,24 +1,34 @@
 export class Event {
-    id:number;
-    name:String;
-    date:Date;
-    place:String;
-    type:String;
-    stock:number;
-    available:boolean;
-    price:number;
-    img:String;
-    description:String;
-    constructor(id:number,name:String, date:Date,place:String,type:String,stock:number,available:boolean,price:number, img:String, description:String){
-        this.id = id;
-        this.name = name,
-        this.date = date;
-        this.place = place;
-        this.type = type;
-        this.stock = stock;
-        this.available = available;
-        this.price = price;
-        this.img = img;
-        this.description = description;
+    name: String;
+    place: String;
+    type: String;
+    dateEvent: Date;
+    price: number;
+    stock: number;
+    description: String;
+    shortDescription: string;
+    available: boolean;
+    img: String;
+
+    constructor(name: String,
+                place: String, 
+                type: String,
+                dateEvent: Date,
+                price: number,
+                stock: number,
+                description: String,
+                shortDescription: string,
+                available:boolean,
+                img:String){
+                            this.name = name,
+                            this.place = place;
+                            this.type = type;
+                            this.dateEvent = dateEvent;
+                            this.price = price;
+                            this.stock = stock;
+                            this.description = description;
+                            this.shortDescription =shortDescription;
+                            this.available = available;
+                            this.img = img;
     }
 }

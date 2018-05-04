@@ -10,7 +10,7 @@ import { Event } from '../event';
 export class EventsComponent implements OnInit {
   @Input()
   events:Array<Event> = new Array<Event>();
-  model:Event = new Event(0,"",null,"","",0,null,0.0,"","");
+  model:Event = new Event("", "", "", null, 0.0, 0, "", "", false, "");
   constructor() { }
 
   ngOnInit() {

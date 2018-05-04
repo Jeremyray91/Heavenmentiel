@@ -37,13 +37,14 @@ export class EventService {
   }
 
   createEvent(event:Event):Observable<Event>{
-    return this.httpClient.post("http://localhost:8082/events/api/events/",event) as Observable<Event>;
+    console.log(this.httpClient.post("http://localhost:8082/heavenmentiel/api/events/",event) as Observable<Event>);
+    return this.httpClient.post("http://localhost:8082/heavenmentiel/api/events/",event) as Observable<Event>;
   }
   updateEvent(event:Event):Observable<Event>{
-    return this.httpClient.put("http://localhost:8082/events/api/events/",event) as Observable<Event>;
+    return this.httpClient.put("http://localhost:8082/heavenmentiel/api/events/"+event) as Observable<Event>;
   }
-  deleteEvent(id:number):Observable<Event>{
-    return this.httpClient.delete("http://localhost:8082/events/api/events/"+id) as Observable<Event>;
+  deleteEvent(event:Event):Observable<Event>{
+    return this.httpClient.delete("http://localhost:8082/heavenmentiel/api/events/"+event) as Observable<Event>;
   }
 
   getTypes() : Observable<Array<String>>{
