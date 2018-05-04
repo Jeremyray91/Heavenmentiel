@@ -1,0 +1,25 @@
+.header
+{
+    background-color : #2b2b2b;
+    color: whitesmoke;
+}
+
+.cart
+{
+    margin-left: 80%;
+}
+
+#inscription-test
+{
+    font-weight: bold;
+}
+
+#logo
+{
+    color: crimson;
+}
+
+#logo :hover
+{
+    color: #910a0a;
+}

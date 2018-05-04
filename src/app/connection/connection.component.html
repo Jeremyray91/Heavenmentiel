@@ -1,0 +1,41 @@
+<div class="ui-g">
+  <div class="ui-g-2 ui-md-2"></div>
+  <div class="ui-g-8 ui-md-8">
+    
+    <div class="ui-g-3 ui-md-1"></div>
+    <div class="ui-g-6 ui-md-10">
+        <h1>
+            Connexion
+        </h1>
+        <p-tabView>
+          <p-tabPanel header="Se connecter">
+            <p-card>
+              <form (ngSubmit)="onSubmit()" >
+                <div class="login-form">
+                  <span class="ui-float-label">
+                    <input id="login-input" type="text" [(ngModel)]="model.username" name="username" pInputText/>
+                    <label for="login-input">E-mail</label>
+                  </span>
+                </div>
+                <div class="login-form">
+                  <span class="ui-float-label">
+                    <input id="password-input" type="password" [(ngModel)]="model.password" name="password" pInputText/>
+                    <label for="password-input">Mot de passe</label>
+                  </span>
+                </div>
+                <div>
+                  <button pButton type="submit" label="Se connecter"></button>
+                </div>
+              </form>
+            </p-card>
+          </p-tabPanel>
+          <p-tabPanel header="Créer un compte">
+            <!--<app-inscription></app-inscription>-->
+          </p-tabPanel>
+          
+        </p-tabView>
+    </div>
+    <div class="ui-g-3 ui-md-1"></div>
+  </div>
+  <div class="ui-g-2 ui-md-2"></div>
+</div>

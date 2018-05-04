@@ -1,0 +1,37 @@
+<div class="header ui-g">
+  <div class="ui-g-2">
+      <a id="logo" class="nav-link" routerLink="/">Logo Heaven'Mentiel</a>
+  </div>
+  <div class="search ui-g-6">
+    <input type="text" pInputText />
+  </div>
+  <div class="member ui-g-2">
+    <p-accordion >
+      <p-accordionTab *ngIf="!testStatus" header="Me connecter">
+          <button pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
+          <div>
+            Première connexion ? <a id="inscription-text" routerLink="/Connection">Inscrivez-vous</a>
+          </div>
+      </p-accordionTab>
+      <p-accordionTab *ngIf="testStatus" header="Mon compte">
+          <div>
+              Bienvenue <span>{{testName}}</span>
+          </div>
+          <div>
+            <button pButton type="button" label="Mon Compte" class="ui-button-secondary"></button>
+          </div>
+          <div>
+              <button pButton type="button" label="Mes Commandes" class="ui-button-secondary"></button>
+          </div>
+      </p-accordionTab>
+    </p-accordion>
+    <!--<button pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
+    Se connecter-->
+  </div>
+  <div class="ui-g-2">
+    <div class="cart">
+      Panier
+      <!--<app-mini-cart></app-mini-cart>-->
+    </div>
+  </div>
+</div>
