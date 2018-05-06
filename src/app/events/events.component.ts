@@ -9,6 +9,8 @@ import { Event } from '../event';
 
 export class EventsComponent implements OnInit {
   
+  eventUp : Event;
+
   model:Event = new Event("",null,null,null,0,0,"",null,false, "", "");
   @Input()
   events:Array<Event> = new Array<Event>();
@@ -19,6 +21,11 @@ export class EventsComponent implements OnInit {
 
   setEvents(events: Array<Event>){
     this.events = events;
+  }
+
+  linkUpdate(event: Event){
+    localStorage.setItem('event', JSON.stringify(event));
+    console.log(event);
   }
 
 }
