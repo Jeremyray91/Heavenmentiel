@@ -41,6 +41,7 @@ import { GrowlModule } from 'primeng/growl';
 //---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';
 import { MenuComponent } from './menu/menu.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
@@ -62,7 +63,8 @@ const appRoutes : Routes = [
     SearchEventsComponent,
     ConnectionComponent,
     MenuComponent,
-    CreateEventsComponent
+    CreateEventsComponent,
+    CreateUserComponent
   ],
   imports: [
     HttpClientModule,
@@ -92,7 +94,7 @@ const appRoutes : Routes = [
     PanelModule,
     CarouselModule
   ],
-  providers: [ConnectionService, EventService],
+  providers: [ConnectionService, EventService, EventsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

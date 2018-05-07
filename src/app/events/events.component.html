@@ -22,7 +22,7 @@
             <td>{{e.price}}€</td>
             <td>
                 <button pButton type="button"  icon="fa fa-fw fa-close" class="ui-button-danger"></button>
-                <button pButton type="button"  icon="fa fa-fw fa-wrench" class="ui-button-warning"></button>
+                <a href="http://localhost:4200/CreateEvents"><button pButton type="button" (click)="linkUpdate(e)" icon="fa fa-fw fa-wrench" class="ui-button-warning"></button></a>
             </td>
             
         </tr>
