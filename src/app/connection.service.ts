@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, Input } from '@angular/core';
 import { User } from './user';
 import { ConnectionBean } from './connection-bean';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
@@ -20,6 +20,8 @@ export class ConnectionService {
 
   myConnect : ConnectionBean;
   urlRoot : string = "http://localhost:8082/heavenmentiel/";
+
+  userIsConnected : boolean = false;
 
   constructor(private http : HttpClient) {
     this.myConnect = new ConnectionBean("","");
@@ -43,8 +45,13 @@ export class ConnectionService {
     if(connection.isConnected)
     {
       console.log("GetUser()");
-      return this.http.get<User>(this.urlRoot + "api?username=" + connection.username);
+      return this.http.get<User>(this.urlRoot + "user?username=" + connection.username);
     }
+  }
+
+  getStatus() : Observable<boolean>
+  {
+    return Observable.of(this.userIsConnected);
   }
 
 }

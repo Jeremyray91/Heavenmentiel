@@ -40,12 +40,15 @@ import { GrowlModule } from 'primeng/growl';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { MessageModule } from 'primeng/message';
 import { InputMaskModule } from 'primeng/inputmask';
+import { GMapModule } from 'primeng/gmap';
 
 //---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';
 import { MenuComponent } from './menu/menu.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ConnectionAdminComponent } from './connection-admin/connection-admin.component';
 import { UserService } from './user.service';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
@@ -53,6 +56,8 @@ const appRoutes : Routes = [
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
   {path : 'Connection', component : ConnectionComponent},
+  {path : 'ConnectionAdmin', component : ConnectionAdminComponent},
+  {path : 'Evenements', component : EventDetailsComponent}
 ];
 
 @NgModule({
@@ -68,7 +73,9 @@ const appRoutes : Routes = [
     ConnectionComponent,
     MenuComponent,
     CreateEventsComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ConnectionAdminComponent,
+    EventDetailsComponent
   ],
   imports: [
     HttpClientModule,
@@ -88,6 +95,7 @@ const appRoutes : Routes = [
     KeyFilterModule,
     MessageModule,
     InputMaskModule,
+    GMapModule,
 
     //---- Connexion avec Spring ----//
     HttpClientModule,

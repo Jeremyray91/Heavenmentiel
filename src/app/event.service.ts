@@ -20,8 +20,8 @@ export class EventService {
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsLastFiveAdd") as Observable<Event[]>;
   }
 
-  getEventById(id:number){
-    this.httpClient.get("http://localhost:8082/events/api/events/"+id);
+  getEventById(id:number) : Observable<Event>{
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsById?id="+id) as Observable<Event>;
   }
 
   getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<string>,minPrice:number,maxPrice:number) : Observable<Array<Event>>{
