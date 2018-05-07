@@ -19,10 +19,6 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
   }
 
-  setEvents(events: Array<Event>){
-    this.events = events;
-  }
-
   linkUpdate(event: Event){
     localStorage.setItem('event', JSON.stringify(event));
     console.log(event);

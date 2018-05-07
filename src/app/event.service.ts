@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Event } from './event';
+import { SelectItem } from 'primeng/api';
 
 @Injectable()
 export class EventService {
@@ -24,9 +25,28 @@ export class EventService {
     this.httpClient.get("http://localhost:8082/events/api/events/"+id);
   }
 
-  getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<string>,minPrice:number,maxPrice:number) : Observable<Array<Event>>{
-    let options = {year: "numeric", month: "2-digit", day: "2-digit"};
+  getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<SelectItem>,price:number[]) : Observable<Array<Event>>{
     let params = new HttpParams();
+    let options = {year: "numeric", month: "2-digit", day: "2-digit"};
+    let types : string;
+
+    if(type!=null){
+      if(type.length>0)
+      {
+        types = "";
+        let debut = true;
+        for(let t of type){
+          if(debut){
+            types += t.value;
+            debut = false;
+          }
+          else
+            types += ","+t.value;
+        }
+        params = params.set('types',types);
+      }
+    }
+
     if(name!=null)
       params = params.set('name', name);
     if(dateMin!=null)
@@ -35,12 +55,10 @@ export class EventService {
       params = params.set('datemax',dateMax.toLocaleString('en-GB',options));
     if(place!=null)
       params = params.set('place',place);
-    if(type!=null)
-      params = params.set('types',type.toString());
-    if(minPrice!=null)
-      params = params.set('pricemin',minPrice.toString());
-    if(maxPrice!=null)
-      params = params.set('pricemax',maxPrice.toString());
+    if(price[0]!=null)
+      params = params.set('pricemin',price[0].toString());
+    if(price[1]!=null)
+      params = params.set('pricemax',price[1].toString());
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params}) as Observable<Array<Event>>;
   }
 

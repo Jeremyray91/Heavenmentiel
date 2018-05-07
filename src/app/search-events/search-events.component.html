@@ -3,41 +3,48 @@
     <p>Bienvenue dans le module de recherche d'événements, entrez les critères que vous souhaitez remplir et lancez la recherche ! 
       Vous pouvez séléctionner 1 à n critères, ils seront cumulés !
     </p>
-    <form class="form pt-2 pl-2 pr-2" style="background-color:rgba(228, 228, 228, 0.842);" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="keyword">Nom de l'événement : </label>
-          <input class="form-control" type="text" id="name" name="name"[(ngModel)]="model.name"/>
-        </div>
+    <form class="form pl-3 pt-3 pb-3 rounded" (ngSubmit)="onSubmit()" style="background-color:#f7b32d">
+
         <div class="row">
-          <div class="col-lg-6 col-md-6">
-            <div class="form-group form-inline">
-              <label for="dateMin">Du</label>
-              <p-calendar id="dateMin" [(ngModel)]="model.dateMin" name="dateMin" dateFormat="yy-mm-dd"></p-calendar>
-              <label for="dateMax">au</label>
-              <p-calendar id="dateMax" [(ngModel)]="model.dateMax" name="dateMax" dateFormat="yy-mm-dd"></p-calendar>
+          
+          <div class="form-group col-md-8 col-lg-8 col-sm-8 col-xs-12">
+            <div class="form-group horizontal-form">
+                <label class="control-label" for="keyword">Nom de l'événement : </label>
+                <input class="form-control" type="text" id="name" name="name"[(ngModel)]="model.name"/>
             </div>
-            <label for="place">Lieu :</label>
+
+            <div class="form-group" >
+                <label class="control-label" for="dateMin">Du</label>
+                <p-calendar id="dateMin" [(ngModel)]="model.dateMin" name="dateMin" dateFormat="dd/mm/yy"></p-calendar>
+                <label class="control-label" for="dateMax">au</label>
+                <p-calendar id="dateMax" [(ngModel)]="model.dateMax" name="dateMax" dateFormat="dd/mm/yy"></p-calendar>
+              </div>
+
+            <label class="control-label" for="place">Lieu :</label>
             <input class="form-control" type="text" id="place" name="place" [(ngModel)]="model.place"/>
           </div>
-          <div class="form-group col-lg-6 col-md-6">
-            <label for="type">Type d'événement :</label>
-            <select multiple class="form-control" id="type" name="type" [(ngModel)]="model.type">
-                <option *ngFor="let t of types" value="{{t}}">{{t}}</option>
-            </select>
+
+          <div class="form-group col-md-4 col-lg-4 col-sm-4 col-xs-12">
+            <p-listbox [options]="types" [(ngModel)]="model.type" multiple="multiple" checkbox="checkbox" optionLabel="label" name="type">
+              <p-header>
+                Type d'événement
+              </p-header>
+            </p-listbox>
           </div>
         </div>
-        <div class="row">
-            <div class="form-group">
-              <input type="text" id="minPrice" name="minPrice" [(ngModel)]="model.minPrice"/>
-              &#60; Prix &#60;
-              <input type="text" id="maxPrice" name="maxPrice" [(ngModel)]="model.maxPrice"/>
+
+        <div class="form-group">
+            <h3>Prix : {{model.price[0] + '€ - ' + model.price[1] + '€'}}</h3>
+            <p-slider [(ngModel)]="model.price"  [range]="true" name="price" [min]=0 [max]=800 [step]="20"></p-slider>
+        </div>
+
+        <div class="form-row text-center">
+            <div class="col-12">
+                <button type="submit" class="btn btn-success" >Lancer la recherche</button>
             </div>
         </div>
-        <div class="row">
-            <button type="submit" class="btn btn-success" >Lancer la recherche</button>
-        </div>
-        <div class="row">
-        </div>
+        
     </form>
 </div>
+
 <app-events [events]="events"></app-events>

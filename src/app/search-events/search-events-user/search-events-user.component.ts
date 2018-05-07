@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Event } from '../event';
-import { EventService } from '../event.service'
-import { Type } from '../enum-event';
+import { Event } from '../../event';
+import { EventService } from '../../event.service'
+import { Type } from '../../enum-event';
 import {SelectItem} from 'primeng/api';
 
 @Component({
-  selector: 'app-search-events',
-  templateUrl: './search-events.component.html',
-  styleUrls: ['./search-events.component.css']
+  selector: 'app-search-events-user',
+  templateUrl: './search-events-user.component.html',
+  styleUrls: ['./search-events-user.component.css']
 })
-export class SearchEventsComponent implements OnInit {
+export class SearchEventsUserComponent implements OnInit {
+  
   eventService : EventService;
   events:Array<Event>;
   model = {name : null, dateMin : new Date(), dateMax : new Date(), place : null, type: null, price : [0,150]};

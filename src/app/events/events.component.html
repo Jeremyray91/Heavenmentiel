@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
 <table class="table table-striped">
     <thead>
         <tr>
@@ -19,7 +19,7 @@
             <td>
                 <p-inputSwitch [(ngModel)]="e.available"></p-inputSwitch>
             </td>
-            <td>{{e.price}}€</td>
+            <td><h3>{{e.price}}€</h3></td>
             <td>
                 <button pButton type="button"  icon="fa fa-fw fa-close" class="ui-button-danger"></button>
                 <a href="http://localhost:4200/CreateEvents"><button pButton type="button" (click)="linkUpdate(e)" icon="fa fa-fw fa-wrench" class="ui-button-warning"></button></a>

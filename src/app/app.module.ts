@@ -26,6 +26,7 @@ import { DatePipe } from './pipes/date.pipe';
 import { DateFrMonthPipe } from './pipes/date-fr-month.pipe';
 import { DateFrMonthEntirePipe } from './pipes/date-fr-month-entire.pipe';
 import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';
+import {ListboxModule} from 'primeng/listbox';
 
 //---- PrimeNG Imports ----//
 import { TabViewModule } from 'primeng/tabview';
@@ -42,10 +43,13 @@ import { GrowlModule } from 'primeng/growl';
 import { ConnectionService } from './connection.service';
 import { MenuComponent } from './menu/menu.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { EventsUserSideComponent } from './events/events-user-side/events-user-side.component';
+import { SearchEventsUserComponent } from './search-events/search-events-user/search-events-user.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
   {path : 'SearchEvents', component : SearchEventsComponent},
+  {path : 'SearchEventsUser', component : SearchEventsUserComponent},
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
   {path : 'Connection', component : ConnectionComponent},
@@ -64,7 +68,9 @@ const appRoutes : Routes = [
     ConnectionComponent,
     MenuComponent,
     CreateEventsComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    EventsUserSideComponent,
+    SearchEventsUserComponent
   ],
   imports: [
     HttpClientModule,
@@ -81,7 +87,7 @@ const appRoutes : Routes = [
     PanelMenuModule,
     AccordionModule,
     GrowlModule,
-
+    ListboxModule,
     //---- Connexion avec Spring ----//
     HttpClientModule,
     InputSwitchModule,

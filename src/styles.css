@@ -21,3 +21,14 @@
 {
     font-weight: bold;
 }
+
+h3{
+    font-size : 1.3em;
+}
+
+.card-event{
+    background-color:#fd2e2e;
+    overflow-wrap:break-word;
+}
+
+.card-event-img{overflow:hidden;height:150px;}
