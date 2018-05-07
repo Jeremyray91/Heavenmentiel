@@ -7,13 +7,13 @@
   </div>
   <div class="member ui-g-2">
     <p-accordion >
-      <p-accordionTab *ngIf="!testStatus" header="Me connecter">
+      <p-accordionTab *ngIf="!userConnected" header="Me connecter">
           <button pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
           <div>
             Première connexion ? <a id="inscription-text" routerLink="/Connection">Inscrivez-vous</a>
           </div>
       </p-accordionTab>
-      <p-accordionTab *ngIf="testStatus" header="Mon compte">
+      <p-accordionTab *ngIf="userConnected" header="Mon compte">
           <div>
               Bienvenue <span>{{userName}}</span>
           </div>
@@ -21,7 +21,7 @@
             <button pButton type="button" label="Mon Compte" class="ui-button-secondary"></button>
           </div>
           <div>
-              <button pButton type="button" label="Mes Commandes" class="ui-button-secondary"></button>
+              <button pButton (click)="redirect()" type="button" label="Mes Commandes" class="ui-button-secondary"></button>
           </div>
       </p-accordionTab>
     </p-accordion>

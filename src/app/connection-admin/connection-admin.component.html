@@ -6,7 +6,7 @@
     <div class="ui-g-3 ui-md-1"></div>
     <div class="ui-g-6 ui-md-10">
         <h1>
-            Connexion
+            Connexion administrateur
         </h1>
         <p-tabView>
           <p-tabPanel header="Se connecter">
@@ -15,7 +15,7 @@
                 <div class="login-form">
                   <span class="ui-float-label">
                     <input id="login-input" type="text" [(ngModel)]="model.username" name="username" pInputText/>
-                    <label for="login-input">E-mail</label>
+                    <label for="login-input">Login</label>
                   </span>
                 </div>
                 <div class="login-form">
@@ -28,12 +28,8 @@
                   <button pButton type="submit" label="Se connecter"></button>
                 </div>
               </form>
-            </p-card>
-          </p-tabPanel>
-          <p-tabPanel header="Créer un compte">
-            <app-create-user></app-create-user>
-          </p-tabPanel>
-          
+            </p-card>   
+          </p-tabPanel>       
         </p-tabView>
     </div>
     <div class="ui-g-3 ui-md-1"></div>

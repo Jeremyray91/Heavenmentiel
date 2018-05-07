@@ -1,3 +1,136 @@
-<p>
-  create-user works!
-</p>
+<p-card>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="flex-form">
+      <div class="form-left">
+        <div class="form-group">
+          <span class="ui-float-label">
+            <input pKeyFilter="alpha" type="text" id="firstName" name="firstName" [(ngModel)]="model.firstName" #firstname="ngModel" pInputText required/>
+            <label for="firstName">Prénom</label>
+            <span [ngClass]="(!firstname.valid || !firstname.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+              <i class="fa fa-check-circle"></i>
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <span class="ui-float-label">
+            <input pKeyFilter="alpha" type="text" id="lastName" name="lastName" [(ngModel)]="model.lastName" #lastname="ngModel" pInputText required/>
+            <label for="lastName">Nom</label>
+            <span [ngClass]="(!lastname.valid || !lastname.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+              <i class="fa fa-check-circle"></i>
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <div class="birthDay">
+            <span class="ui-float-label">
+              <p-calendar id="birthDay" [(ngModel)]="model.birthDay" name="birthDay" #birthday="ngModel" dateFormat="dd/mm/yy" [locale]="fr" [monthNavigator]="true" [yearNavigator]="true" yearRange="1918:2000" required></p-calendar>
+              <label for="birthDay">Date de naissance</label>
+              <span [ngClass]="(!birthday.valid || !birthday.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="mail">
+            <span class="ui-float-label">
+              <input [pKeyFilter]="mailReg" [pValidateOnly]="true" type="text" id="mail" name="mail" [(ngModel)]="model.mail" #mail="ngModel" pInputText required/>
+              <label for="mail">Mail</label>
+              <span [ngClass]="(!mail.valid || !mail.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="tel">
+            <span class="ui-float-label">
+              <p-inputMask mask="9999999999" autoClear ="false" type="text" id="tel" name="tel" [(ngModel)]="model.tel" #tel="ngModel" required></p-inputMask>
+              <label for="tel">Téléphone</label>
+              <span [ngClass]="(!tel.valid || !tel.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-right">
+        <div class="form-group">
+          <div class="adress">
+            <span class="ui-float-label">
+              <input type="text" id="adress" name="adress" [(ngModel)]="model.adress" pKeyFilter="alphanum" #adress="ngModel" pInputText required/>
+              <label for="adress">Adresse</label>
+              <span [ngClass]="(!adress.valid || !adress.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="zipCode">
+            <span class="ui-float-label">
+              <p-inputMask mask="99999" autoClear ="false" type="text" id="zipCode" name="zipCode" [(ngModel)]="model.zipCode" #zipCode="ngModel" required></p-inputMask>
+              <label for="zipCode">Code postal</label>
+              <span [ngClass]="(!zipCode.valid || !zipCode.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="city">
+            <span class="ui-float-label">
+              <input pKeyFilter="alpha" type="text" id="city" name="city" [(ngModel)]="model.city" #city="ngModel" pInputText required/>
+              <label for="city">Ville</label>
+              <span [ngClass]="(!city.valid || !city.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="password">
+            <span class="ui-float-label">
+              <input id="password" name="password" type="password" pPassword [(ngModel)]="model.pwd" #password="ngModel" (change)="pwdEqual()"
+                required/>
+              <label for="password">Mot de passe</label>
+              <span [ngClass]="(!password.valid || !password.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="confirmPassword">
+            <span class="ui-float-label">
+              <input id="confirmPassword" name="confirmPassword" type="password" pInputText [(ngModel)]="confirmPwd" #confirmPassword="ngModel"
+                (change)="pwdEqual()" required/>
+              <label for="confirmPassword">Confirmation </label>
+              <span *ngIf="equals == false" style="color:red;">
+                <i class="fa fa-times-circle"></i>
+              </span>
+              <span *ngIf="equals == true" style="color:green;">
+                <i class="fa fa-check-circle"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div style="width:50%">
+      <div class="inscription">
+        <button [disabled]="!form.valid" pButton type="submit" label="S'inscrire"></button>
+      </div>
+    </div>
+  </form>
+</p-card>

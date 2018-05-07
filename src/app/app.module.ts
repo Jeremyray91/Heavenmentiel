@@ -6,11 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router'; 
 import { FormsModule } from '@angular/forms';
 
-import { DataGridModule } from 'primeng/datagrid';
-import { PanelModule } from 'primeng/panel';
-import { CarouselModule } from 'primeng/carousel';
-import { InputSwitchModule } from 'primeng/inputswitch';
-import { CalendarModule } from 'primeng/calendar';
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
@@ -29,6 +24,11 @@ import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';
 import {ListboxModule} from 'primeng/listbox';
 
 //---- PrimeNG Imports ----//
+import { DataGridModule } from 'primeng/datagrid';
+import { PanelModule } from 'primeng/panel';
+import { CarouselModule } from 'primeng/carousel';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -38,6 +38,10 @@ import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { AccordionModule } from 'primeng/accordion';
 import { GrowlModule } from 'primeng/growl';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { MessageModule } from 'primeng/message';
+import { InputMaskModule } from 'primeng/inputmask';
+import { GMapModule } from 'primeng/gmap';
 
 //---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';
@@ -45,6 +49,9 @@ import { MenuComponent } from './menu/menu.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EventsUserSideComponent } from './events/events-user-side/events-user-side.component';
 import { SearchEventsUserComponent } from './search-events/search-events-user/search-events-user.component';
+import { ConnectionAdminComponent } from './connection-admin/connection-admin.component';
+import { UserService } from './user.service';
+import { EventDetailsComponent } from './event-details/event-details.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
@@ -53,6 +60,8 @@ const appRoutes : Routes = [
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
   {path : 'Connection', component : ConnectionComponent},
+  {path : 'ConnectionAdmin', component : ConnectionAdminComponent},
+  {path : 'Evenements', component : EventDetailsComponent}
 ];
 
 @NgModule({
@@ -68,6 +77,9 @@ const appRoutes : Routes = [
     ConnectionComponent,
     MenuComponent,
     CreateEventsComponent,
+    CreateUserComponent,
+    ConnectionAdminComponent,
+    EventDetailsComponent
     CreateUserComponent,
     EventsUserSideComponent,
     SearchEventsUserComponent
@@ -87,6 +99,11 @@ const appRoutes : Routes = [
     PanelMenuModule,
     AccordionModule,
     GrowlModule,
+    KeyFilterModule,
+    MessageModule,
+    InputMaskModule,
+    GMapModule,
+
     ListboxModule,
     //---- Connexion avec Spring ----//
     HttpClientModule,
@@ -100,7 +117,7 @@ const appRoutes : Routes = [
     PanelModule,
     CarouselModule
   ],
-  providers: [ConnectionService, EventService, EventsComponent],
+  providers: [ConnectionService, EventService, EventsComponent, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

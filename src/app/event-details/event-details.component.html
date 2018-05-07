@@ -1,0 +1,51 @@
+<div class="ui-g">
+  <div class="ui-lg-9 ui-lg-nopad">
+    <div class="ui-g">
+      <div class="ui-lg-4 ui-lg-nopad">
+          <img class="ui-lg-12" src="{{event.img}}">
+      </div>
+      <div class="ui-lg-8">
+        <h2>Informations</h2>
+        <div>
+          <h3>{{event.name}}</h3>
+        </div>
+        <div>
+          <h4>Cinéma</h4><!--{{event.category}}-->
+        </div>
+        <div>
+          Le {{event.dateEvent | dateFr}} {{event.dateEvent | dateFrMonthEntire}}
+        </div>
+        <div>
+          En stock
+        </div>
+        <div>
+          {{event.description}}
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="ui-lg-12">
+      <h2>
+        Adresse
+      </h2>
+    </div>
+  </div>
+
+  <div class="ui-lg-3">
+    <div class="ui-g">
+      <div class="ui-lg-2 ui-lg-nopad">
+      </div>
+      <div class="ui-lg-8 ui-lg-nopad">
+        <p-card title="{{event.name}}" subtitle="{{event.dateEvent | dateFr}} {{event.dateEvent | dateFrMonthEntire}}">
+          <div class="ui-lg-12"><img src="{{event.imgMin}}"></div>
+          <div class="ui-lg-12">quantité</div>
+          <div class="ui-lg-12">En stock</div>
+          <div class="ui-lg-12">00.00€</div>
+          <div class="ui-lg-12">bouton réserver</div>
+        </p-card>
+      </div>
+      <div class="ui-lg-2">
+      </div>
+    </div>
+  </div>
+</div>

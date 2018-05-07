@@ -6,12 +6,11 @@ import { Message } from 'primeng/components/common/api';
 import { User } from '../user';
 
 @Component({
-  selector: 'app-connection',
-  templateUrl: './connection.component.html',
-  styleUrls: ['./connection.component.css']
+  selector: 'app-connection-admin',
+  templateUrl: './connection-admin.component.html',
+  styleUrls: ['./connection-admin.component.css']
 })
-
-export class ConnectionComponent implements OnInit {
+export class ConnectionAdminComponent implements OnInit {
 
   msgs : Message[] = [];
   connectedUser : User;
