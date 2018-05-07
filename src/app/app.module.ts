@@ -36,6 +36,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { AccordionModule } from 'primeng/accordion';
+import { GrowlModule } from 'primeng/growl';
 
 //---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';
@@ -77,6 +78,7 @@ const appRoutes : Routes = [
     MenuModule,
     PanelMenuModule,
     AccordionModule,
+    GrowlModule,
 
     //---- Connexion avec Spring ----//
     HttpClientModule,

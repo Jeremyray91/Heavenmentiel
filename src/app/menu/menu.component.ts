@@ -11,18 +11,25 @@ export class MenuComponent implements OnInit {
  
   user : User;
 
-  testName : string = "TestNom";
+  userName : string;
 
-  testRole : string;
+  userRole : string;
 
-  testStatus = false;
+  userStatus = false;
 
   constructor(private connectionService : ConnectionService) { 
-    this.connectionService = connectionService
+    this.connectionService = connectionService;
   }
 
   ngOnInit()
   {
+    this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+    if(localStorage.getItem('currentUser'))
+    {
+      this.userName = this.user.firstName;
+      this.userRole = this.user.role;
+      this.userStatus = true;
+    }
   }
 
 }

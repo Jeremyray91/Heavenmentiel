@@ -19,7 +19,7 @@ const httpOptions =
 export class ConnectionService {
 
   myConnect : ConnectionBean;
-  url : string = "http://localhost:8080/heavenmentiel/authenticate";
+  urlRoot : string = "http://localhost:8080/heavenmentiel/";
 
   constructor(private http : HttpClient) {
     this.myConnect = new ConnectionBean("","");
@@ -31,10 +31,20 @@ export class ConnectionService {
 
   connect(connection : ConnectionBean)
   {
-    console.log("ici");
-    //console.log(this.http.post<ConnectionBean>(this.url,connection));
-    return this.http.post<HttpResponse<any>>(this.url + "?username=" + connection.username + "&password=" + connection.password,null);
+    console.log("Connect()");
+    //console.log(this.http.post<ConnectionBean>(this.url,connection));*
+    return this.http.post<HttpResponse<any>>(this.urlRoot + "authenticate?username=" + connection.username + "&password=" + connection.password,null);
     //return this.http.post<User>(this.url,connection).pipe(catchError(this.handleError('connect',connection)));
+  }
+
+  getUser(connection : ConnectionBean) : Observable<User>
+  {
+    console.log(connection);
+    if(connection.isConnected)
+    {
+      console.log("GetUser()");
+      return this.http.get<User>(this.urlRoot + "api?username=" + connection.username);
+    }
   }
 
 }
