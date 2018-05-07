@@ -23,9 +23,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit()
   {
-    this.user = JSON.parse(sessionStorage.getItem('currentUser'));
     if(localStorage.getItem('currentUser'))
     {
+      this.user = JSON.parse(sessionStorage.getItem('currentUser'));
       this.userName = this.user.firstName;
       this.userRole = this.user.role;
       this.userStatus = true;

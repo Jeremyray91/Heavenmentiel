@@ -42,12 +42,14 @@ import { GrowlModule } from 'primeng/growl';
 import { ConnectionService } from './connection.service';
 import { MenuComponent } from './menu/menu.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { UserService } from './user.service';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
   {path : 'SearchEvents', component : SearchEventsComponent},
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
+  {path : 'CreateUsers', component : CreateUserComponent},
   {path : 'Connection', component : ConnectionComponent},
 ];
 
@@ -94,7 +96,7 @@ const appRoutes : Routes = [
     PanelModule,
     CarouselModule
   ],
-  providers: [ConnectionService, EventService, EventsComponent],
+  providers: [ConnectionService, EventService, EventsComponent, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

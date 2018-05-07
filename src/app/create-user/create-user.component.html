@@ -1,3 +1,69 @@
-<p>
-  create-user works!
-</p>
+<div class="container mt-4">
+  <form class="form pt-2 pl-2 pr-2" style="background-color:rgba(228, 228, 228, 0.842);" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="firstName">Prénom : </label>
+      <input class="form-control" type="text" id="firstName" name="firstName" [(ngModel)]="model.firstName" />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Nom : </label>
+      <input class="form-control" type="text" id="lastName" name="lastName" [(ngModel)]="model.lastName" />
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="form-inline">
+          <div class="birthDay">
+            <label for="birthDay">Date de naissance :</label>
+            <p-calendar id="birthDay" [(ngModel)]="model.birthDay" name="birthDay"></p-calendar>
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="adress">
+            <label for="adress">Adresse :</label>
+            <input pInputText type="text" id="adress" name="adress" [(ngModel)]="model.adress" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="zipCode">
+            <label for="zipCode">Code postal :</label>
+            <input pInputText type="text" id="zipCode" name="zipCode" [(ngModel)]="model.zipCode" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="city">
+            <label for="city">Ville :</label>
+            <input pInputText type="text" id="city" name="city" [(ngModel)]="model.city" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="mail">
+            <label for="mail">Mail :</label>
+            <input pInputText type="text" id="mail" name="mail" [(ngModel)]="model.mail" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="tel">
+            <label for="tel">Téléphone :</label>
+            <input pInputText type="text" id="tel" name="tel" [(ngModel)]="model.tel" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="password">
+            <label for="password">Mot de passe :</label>
+            <input pInputText type="text" id="password" name="password" [(ngModel)]="model.pwd" />
+          </div>
+        </div>
+        <div class="form-inline">
+          <div class="role">
+            <label for="role">Role :</label>
+            <input pInputText type="text" id="role" name="role" [(ngModel)]="model.role" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-success">Créer</button>
+    </div>
+  </form>
+</div>

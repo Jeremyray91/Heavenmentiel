@@ -19,7 +19,7 @@ const httpOptions =
 export class ConnectionService {
 
   myConnect : ConnectionBean;
-  urlRoot : string = "http://localhost:8080/heavenmentiel/";
+  urlRoot : string = "http://localhost:8082/heavenmentiel/";
 
   constructor(private http : HttpClient) {
     this.myConnect = new ConnectionBean("","");

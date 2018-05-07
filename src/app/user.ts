@@ -11,9 +11,8 @@ export class User {
     pwd : string;
     role : string;
     
-    constructor(id : string, firstName : string, lastName : string, birthday : Date, adress : string, zipCode : number, city : string, mail : string, tel : number, pwd : string, role : string)
+    constructor(firstName : string, lastName : string, birthday : Date, adress : string, zipCode : number, city : string, mail : string, tel : number, pwd : string, role : string)
     {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDay = this.birthDay;
