@@ -1,0 +1,18 @@
+.flex-form{
+    display : flex;
+    justify-content : space-between;
+    width : 50%
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.inscription {
+    display: flex;
+    justify-content: center;
+}

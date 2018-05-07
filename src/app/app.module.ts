@@ -6,11 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router'; 
 import { FormsModule } from '@angular/forms';
 
-import { DataGridModule } from 'primeng/datagrid';
-import { PanelModule } from 'primeng/panel';
-import { CarouselModule } from 'primeng/carousel';
-import { InputSwitchModule } from 'primeng/inputswitch';
-import { CalendarModule } from 'primeng/calendar';
 
 import { AppComponent } from './app.component';
 import { EventsComponent } from './events/events.component';
@@ -28,6 +23,11 @@ import { DateFrMonthEntirePipe } from './pipes/date-fr-month-entire.pipe';
 import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';
 
 //---- PrimeNG Imports ----//
+import { DataGridModule } from 'primeng/datagrid';
+import { PanelModule } from 'primeng/panel';
+import { CarouselModule } from 'primeng/carousel';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
@@ -37,6 +37,9 @@ import { MenuModule } from 'primeng/menu';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { AccordionModule } from 'primeng/accordion';
 import { GrowlModule } from 'primeng/growl';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { MessageModule } from 'primeng/message';
+import { InputMaskModule } from 'primeng/inputmask';
 
 //---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';
@@ -49,7 +52,6 @@ const appRoutes : Routes = [
   {path : 'SearchEvents', component : SearchEventsComponent},
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
-  {path : 'CreateUsers', component : CreateUserComponent},
   {path : 'Connection', component : ConnectionComponent},
 ];
 
@@ -83,6 +85,9 @@ const appRoutes : Routes = [
     PanelMenuModule,
     AccordionModule,
     GrowlModule,
+    KeyFilterModule,
+    MessageModule,
+    InputMaskModule,
 
     //---- Connexion avec Spring ----//
     HttpClientModule,
