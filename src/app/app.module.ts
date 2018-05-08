@@ -79,7 +79,7 @@ const appRoutes : Routes = [
     CreateEventsComponent,
     CreateUserComponent,
     ConnectionAdminComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
     CreateUserComponent,
     EventsUserSideComponent,
     SearchEventsUserComponent

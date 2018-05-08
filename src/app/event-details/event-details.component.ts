@@ -22,7 +22,7 @@ export class EventDetailsComponent implements OnInit {
     this.event = new Event(
       "Evenement 1",
       "Toulouse",
-      Type.Cinéma,
+      Type.CINEMA,
       new Date('05/06/2018'),
       10,
       10,
