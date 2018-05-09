@@ -33,20 +33,12 @@ export class SearchEventsUserComponent implements OnInit {
       }
   }
 
-  paginate(event) {
-    //event.first = Index of the first record
-    //event.rows = Number of rows to display in new page
-    //event.page = Index of the new page
-    //event.pageCount = Total number of pages
-    console.log(event.page);
-}
-
   onSubmit(){
     this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.price).subscribe(events => {
       this.events = events["events"];
       this.pages = events["pages"];
       this.submitted = true;
-      console.log(events["pages"])
+      console.log(events["pages"]);
     });
     /*this.eventService.getEvents().subscribe(events => {
       this.events = events;

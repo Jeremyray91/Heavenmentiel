@@ -48,7 +48,7 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
           <app-events-user-side  [events]="events"></app-events-user-side>
           <div class="row text-center" *ngIf="submitted">
-                <app-event-paginator [nbEvents]="events.length" [pages]="pages" (onPageChange)="paginate($event)"></app-event-paginator>
+                <app-event-paginator [nbEvents]="events.length" [pages]="pages"></app-event-paginator>
             </div>
       </div>
     </div>

@@ -45,7 +45,7 @@ import { MessageModule } from 'primeng/message';
 import { InputMaskModule } from 'primeng/inputmask'; 
 import { GMapModule } from 'primeng/gmap'; 
 import { SpinnerModule } from 'primeng/spinner';
-import {PaginatorModule} from 'primeng/paginator'; 
+import {PaginatorModule} from 'primeng/paginator';
  
 //---- Connexion avec Spring Imports ----// 
 import { ConnectionService } from './connection.service'; 
@@ -119,6 +119,7 @@ const appRoutes : Routes = [
     GMapModule, 
     ListboxModule, 
     SpinnerModule, 
+    PaginatorModule,
  
     //---- Connexion avec Spring ----// 
     HttpClientModule, 
