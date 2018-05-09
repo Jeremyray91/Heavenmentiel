@@ -9,6 +9,7 @@ export class EventPaginatorComponent implements OnInit {
   
   @Input()  nbEvents:number = 0;
   @Input()  pages:number = 0;
+  
   constructor() { }
 
   ngOnInit() {
