@@ -31,7 +31,7 @@ export class EventDetailsComponent implements OnInit {
 
     this.mapOptions = {
       center : this.mapPosition,
-      zoom: 12
+      zoom: 18
     };
 
 
