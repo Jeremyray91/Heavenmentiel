@@ -16,7 +16,7 @@
           Le {{event.dateEvent | dateFr}} {{event.dateEvent | dateFrMonthEntire}}
         </div>
         <div>
-          En stock
+          {{event.stockStatusMsg}}
         </div>
         <div>
           {{event.description}}
@@ -45,7 +45,7 @@
         Adresse
       </h2>
       <p-gmap #gmap [options]="mapOptions" [overlays]="mapOverlays" [style]="{'width':'100%','height':'320px'}" ></p-gmap>
-      Toulouse
+      {{event.place}}
     </div>
   </div>
 

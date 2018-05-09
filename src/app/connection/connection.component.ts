@@ -53,11 +53,11 @@ export class ConnectionComponent implements OnInit {
         this.connectionBean = this.model;
         this.connectionService.userIsConnected = true;
         this.connectionService.getUser(this.connectionBean).subscribe(user => {
-        this.connectedUser = user; console.log(this.connectedUser);
-        this.connectedUser.pwd = null;
-        sessionStorage.setItem('currentUser', JSON.stringify(this.connectedUser));
+          this.connectedUser = user; console.log(this.connectedUser);
+          this.connectedUser.pwd = null;
+          sessionStorage.setItem('currentUser', JSON.stringify(this.connectedUser));
         });
-
+        
       },
       error => {
         console.error("Connection failed !");

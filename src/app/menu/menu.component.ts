@@ -14,11 +14,7 @@ export class MenuComponent implements OnInit {
  
   user : User;
 
-  userName : string;
-
-  userRole : string;
-
-  userConnected : boolean;
+  userConnected : boolean = true;
   
   onConnection : boolean = true;
 
@@ -40,15 +36,15 @@ export class MenuComponent implements OnInit {
       { label: 'Connection', icon: 'fa-refresh' }
     ];
     console.log(this.connectionService);
+    console.log("Connection Service userIsConnected : " + this.connectionService.userIsConnected);
     console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
-    console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
-    this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
-    this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+    //console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
+    //this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
+    console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
     if(localStorage.getItem('currentUser'))
     {
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
-      this.userName = this.user.firstName;
-      this.userRole = this.user.role;
+      console.log("JSON parse");
     }
   }
 

@@ -18,6 +18,7 @@ export class EventDetailsComponent implements OnInit {
   mapPosition : any;
   mapOverlays : any[];
   category : string ;
+  stockStatusMsg : string;
 
   constructor(private eventService : EventService, private route : ActivatedRoute, private router: Router) {
     this.eventService = eventService;
@@ -45,10 +46,27 @@ export class EventDetailsComponent implements OnInit {
 
     this.eventService.getEventById(parseInt(localStorage.getItem("requestedEvent"))).subscribe(evt => {
       this.event = evt;
+      this.checkStockStatus();
       console.log(this.event);
     });
       
     
+  }
+
+  checkStockStatus()
+  {
+    if(this.event.stock > 30)
+    {
+      this.stockStatusMsg = "En stock"
+    }
+    else if (this.event.stock > 0)
+    {
+      this.stockStatusMsg = "Il en reste plus que " + this.event.stock + " !"
+    }
+    else
+    {
+      this.stockStatusMsg = "Plus disponible"
+    }
   }
 
   index: number = 0;
