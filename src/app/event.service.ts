@@ -62,9 +62,8 @@ export class EventService {
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params});
   }
 
-  createEvent(event:Event):Observable<Event>{
-    console.log(this.httpClient.post("http://localhost:8082/heavenmentiel/api/events",event) as Observable<Event>);
-    return this.httpClient.post<Event>("http://localhost:8082/heavenmentiel/api/events",event) as Observable<Event>;
+  createEvent(event:Event){
+    this.httpClient.post<Event>("http://localhost:8082/heavenmentiel/api/events",event).subscribe();
   }
   updateEvent(event:Event):Observable<Event>{
     return this.httpClient.put<Event>("http://localhost:8082/heavenmentiel/api/events", event) as Observable<Event>;

@@ -50,18 +50,29 @@
         <div class="form-inline">
           <div class="shortDescription">
             <label for="shortDescription">Résumé</label>
-            <input pInputText class="form-group" type="text" id="shortDescription" name="shortDescription" [(ngModel)]="model.shortDescription"
-            />
+            <input pInputText class="form-group" type="text" id="shortDescription" name="shortDescription" [(ngModel)]="model.shortDescription"/>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="form-inline">
+          <div class="imgMin">
+            <label for="imgMin">Ajouter l'image miniature :</label>
+            <p-fileUpload mode="basic" id="imgMin" name="myFile" url="http://localhost:8082/heavenmentiel/api/images/min" (onSelect)="onUploadMin($event)"
+              accept="image/*" maxFileSize="1000000" chooseLabel="Browse">
+            </p-fileUpload>
           </div>
         </div>
         <div class="form-inline">
-          <div class="stock">
-            <label for="stock">Stock : {{model.available}}</label>
-            <input pInputText class="form-group" [(ngModel)]="model.stock" type="text" id="stock" name="stock" />
+          <div class="img">
+            <label for="img">Ajouter l'image :</label>
+            <p-fileUpload mode="basic" id="img" name="myFile" url="http://localhost:8082/heavenmentiel/api/images"  (onSelect)="onUpload($event)"
+              accept="image/*" maxFileSize="1000000" chooseLabel="Browse">
+            </p-fileUpload>
+            <!-- mode="basic"-->
           </div>
         </div>
-      </div>
-      <div class="col-lg-6 col-md-6">
         <div class="form-group">
           <div class="description">
             <label for="description">Description</label>
@@ -69,31 +80,25 @@
           </div>
         </div>
       </div>
+      
     </div>
     <div class="available">
+      <div class="form-inline">
+        <div class="stock">
+          <label for="stock">Stock : {{model.available}}</label>
+          <input pInputText class="form-group" [(ngModel)]="model.stock" type="text" id="stock" name="stock" />
+        </div>
+      </div>
       <div class="form pt-2 pb-2">
         <p-slider id="available" name="available" [(ngModel)]="model.available" [animate]="true"></p-slider>
       </div>
     </div>
-    <div class="img">
-      <label for="img">URL de l'mage</label>
-      <input type="text" id="img" name="img" [(ngModel)]="model.img" />
-    </div>
-    <div class="imgMin">
-      <label for="imgMin">URL de l'mage</label>
-      <input type="text" id="imgMin" name="imgMin" [(ngModel)]="model.imgMin" />
+    <div class="row">
+
     </div>
     <div class="row">
       <button type="submit" class="btn btn-success">Lancer la recherche</button>
-    </div>
-    <!--<p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" 
-        multiple="multiple" accept="image/*" maxFileSize="1000000">
-      <ng-template pTemplate="content">
-          <ul *ngIf="uploadedFiles.length">
-              <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-          </ul>
-      </ng-template> 
-      </p-fileUpload>-->
+     </div>
   </form>
 </div>
 
