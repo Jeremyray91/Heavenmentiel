@@ -4,6 +4,7 @@ import { User } from '../user';
 import { Router } from '@angular/router';
 import { ConnectionComponent } from '../connection/connection.component';
 import { MenuItem } from 'primeng/api';
+import { AccueilComponent } from '../accueil/accueil.component';
 
 @Component({
   selector: 'app-menu',
@@ -18,13 +19,15 @@ export class MenuComponent implements OnInit {
 
   userRole : string;
 
-  userConnected : boolean;
+  userConnected : boolean = true;
   
   onConnection : boolean = true;
 
   index : number = 1;
 
   items : MenuItem[];
+
+  
 
   constructor(private connectionService : ConnectionService, private router: Router) { 
     this.connectionService = connectionService;
@@ -40,15 +43,15 @@ export class MenuComponent implements OnInit {
       { label: 'Connection', icon: 'fa-refresh' }
     ];
     console.log(this.connectionService);
+    console.log("Connection Service userIsConnected : " + this.connectionService.userIsConnected);
     console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
-    console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
-    this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
+    //console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
+    //this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
     this.user = JSON.parse(sessionStorage.getItem('currentUser'));
     if(localStorage.getItem('currentUser'))
     {
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
-      this.userName = this.user.firstName;
-      this.userRole = this.user.role;
+      console.log("JSON parse");
     }
   }
 
@@ -72,7 +75,7 @@ export class MenuComponent implements OnInit {
   disconnect(){
     this.connectionService.disconnect().subscribe();
     sessionStorage.clear();
-    this.router.navigate(['/']);
+    this.ngOnInit();
   } 
 
 }

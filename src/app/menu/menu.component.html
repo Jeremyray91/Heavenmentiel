@@ -8,7 +8,7 @@
     <a id="logo" class="nav-link" routerLink="/">Logo Heaven'Mentiel</a>
   </div>
 
-  <div class="menu-no-burger">
+  <!--<div class="menu-no-burger">-->
     <div class="search ui-g-6">
       <input type="text" pInputText placeholder="Rechercher" />
       <button pButton type="button" icon="fa fa-search"></button>
@@ -19,17 +19,17 @@
 
     <div class="member ui-g-2">
       <p-accordion>
-        <p-accordionTab *ngIf="!userConnected" header="Me connecter">
+        <p-accordionTab *ngIf="!user" header="Me connecter">
           <button pButton (click)="redirect('inscription')" type="button" label="Se connecter" class="ui-button-secondary"></button>
           <div>
             Première connexion ?
             <a id="inscription-text" [routerLink]="['/Connection', 'test']">Inscrivez-vous</a>
           </div>
         </p-accordionTab>
-        <p-accordionTab *ngIf="userConnected" header="Mon compte">
+        <p-accordionTab *ngIf="user" header="Mon compte">
           <div>
             Bienvenue
-            <span>{{userName}}</span>
+            <span>{{user.firstName}}</span>
           </div>
           <div>
             <button pButton type="button" label="Mon Compte" class="ui-button-secondary"></button>
@@ -51,5 +51,5 @@
         <!--<app-mini-cart></app-mini-cart>-->
       </div>
     </div>
-  </div>
+  <!--</div>-->
 </div>
