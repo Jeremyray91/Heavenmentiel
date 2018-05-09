@@ -7,11 +7,11 @@ export class User {
     zipCode : number;
     city : string;
     mail : string;
-    tel : number;
+    tel : string;
     pwd : string;
     role : string;
     
-    constructor(firstName : string, lastName : string, birthday : Date, adress : string, zipCode : number, city : string, mail : string, tel : number, pwd : string, role : string)
+    constructor(firstName : string, lastName : string, birthday : Date, adress : string, zipCode : number, city : string, mail : string, tel : string, pwd : string, role : string)
     {
         this.firstName = firstName;
         this.lastName = lastName;

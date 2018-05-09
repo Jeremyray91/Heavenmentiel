@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ConnectionService } from '../connection.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
+import { ConnectionComponent } from '../connection/connection.component';
 
 @Component({
   selector: 'app-menu',
@@ -40,10 +41,16 @@ export class MenuComponent implements OnInit {
 
   redirect(direction : string)
   {
-    //if(direction === "connection")
-    {
-      this.router.navigate(['/Connection']);
-    }
+    /*if(direction == "connection"){
+      this.connection.index = 0;
+      this.connection.test(0);
+    } else {
+      this.connection.index = 1;
+      this.connection.test(1);
+    }*/
+    this.router.navigate(['/Connection']);
   }
+
+  
 
 }

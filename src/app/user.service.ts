@@ -12,4 +12,8 @@ export class UserService {
     return this.httpClient.post<User>("http://localhost:8082/heavenmentiel/user", user);
   }
 
+  updateUser(user:User):Observable<User>{
+    return this.httpClient.put<User>("http://localhost:8082/heavenmentiel/user", user);
+  }
+
 }

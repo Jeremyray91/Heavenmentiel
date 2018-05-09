@@ -53,11 +53,13 @@ import { SearchEventsUserComponent } from './search-events/search-events-user/se
 import { ConnectionAdminComponent } from './connection-admin/connection-admin.component';
 import { UserService } from './user.service';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
   {path : 'SearchEvents', component : SearchEventsComponent},
   {path : 'SearchEventsUser', component : SearchEventsUserComponent},
+  {path : 'Profile', component : ProfileComponent},
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
   {path : 'Connection', component : ConnectionComponent},
@@ -83,7 +85,8 @@ const appRoutes : Routes = [
     EventDetailsComponent,
     CreateUserComponent,
     EventsUserSideComponent,
-    SearchEventsUserComponent
+    SearchEventsUserComponent,
+    ProfileComponent
   ],
   imports: [
     HttpClientModule,
@@ -119,7 +122,7 @@ const appRoutes : Routes = [
     PanelModule,
     CarouselModule
   ],
-  providers: [ConnectionService, EventService, EventsComponent, UserService],
+  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

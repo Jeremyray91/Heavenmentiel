@@ -1,0 +1,172 @@
+<p-growl [(value)]="msgs"></p-growl>
+<div class="ui-g">
+  <div class="ui-g-2 ui-md-2"></div>
+  <div class="ui-g-8 ui-md-8">
+
+    <div class="ui-g-3 ui-md-1"></div>
+    <div class="ui-g-6 ui-md-10">
+
+      <h1>
+        Mon compte
+      </h1>
+      <p-card>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+          <div class="flex-form">
+            <div class="form-left">
+              <div class="form-group">
+                <span class="ui-float-label">
+                  <input pKeyFilter="alpha" type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" #firstname="ngModel" pInputText
+                    required [disabled]="disabled" />
+                  <label for="firstName">Prénom</label>
+                  <span [ngClass]="(!firstname.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                    <i class="fa fa-check-circle"></i>
+                  </span>
+                </span>
+              </div>
+
+              <div class="form-group">
+                <span class="ui-float-label">
+                  <input pKeyFilter="alpha" type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" #lastname="ngModel" pInputText
+                    required [disabled]="disabled" />
+                  <label for="lastName">Nom</label>
+                  <span [ngClass]="(!lastname.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                    <i class="fa fa-check-circle"></i>
+                  </span>
+                </span>
+              </div>
+
+              <div class="form-group">
+                <div class="birthDay">
+                  <span class="ui-float-label">
+                    <p-calendar id="birthDay" [(ngModel)]="user.birthDay" name="birthDay" #birthday="ngModel" dateFormat="dd/mm/yy" [locale]="fr"
+                      [monthNavigator]="true" [yearNavigator]="true" yearRange="1918:2000" required [disabled]="disabled"></p-calendar>
+                    <label for="birthDay">Date de naissance</label>
+                    <span [ngClass]="(!birthday.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                      <i class="fa fa-check-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="mail">
+                  <span class="ui-float-label">
+                    <input type="text" id="mail" name="mail" [(ngModel)]="user.mail" #mail="ngModel" pInputText required [disabled]="disabled"
+                    />
+                    <label for="mail">Mail</label>
+                    <span [ngClass]="(!mail.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                      <i class="fa fa-check-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="tel">
+                  <span class="ui-float-label">
+                    <p-inputMask mask="9999999999" autoClear="false" type="text" id="tel" name="tel" [(ngModel)]="user.tel" #tel="ngModel" required
+                      [disabled]="disabled"></p-inputMask>
+                    <label for="tel">Téléphone</label>
+                    <span [ngClass]="(!tel.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                      <i class="fa fa-check-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-right">
+              <div class="form-group">
+                <div class="adress">
+                  <span class="ui-float-label">
+                    <input type="text" id="adress" name="adress" [(ngModel)]="user.adress" pKeyFilter="alphanum" #adress="ngModel" pInputText
+                      required [disabled]="disabled" />
+                    <label for="adress">Adresse</label>
+                    <span [ngClass]="(!adress.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                      <i class="fa fa-check-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="zipCode">
+                  <span class="ui-float-label">
+                    <p-inputMask mask="99999" autoClear="false" type="text" id="zipCode" name="zipCode" [(ngModel)]="user.zipCode" #zipCode="ngModel"
+                      required [disabled]="disabled"></p-inputMask>
+                    <label for="zipCode">Code postal</label>
+                    <span [ngClass]="(!zipCode.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                      <i class="fa fa-check-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="city">
+                  <span class="ui-float-label">
+                    <input pKeyFilter="alpha" type="text" id="city" name="city" [(ngModel)]="user.city" #city="ngModel" pInputText required [disabled]="disabled"
+                    />
+                    <label for="city">Ville</label>
+                    <span [ngClass]="(!city.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                      <i class="fa fa-check-circle"></i>
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="modifPwd">
+                  <button (click)="toggleModifPwd()" pButton type="button" label="Modifier le mot de passe"></button>
+                </div>
+              </div>
+
+              <div *ngIf="modifPwd">
+                <div class="form-group">
+                  <div class="password">
+                    <span class="ui-float-label">
+                      <input id="password" name="password" type="password" pPassword [(ngModel)]="newPwd" #password="ngModel" (change)="pwdEqual()"
+                        required [disabled]="disabled" />
+                      <label for="password">Nouveau mot de passe</label>
+                      <span [ngClass]="(!password.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
+                        <i class="fa fa-check-circle"></i>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="confirmPassword">
+                    <span class="ui-float-label">
+                      <input id="confirmPassword" name="confirmPassword" type="password" pInputText [(ngModel)]="confirmPwd" #confirmPassword="ngModel"
+                        (change)="pwdEqual()" required [disabled]="disabled" />
+                      <label for="confirmPassword">Confirmation </label>
+                      <span *ngIf="equals == false" style="color:red;">
+                        <i class="fa fa-times-circle"></i>
+                      </span>
+                      <span *ngIf="equals == true" style="color:green;">
+                        <i class="fa fa-check-circle"></i>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div *ngIf="disabled" style="width:50%">
+            <div class="inscription">
+              <button (click)="toggleDisabled()" pButton type="button" icon="fa fa-fw fa-edit" label="Modifier"></button>
+            </div>
+          </div>
+
+          <div *ngIf="!disabled" style="width:50%">
+            <div class="inscription">
+              <button class="ui-button-success" pButton type="submit" icon="fa fa-fw fa-check" label="Valider"></button>
+              <button class="ui-button-warning" (click)="cancel()" pButton type="button" icon="fa fa-fw fa-close" label="Annuler"></button>
+            </div>
+          </div>
+        </form>
+      </p-card>
+    </div>
+  </div>

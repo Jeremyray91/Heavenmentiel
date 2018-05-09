@@ -8,8 +8,8 @@
         <h1>
             Connexion
         </h1>
-        <p-tabView>
-          <p-tabPanel header="Se connecter">
+        <p-tabView [activeIndex]="index">
+          <p-tabPanel header="Se connecter" [selected]="index === 0">
             <p-card>
               <form (ngSubmit)="onSubmit()" >
                 <div class="login-form">
@@ -30,7 +30,8 @@
               </form>
             </p-card>
           </p-tabPanel>
-          <p-tabPanel header="Créer un compte">
+
+          <p-tabPanel header="Créer un compte" [selected]="index === 1">
             <app-create-user></app-create-user>
           </p-tabPanel>
           
