@@ -23,7 +23,7 @@
       <div class="carousel-caption d-none d-md-block">
         <p>{{e.date | dateFr}} {{e.date | dateFrMonthEntire}} - {{e.date | date:'HH'}}h{{e.date | date:'mm'}}</p>
         <h5>{{e.name | eventNameUpper}}</h5><br>
-        <button class="boutonPageAccueil"><a href="http://localhost:4200/event">Réserver</a></button>
+        <button (click)="redirect(e.id)" class="boutonPageAccueil"><a href="http://localhost:4200/Evenement/">Réserver</a></button>
       </div>
     </div>
   </div>
@@ -65,8 +65,8 @@
               </div>
               <div class="event-price">
                 <div>
-                  <button class="boutonPageAccueil">
-                    <a href="http://localhost:4200/event">Réserver</a>
+                  <button (click)="redirect(event.id)" class="boutonPageAccueil">
+                    <a href="http://localhost:4200/Evenement/">Réserver</a>
                   </button>
                 </div>
                 <div>Tarif : {{event.price}}€ </div>

@@ -18,6 +18,10 @@ export class MenuComponent implements OnInit {
   userRole : string;
 
   userConnected : boolean;
+  
+  onConnection : boolean = true;
+
+  index : number = 1;
 
   constructor(private connectionService : ConnectionService, private router: Router) { 
     this.connectionService = connectionService;
@@ -41,14 +45,19 @@ export class MenuComponent implements OnInit {
 
   redirect(direction : string)
   {
-    /*if(direction == "connection"){
-      this.connection.index = 0;
-      this.connection.test(0);
-    } else {
-      this.connection.index = 1;
-      this.connection.test(1);
-    }*/
-    this.router.navigate(['/Connection']);
+    console.log(direction);
+    if(direction == "inscription")
+    {
+      this.onConnection = false;
+      this.router.navigate(['/Connection']);
+      console.log("OnConnection : " + this.onConnection);
+    }
+    else
+    {
+      this.onConnection = true;
+      this.router.navigate(['/Connection']);
+      console.log("OnConnection : " + this.onConnection);
+    }
   }
 
   

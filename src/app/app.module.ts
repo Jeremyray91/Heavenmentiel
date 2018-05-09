@@ -54,6 +54,7 @@ import { ConnectionAdminComponent } from './connection-admin/connection-admin.co
 import { UserService } from './user.service';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CartComponent } from './cart/cart.component';
 
 const appRoutes : Routes = [
   {path : '', component : AccueilComponent},
@@ -63,8 +64,11 @@ const appRoutes : Routes = [
   {path : 'CreateEvents', component : CreateEventsComponent},
   {path : 'Events', component : EventsComponent},
   {path : 'Connection', component : ConnectionComponent},
+  {path : 'Connection/:type', component : ConnectionComponent},
   {path : 'ConnectionAdmin', component : ConnectionAdminComponent},
-  {path : 'Evenements', component : EventDetailsComponent}
+  {path : 'Evenement', component : EventDetailsComponent},
+  {path : 'Evenement/:id', component : EventDetailsComponent},
+  {path : 'MonPanier', component : CartComponent}
 ];
 
 @NgModule({
@@ -87,6 +91,7 @@ const appRoutes : Routes = [
     EventsUserSideComponent,
     SearchEventsUserComponent,
     ProfileComponent
+    CartComponent
   ],
   imports: [
     HttpClientModule,

@@ -8,9 +8,9 @@
   <div class="member ui-g-2">
     <p-accordion >
       <p-accordionTab *ngIf="!userConnected" header="Me connecter">
-          <button (click)="redirect('connection')" pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
+          <button pButton (click)="redirect('inscription')" type="button" label="Se connecter" class="ui-button-secondary"></button>
           <div>
-            Première connexion ? <a id="inscription-text" role="button" (click)="redirect('inscription')">Inscrivez-vous</a>
+            Première connexion ? <a id="inscription-text" [routerLink]="['/Connection', 'test']">Inscrivez-vous</a>
           </div>
       </p-accordionTab>
       <p-accordionTab *ngIf="userConnected" header="Mon compte">
@@ -30,7 +30,7 @@
   </div>
   <div class="ui-g-2">
     <div class="cart">
-      Panier
+        <a class="nav-link" routerLink="/MonPanier">Panier</a>
       <!--<app-mini-cart></app-mini-cart>-->
     </div>
   </div>

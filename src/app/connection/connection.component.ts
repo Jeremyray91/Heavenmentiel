@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Message } from 'primeng/components/common/api';
 import { User } from '../user';
 import { MenuComponent } from '../menu/menu.component';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-connection',
@@ -21,11 +23,21 @@ export class ConnectionComponent implements OnInit {
   model: ConnectionBean = new ConnectionBean("", "");
   submitted = false;
 
-  constructor(private connectionService: ConnectionService) {
+  type : string;
+
+  test : any;
+
+  constructor(private connectionService : ConnectionService, private route : ActivatedRoute, private router: Router) 
+  {
     this.connectionService = connectionService;
   }
 
   ngOnInit() {
+    console.log("type before : " + this.type);
+    //this.test = this.route.paramMap.pipe(switchMap((params: ParamMap) => this.type = (params.get('type'))));
+    console.log("paramMap : " );
+    this.route.paramMap.pipe(switchMap((params: ParamMap) => this.type = (params.get('type'))))
+    console.log("type after : " + this.type);
   }
 
 
@@ -45,6 +57,7 @@ export class ConnectionComponent implements OnInit {
           sessionStorage.setItem('currentUser', JSON.stringify(this.connectedUser));
         });
 
+        this.connectedUser.pwd = null;
       },
       error => {
         console.error("Connection failed !");

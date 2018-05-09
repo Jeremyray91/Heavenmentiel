@@ -24,4 +24,12 @@ export class AccueilComponent implements OnInit {
     this.eventService.getEventsLastFiveAdd().subscribe(eventsFive => this.listFiveEvents = eventsFive);
   }
 
+  redirect(id : string)
+  {
+    if(id)
+    {
+      localStorage.setItem("requestedEvent", id);
+    }
+  }
+
 }
