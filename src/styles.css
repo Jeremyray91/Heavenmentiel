@@ -1,34 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
-@import "../node_modules/font-awesome/css/font-awesome.min.css";
-@import "../node_modules/primeng/resources/themes/omega/theme.css";
-@import "../node_modules/primeng/resources/primeng.min.css";
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-.ui-panel .ui-panel-content{
-    padding:0!important;
-}
-
-.ui-panel-titlebar{
-    display:none;
-}
-.ui-tabview .ui-tabview-panel
-{
-    opacity : 1!important;
-    padding : 0!important;
-}
-
-#inscription-text
-{
-    font-weight: bold;
-}
-
-h3{
-    font-size : 1.3em;
-}
-
-.card-event{
-    background-color:#fd2e2e;
-    overflow-wrap:break-word;
-}
-
-.card-event-img{overflow:hidden;height:150px;}
+/* You can add global styles to this file, and also import other style files */ 
+@import "../node_modules/font-awesome/css/font-awesome.min.css"; 
+@import "../node_modules/primeng/resources/themes/omega/theme.css"; 
+@import "../node_modules/primeng/resources/primeng.min.css"; 
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; 
+ 
+.ui-panel .ui-panel-content{ 
+    padding:0!important; 
+} 
+ 
+.ui-panel-titlebar{ 
+    display:none; 
+} 
+.ui-tabview .ui-tabview-panel 
+{ 
+    opacity : 1!important; 
+    padding : 0!important; 
+} 
+ 
+#inscription-text 
+{ 
+    font-weight: bold; 
+} 
+ 
+h3{ 
+    font-size : 1.3em; 
+} 
+ 
+.card-event{ 
+    overflow-wrap:break-word; 
+    padding:0; 
+    background-color:rgba(228, 228, 228, 0.829); 
+    margin-bottom:20px; 
+} 
+ 
+.card-event h3{background-color:#fd2e2e;margin:0;padding:4px 0px;} 
+.card-event-img{overflow:hidden;height:150px;} 
+.card-event-bottom{background-color:rgb(46, 46, 46);margin:0;padding:4px 0px;} 
+.price{font-size:1.3em;background-color:#fd2e2e;}
