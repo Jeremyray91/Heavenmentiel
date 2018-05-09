@@ -25,7 +25,7 @@ export class EventService {
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsById?id="+id) as Observable<Event>;
   }
 
-  getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<SelectItem>,price:number[]) : Observable<Array<Event>>{
+  getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<SelectItem>,price:number[]) : Observable<Object>{
     let params = new HttpParams();
     let options = {year: "numeric", month: "2-digit", day: "2-digit"};
     let types : string;
@@ -59,7 +59,7 @@ export class EventService {
       params = params.set('pricemin',price[0].toString());
     if(price[1]!=null)
       params = params.set('pricemax',price[1].toString());
-    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params}) as Observable<Array<Event>>;
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params});
   }
 
   createEvent(event:Event):Observable<Event>{

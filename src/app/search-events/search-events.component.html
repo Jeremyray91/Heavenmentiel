@@ -48,3 +48,6 @@
 </div>
 
 <app-events [events]="events"></app-events>
+<div class="row text-center" *ngIf="submitted">
+    <app-event-paginator [nbEvents]="events.length" [pages]="events.length"></app-event-paginator>
+</div>
