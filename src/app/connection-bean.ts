@@ -7,6 +7,5 @@ export class ConnectionBean {
     {
         this.username = username;
         this.password = password;
-        this.isConnected = false;
     }
 }

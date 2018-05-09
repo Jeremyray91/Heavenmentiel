@@ -42,7 +42,6 @@ export class ConnectionComponent implements OnInit {
         this.showSucces();
         this.connectionBean = this.model;
         this.connectionService.userIsConnected = true;
-        console.log("UserIsConnected : " + this.connectionService.userIsConnected);
         this.connectionService.getUser(this.connectionBean).subscribe(user => this.connectedUser = user);
         console.log(this.connectedUser);
         sessionStorage.setItem('currentUser', JSON.stringify(this.connectedUser));

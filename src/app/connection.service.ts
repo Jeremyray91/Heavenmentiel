@@ -41,10 +41,12 @@ export class ConnectionService {
 
   getUser(connection : ConnectionBean) : Observable<User>
   {
-    console.log(connection);
-    if(connection.isConnected)
+    console.log("Start GetUser " + connection);
+    console.log("isConnected : " + this.userIsConnected)
+    if(this.userIsConnected)
     {
       console.log("GetUser()");
+      console.log(this.http.get<User>(this.urlRoot + "user?username=" + connection.username));
       return this.http.get<User>(this.urlRoot + "user?username=" + connection.username);
     }
   }
