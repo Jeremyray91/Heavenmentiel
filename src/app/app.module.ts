@@ -132,7 +132,7 @@ const appRoutes : Routes = [
     PanelModule,  
     CarouselModule  
   ],  
-  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent],  
   bootstrap: [AppComponent]  
 })  
+  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent, AccueilComponent],
 export class AppModule { }

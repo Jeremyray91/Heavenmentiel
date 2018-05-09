@@ -4,6 +4,7 @@ import { User } from '../user';
 import { Router } from '@angular/router';
 import { ConnectionComponent } from '../connection/connection.component';
 import { MenuItem } from 'primeng/api';
+import { AccueilComponent } from '../accueil/accueil.component';
 
 @Component({
   selector: 'app-menu',
@@ -14,6 +15,10 @@ export class MenuComponent implements OnInit {
  
   user : User;
 
+  userName : string;
+
+  userRole : string;
+
   userConnected : boolean = true;
   
   onConnection : boolean = true;
@@ -21,6 +26,8 @@ export class MenuComponent implements OnInit {
   index : number = 1;
 
   items : MenuItem[];
+
+  
 
   constructor(private connectionService : ConnectionService, private router: Router) { 
     this.connectionService = connectionService;
@@ -40,7 +47,7 @@ export class MenuComponent implements OnInit {
     console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
     //console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
     //this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
-    console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
+    this.user = JSON.parse(sessionStorage.getItem('currentUser'));
     if(localStorage.getItem('currentUser'))
     {
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
@@ -68,7 +75,7 @@ export class MenuComponent implements OnInit {
   disconnect(){
     this.connectionService.disconnect().subscribe();
     sessionStorage.clear();
-    this.router.navigate(['/']);
+    this.ngOnInit();
   } 
 
 }

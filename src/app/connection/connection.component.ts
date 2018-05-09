@@ -7,6 +7,7 @@ import { User } from '../user';
 import { MenuComponent } from '../menu/menu.component';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { AccueilComponent } from '../accueil/accueil.component';
 
 @Component({
   selector: 'app-connection',
@@ -26,10 +27,12 @@ export class ConnectionComponent implements OnInit {
   type : string;
 
   test : any;
+  menu : MenuComponent;
 
-  constructor(private connectionService : ConnectionService, private route : ActivatedRoute, private router: Router) 
+  constructor(private connectionService : ConnectionService, private route : ActivatedRoute, menu : MenuComponent, private router: Router) 
   {
     this.connectionService = connectionService;
+    this.menu = menu;
   }
 
   ngOnInit() {
@@ -65,7 +68,9 @@ export class ConnectionComponent implements OnInit {
         this.model.password = "";
         this.connectionService.userIsConnected = false;
         return Observable.throw(error);
-      });
+      },
+    () => this.reini());
+      
     //this.model = new ConnectionBean("","");
     //this.connectionService.connect(this.model);
     //this.model = new ConnectionService();
@@ -79,6 +84,11 @@ export class ConnectionComponent implements OnInit {
   showFailure() {
     this.msgs = [];
     this.msgs.push({ severity: 'error', summary: 'Connection failed', detail: 'Incorrect login or password' });
+  }
+
+  reini(){
+    window.location.reload();
+    this.router.navigate(['/']);
   }
 
 }

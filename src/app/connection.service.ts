@@ -21,7 +21,7 @@ export class ConnectionService {
   myConnect : ConnectionBean;
   urlRoot : string = "http://localhost:8082/heavenmentiel/";
 
-  userIsConnected : boolean = false;
+  userIsConnected : boolean;
 
   constructor(private http : HttpClient) {
     this.myConnect = new ConnectionBean("","");
