@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../event.service';
 import { Event } from '../event';
 import { Type } from '../enum-event';
-
+import {} from '@types/googlemaps';
 
 @Component({
   selector: 'app-event-details',
@@ -10,8 +10,11 @@ import { Type } from '../enum-event';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-
+  
   event : Event;
+  mapOptions : any;
+  mapPosition : any;
+  mapOverlays : any[];
   category : string ;
 
   constructor(private eventService : EventService) {
@@ -19,6 +22,20 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.mapPosition = {lat: 43.604587, lng: 1.447928};
+    this.mapOverlays = 
+    [
+      new google.maps.Marker({position: this.mapPosition, title:"Cinema Gaumont Wilson"})
+    ]
+
+    this.mapOptions = {
+      center : this.mapPosition,
+      zoom: 12
+    };
+
+
+
     this.event = new Event(
       "Evenement 1",
       "Toulouse",

@@ -42,6 +42,7 @@ import { KeyFilterModule } from 'primeng/keyfilter';
 import { MessageModule } from 'primeng/message';
 import { InputMaskModule } from 'primeng/inputmask';
 import { GMapModule } from 'primeng/gmap';
+import { SpinnerModule } from 'primeng/spinner';
 
 //---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';
@@ -103,8 +104,9 @@ const appRoutes : Routes = [
     MessageModule,
     InputMaskModule,
     GMapModule,
-
     ListboxModule,
+    SpinnerModule,
+
     //---- Connexion avec Spring ----//
     HttpClientModule,
     InputSwitchModule,
