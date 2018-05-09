@@ -1,21 +1,35 @@
 <div class="header ui-g">
+  <div class="menu-burger">
+    <button type="button" pButton icon="fa fa-list" (click)="menu.toggle($event)"></button>
+    <p-menu #menu popup="popup" [model]="items"></p-menu>
+  </div>
+
   <div class="ui-g-2">
-      <a id="logo" class="nav-link" routerLink="/">Logo Heaven'Mentiel</a>
+    <a id="logo" class="nav-link" routerLink="/">Logo Heaven'Mentiel</a>
   </div>
-  <div class="search ui-g-6">
-    <input type="text" pInputText />
-  </div>
-  <div class="member ui-g-2">
-    <p-accordion >
-      <p-accordionTab *ngIf="!userConnected" header="Me connecter">
+
+  <div class="menu-no-burger">
+    <div class="search ui-g-6">
+      <input type="text" pInputText placeholder="Rechercher" />
+      <button pButton type="button" icon="fa fa-search"></button>
+    </div>
+    <div>
+      <button pButton (click)="disconnect()" type="button" label="Deconnexion" class="ui-button-secondary"></button>
+    </div>
+
+    <div class="member ui-g-2">
+      <p-accordion>
+        <p-accordionTab *ngIf="!userConnected" header="Me connecter">
           <button pButton (click)="redirect('inscription')" type="button" label="Se connecter" class="ui-button-secondary"></button>
           <div>
-            Première connexion ? <a id="inscription-text" [routerLink]="['/Connection', 'test']">Inscrivez-vous</a>
+            Première connexion ?
+            <a id="inscription-text" [routerLink]="['/Connection', 'test']">Inscrivez-vous</a>
           </div>
-      </p-accordionTab>
-      <p-accordionTab *ngIf="userConnected" header="Mon compte">
+        </p-accordionTab>
+        <p-accordionTab *ngIf="userConnected" header="Mon compte">
           <div>
-              Bienvenue <span>{{userName}}</span>
+            Bienvenue
+            <span>{{userName}}</span>
           </div>
           <div>
             <button pButton type="button" label="Mon Compte" class="ui-button-secondary"></button>
@@ -23,15 +37,19 @@
           <div>
             <button pButton type="button" label="Mes Commandes" class="ui-button-secondary"></button>
           </div>
-      </p-accordionTab>
-    </p-accordion>
-    <!--<button pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
+          <div>
+            <button pButton type="button" label="Deconnexion" class="ui-button-secondary"></button>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+      <!--<button pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
     Se connecter-->
-  </div>
-  <div class="ui-g-2">
-    <div class="cart">
+    </div>
+    <div class="ui-g-2">
+      <div class="cart">
         <a class="nav-link" routerLink="/MonPanier">Panier</a>
-      <!--<app-mini-cart></app-mini-cart>-->
+        <!--<app-mini-cart></app-mini-cart>-->
+      </div>
     </div>
   </div>
 </div>

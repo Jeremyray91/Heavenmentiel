@@ -13,7 +13,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class EventDetailsComponent implements OnInit {
   
-  event : Event;
+  event : Event = new Event("",null,null,null,0,0,"",null,false, "", "");
   mapOptions : any;
   mapPosition : any;
   mapOverlays : any[];

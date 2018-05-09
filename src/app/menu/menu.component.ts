@@ -3,6 +3,7 @@ import { ConnectionService } from '../connection.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
 import { ConnectionComponent } from '../connection/connection.component';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-menu',
@@ -23,6 +24,8 @@ export class MenuComponent implements OnInit {
 
   index : number = 1;
 
+  items : MenuItem[];
+
   constructor(private connectionService : ConnectionService, private router: Router) { 
     this.connectionService = connectionService;
     this.router = router;
@@ -30,6 +33,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit()
   {
+    this.items = [
+      { label: 'Listes événements', icon: 'fa-plus' },
+      { label: 'Ajouter un événement', icon: 'fa-download' },
+      { label: 'Profile', icon: 'fa-refresh' },
+      { label: 'Connection', icon: 'fa-refresh' }
+    ];
     console.log(this.connectionService);
     console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
     console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
@@ -60,6 +69,10 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  
+  disconnect(){
+    this.connectionService.disconnect().subscribe();
+    sessionStorage.clear();
+    this.router.navigate(['/']);
+  } 
 
 }

@@ -39,6 +39,12 @@ export class ConnectionService {
     //return this.http.post<User>(this.url,connection).pipe(catchError(this.handleError('connect',connection)));
   }
 
+  disconnect()
+  {
+    console.log("Disconnect()");
+    return this.http.post<HttpResponse<any>>(this.urlRoot + "logout", null);
+  }
+
   getUser(connection : ConnectionBean) : Observable<User>
   {
     console.log("Start GetUser " + connection);

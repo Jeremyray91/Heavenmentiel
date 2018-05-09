@@ -69,8 +69,8 @@ export class EventService {
   updateEvent(event:Event):Observable<Event>{
     return this.httpClient.put<Event>("http://localhost:8082/heavenmentiel/api/events", event) as Observable<Event>;
   }
-  deleteEvent(event:Event):Observable<Event>{
-    return this.httpClient.delete("http://localhost:8082/heavenmentiel/api/events/"+event) as Observable<Event>;
+  deleteEvent(id:number):Observable<{}>{
+    return this.httpClient.delete("http://localhost:8082/heavenmentiel/api/events/"+id);
   }
 
   getTypes() : Observable<Array<String>>{

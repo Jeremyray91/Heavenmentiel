@@ -35,6 +35,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
+import { MenuItem } from 'primeng/api';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { AccordionModule } from 'primeng/accordion';
 import { GrowlModule } from 'primeng/growl';
@@ -90,7 +91,7 @@ const appRoutes : Routes = [
     CreateUserComponent,
     EventsUserSideComponent,
     SearchEventsUserComponent,
-    ProfileComponent
+    ProfileComponent,
     CartComponent
   ],
   imports: [
