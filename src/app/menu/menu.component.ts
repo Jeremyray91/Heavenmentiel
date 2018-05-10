@@ -37,10 +37,11 @@ export class MenuComponent implements OnInit {
   ngOnInit()
   {
     this.items = [
-      { label: 'Listes événements', icon: 'fa-plus' },
-      { label: 'Ajouter un événement', icon: 'fa-download' },
-      { label: 'Profile', icon: 'fa-refresh' },
-      { label: 'Connection', icon: 'fa-refresh' }
+      { label: 'Accueil', icon: 'fa-home', routerLink: ['/'] },
+      { label: 'Listes événements', icon: 'fa-plus', routerLink: ['/SearchEvents'] },
+      { label: 'Ajouter un événement', icon: 'fa-download', routerLink: ['/CreateEvents'] },
+      { label: 'Profile', icon: 'fa-refresh', routerLink: ['/Profile'] },
+      { label: 'Connection', icon: 'fa-refresh', routerLink: ['/Connection'] }
     ];
     console.log(this.connectionService);
     console.log("Connection Service userIsConnected : " + this.connectionService.userIsConnected);

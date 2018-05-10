@@ -9,7 +9,7 @@
 
 #carouselAccueil h5, #carouselAccueil p {
     font-weight: 700;
-    text-shadow: 0 0 10px #f59668, 0 0 20px #f59668, 0 0 30px #f59668, 0 0 40px #cc0f07, 0 0 70px #cc0f07, 0 0 80px #cc0f07, 0 0 100px #cc0f07, 0 0 150px #cc0f07;
+    text-shadow: 0 0 10px #FF6107, 0 0 20px #FF6107, 0 0 30px #FF6107, 0 0 40px #C40018, 0 0 70px #C40018, 0 0 80px #C40018, 0 0 100px #C40018, 0 0 150px #C40018;
     color: #ffb283;
     letter-spacing: 2px;
 }
@@ -71,12 +71,12 @@
 
 .boutonPageAccueil{
     border-radius: 50px;
-    box-shadow: 0 0 20px 5px rgba(213,29,39,.4);
+    box-shadow: 0 0 20px 5px rgba(233, 40, 15, 0.438);
 }
 
 .boutonPageAccueil:hover{
     border-radius: 50px;
-    box-shadow: 0 0 20px 5px rgb(255, 0, 0);
+    box-shadow: 0 0 20px 5px #C40018;
 }
 
 .boutonPageAccueil a{

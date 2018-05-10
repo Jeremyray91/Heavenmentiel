@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-create-user',
@@ -16,6 +17,7 @@ export class CreateUserComponent implements OnInit {
   confirmPwd : string = "";
   fr: any;
   mailReg : RegExp = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+  msgs: Message[];
 
   constructor(userService : UserService) {
     this.userService = userService;
@@ -37,6 +39,8 @@ export class CreateUserComponent implements OnInit {
   onSubmit(){
     this.userService.createUser(this.model).subscribe();
     this.model = new User("", "", null, "", null, "", "", null, "", "USER");
+    this.msgs = [];
+    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
 
   pwdEqual(){

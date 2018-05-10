@@ -2,6 +2,7 @@
 @import "../node_modules/primeng/resources/themes/omega/theme.css";  
 @import "../node_modules/primeng/resources/primeng.min.css";  
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";  
+@import "../node_modules/font-awesome/css/font-awesome.css";
   
 .ui-panel .ui-panel-content{  
     padding:0!important;  

@@ -13,18 +13,18 @@ import { EventService } from './event.service';
 import { SearchEventsComponent } from './search-events/search-events.component';  
 import { ConnectionComponent } from './connection/connection.component';  
 import {EventPaginatorComponent} from './event-paginator/event-paginator.component' 
-import {InputTextareaModule} from 'primeng/inputtextarea';  
-import {SliderModule} from 'primeng/slider';  
-import {FileUploadModule} from 'primeng/fileupload';  
 import { CreateEventsComponent } from './create-events/create-events.component';  
 import { AccueilComponent } from './accueil/accueil.component';  
 import { DatePipe } from './pipes/date.pipe';  
 import { DateFrMonthPipe } from './pipes/date-fr-month.pipe';  
 import { DateFrMonthEntirePipe } from './pipes/date-fr-month-entire.pipe';  
 import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';  
-import {ListboxModule} from 'primeng/listbox';  
-  
+
 //---- PrimeNG Imports ----//  
+import { ListboxModule } from 'primeng/listbox';  
+import { InputTextareaModule } from 'primeng/inputtextarea';  
+import { SliderModule } from 'primeng/slider';  
+import { FileUploadModule } from 'primeng/fileupload';  
 import { DataGridModule } from 'primeng/datagrid';  
 import { PanelModule } from 'primeng/panel';  
 import { CarouselModule } from 'primeng/carousel';  

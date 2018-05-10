@@ -1,3 +1,4 @@
+<p-growl [(value)]="msgs"></p-growl>
 <div class="container mt-4">
   <h2>Rechercher un événement</h2>
   <p>Bienvenue dans le module d'ajouts d'événements, entrez les critères que vous souhaitez remplir et puis ajouter ! Vous pouvez
@@ -50,12 +51,41 @@
         <div class="form-inline">
           <div class="shortDescription">
             <label for="shortDescription">Résumé</label>
-            <input pInputText class="form-group" type="text" id="shortDescription" name="shortDescription" [(ngModel)]="model.shortDescription"/>
+            <input pInputText class="form-group" type="text" id="shortDescription" name="shortDescription" [(ngModel)]="model.shortDescription"
+            />
           </div>
         </div>
 
       </div>
+
       <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <!--<div class="imgMin">-->
+            <label for="imgMin">Ajouter l'image miniature :</label><br>
+            <p-fileUpload #fileInputMin name="myFile" id="imgMin" url="http://localhost:8082/heavenmentiel/api/images/min" (onSelect)="onUploadMin($event)" accept="image/*" maxFileSize="1000000">
+              <ng-template pTemplate="content">
+                <ul *ngIf="model.imgMin">
+                  <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+              </ng-template>
+            </p-fileUpload>
+          <!--</div>-->
+        </div>
+        <div class="form-group">
+          <!--<div class="imgMin">-->
+            <label for="imgMin">Ajouter l'image miniature :</label><br>
+            <p-fileUpload #fileInput name="myFile" id="img" url="http://localhost:8082/heavenmentiel/api/images" (onSelect)="onUpload($event)" accept="image/*" maxFileSize="1000000">
+              <ng-template pTemplate="content">
+                <ul *ngIf="model.img">
+                  <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+              </ng-template>
+            </p-fileUpload>
+          <!--</div>-->
+        </div>
+      </div>
+
+      <!-- <div class="col-lg-6 col-md-6">
         <div class="form-inline">
           <div class="imgMin">
             <label for="imgMin">Ajouter l'image miniature :</label>
@@ -67,21 +97,22 @@
         <div class="form-inline">
           <div class="img">
             <label for="img">Ajouter l'image :</label>
-            <p-fileUpload mode="basic" id="img" name="myFile" url="http://localhost:8082/heavenmentiel/api/images"  (onSelect)="onUpload($event)"
+            <p-fileUpload mode="basic" id="img" name="myFile" url="http://localhost:8082/heavenmentiel/api/images" (onSelect)="onUpload($event)"
               accept="image/*" maxFileSize="1000000" chooseLabel="Browse">
             </p-fileUpload>
-            <!-- mode="basic"-->
           </div>
         </div>
-        <div class="form-group">
-          <div class="description">
-            <label for="description">Description</label>
-            <textarea class="col-lg-12 col-md-12" id="description" name="description" [(ngModel)]="model.description"></textarea>
-          </div>
+      </div> -->
+
+      <div class="form-group">
+        <div class="description">
+          <label for="description">Description</label>
+          <textarea class="col-lg-12 col-md-12" id="description" name="description" [(ngModel)]="model.description"></textarea>
         </div>
       </div>
-      
     </div>
+
+
     <div class="available">
       <div class="form-inline">
         <div class="stock">
@@ -98,7 +129,7 @@
     </div>
     <div class="row">
       <button type="submit" class="btn btn-success">Lancer la recherche</button>
-     </div>
+    </div>
   </form>
 </div>
 

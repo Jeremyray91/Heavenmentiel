@@ -1,3 +1,4 @@
+<p-growl [(value)]="msgs"></p-growl>
 <p-card>
   <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="flex-form">
@@ -63,7 +64,7 @@
         <div class="form-group">
           <div class="adress">
             <span class="ui-float-label">
-              <input type="text" id="adress" name="adress" [(ngModel)]="model.adress" pKeyFilter="alphanum" #adress="ngModel" pInputText required/>
+              <input type="text" id="adress" name="adress" [(ngModel)]="model.adress" #adress="ngModel" pInputText required/>
               <label for="adress">Adresse</label>
               <span [ngClass]="(!adress.valid || !adress.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
                 <i class="fa fa-check-circle"></i>
@@ -87,7 +88,7 @@
         <div class="form-group">
           <div class="city">
             <span class="ui-float-label">
-              <input pKeyFilter="alpha" type="text" id="city" name="city" [(ngModel)]="model.city" #city="ngModel" pInputText required/>
+              <input type="text" id="city" name="city" [(ngModel)]="model.city" #city="ngModel" pInputText required/>
               <label for="city">Ville</label>
               <span [ngClass]="(!city.valid || !city.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
                 <i class="fa fa-check-circle"></i>

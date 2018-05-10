@@ -24,6 +24,12 @@
     color: #910a0a;
 }
 
+.search-button{
+    border-radius: 30px;
+    background: #C40018;
+    border: 1px solid #C40018;
+}
+
 .menu-burger{
     display : none;
 }

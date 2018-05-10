@@ -1,10 +1,11 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Event } from '../event';
 import { EventService } from '../event.service'
 import { EventsComponent } from '../events/events.component';
 import { Type } from '../enum-event';
 import { Message } from 'primeng/api';
+import { FileUpload } from 'primeng/primeng';
 
 @Component({
   selector: 'app-create-events',
@@ -18,6 +19,8 @@ export class CreateEventsComponent implements OnInit {
   events:Array<Event>;
   model : Event = new Event("", "", Type.CONCERT, null, 0.0, null, "", "", false, "","");
   msgs: Message[];
+  @ViewChild('fileInputMin') fileInputMin: FileUpload;
+  @ViewChild('fileInput') fileInput: FileUpload;
 
   imgUrlRoot: string = "assets"
 
@@ -38,10 +41,10 @@ export class CreateEventsComponent implements OnInit {
   onUploadMin(event) {
     for(let file of event.files) {
       console.log(file.name);
-      this.model.img = this.imgUrlRoot + "/img_miniature/" + file.name;
+      this.model.imgMin = this.imgUrlRoot + "/img_miniature/" + file.name;
     }
-    event.upload();
-    console.log(this.model.img);
+    
+    console.log(this.model.imgMin);
     this.msgs = [];
     this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
@@ -49,7 +52,7 @@ export class CreateEventsComponent implements OnInit {
   onUpload(event) {
     for(let file of event.files) {
       console.log(file.name);
-      this.model.img = this.imgUrlRoot + "/img/" + file.name;
+      this.model.img = this.imgUrlRoot + "/img_carousel/" + file.name;
     }
    
     console.log(this.model.img);
@@ -62,6 +65,8 @@ export class CreateEventsComponent implements OnInit {
       this.eventService.updateEvent(this.model).subscribe();
     } else {
       this.eventService.createEvent(this.model);
+      this.fileInput.upload();
+      this.fileInputMin.upload();
     }
     this.model = new Event("", "", null, null, 0.0, 0, "", "", false, "","");
   }
