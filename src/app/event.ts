@@ -2,28 +2,28 @@ import { Type } from "./enum-event";
 
 
 export class Event {
-    name: String;
-    place: String;
+    name: string;
+    place: string;
     type: Type;
     dateEvent: Date;
     price: number;
     stock: number;
-    description: String;
+    description: string;
     shortDescription: string;
     available: boolean;
-    img: String;
+    img: string;
     imgMin: string;
 
-    constructor(name: String,
-                place: String, 
+    constructor(name: string,
+                place: string, 
                 type: Type,
                 dateEvent: Date,
                 price: number,
                 stock: number,
-                description: String,
+                description: string,
                 shortDescription: string,
-                available:boolean,
-                img:String,
+                available: boolean,
+                img: string,
                 imgMin: string){
                             this.name = name,
                             this.place = place;

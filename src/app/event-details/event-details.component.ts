@@ -5,6 +5,8 @@ import { Type } from '../enum-event';
 import {} from '@types/googlemaps';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { CartService } from '../cart.service';
+import { CartItem } from '../cart-item';
 
 @Component({
   selector: 'app-event-details',
@@ -14,17 +16,25 @@ import { switchMap } from 'rxjs/operators';
 export class EventDetailsComponent implements OnInit {
   
   event : Event = new Event("",null,null,null,0,0,"",null,false, "", "");
+  category : string ;  
+
+  //---- Attributs de la partie commande ----//
+  stockStatusMsg : string;
+  quantitySelected : number;
+  isInCart : boolean;
+
+  //---- Attributs pour module Google Map ----//
   mapOptions : any;
   mapPosition : any;
   mapOverlays : any[];
-  category : string ;
-  stockStatusMsg : string;
 
-  constructor(private eventService : EventService, private route : ActivatedRoute, private router: Router) {
+  constructor(private eventService : EventService, private cartService : CartService, private route : ActivatedRoute, private router: Router) {
     this.eventService = eventService;
+    this.cartService = cartService;
   }
 
   ngOnInit() {
+    this.quantitySelected = 0;
 
     this.mapPosition = {lat: 43.604587, lng: 1.447928};
     this.mapOverlays = 
@@ -47,6 +57,7 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.getEventById(parseInt(localStorage.getItem("requestedEvent"))).subscribe(evt => {
       this.event = evt;
       this.checkStockStatus();
+      this.checkIsInCart();
       console.log(this.event);
     });
       
@@ -61,12 +72,17 @@ export class EventDetailsComponent implements OnInit {
     }
     else if (this.event.stock > 0)
     {
-      this.stockStatusMsg = "Il en reste plus que " + this.event.stock + " !"
+      this.stockStatusMsg = "Il n'en reste plus que " + this.event.stock + " !"
     }
     else
     {
       this.stockStatusMsg = "Plus disponible"
     }
+  }
+
+  checkIsInCart()
+  {
+    this.isInCart = this.cartService.itemInCart(this.event);
   }
 
   index: number = 0;
@@ -77,6 +93,28 @@ export class EventDetailsComponent implements OnInit {
 
     openPrev() {
         this.index = (this.index === 0) ? 2 : this.index - 1;
+    }
+
+    addToCart()
+    {
+      console.log("Commande :");
+      console.log("Event : " + this.event.name)
+      console.log("Quantité : " + this.quantitySelected);
+      if(this.quantitySelected > 0)
+      {
+        if(!this.isInCart)
+        {
+          this.cartService.addItem(new CartItem(this.event, this.quantitySelected));
+        }
+        else
+        {
+          let newQuantity : number = 0;
+          let actualQuantity : number = this.cartService.getItemQuantity(this.event.name);
+          newQuantity = (actualQuantity + this.quantitySelected <= 30) ? (actualQuantity + this.quantitySelected) : 30
+          this.cartService.updateItemQuantity(this.event.name, newQuantity);
+        }
+      }
+      console.log(this.cartService.myItems);
     }
 
 }

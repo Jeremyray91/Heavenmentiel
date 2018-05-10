@@ -45,7 +45,8 @@ import { MessageModule } from 'primeng/message';
 import { InputMaskModule } from 'primeng/inputmask';  
 import { GMapModule } from 'primeng/gmap';  
 import { SpinnerModule } from 'primeng/spinner'; 
-import { PaginatorModule } from 'primeng/paginator';  
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table'; 
   
 //---- Connexion avec Spring Imports ----//  
 import { ConnectionService } from './connection.service';  
@@ -58,6 +59,7 @@ import { UserService } from './user.service';
 import { EventDetailsComponent } from './event-details/event-details.component';  
 import { ProfileComponent } from './profile/profile.component';  
 import { CartComponent } from './cart/cart.component'; 
+import { CartService } from './cart.service';
 
  
 const appRoutes : Routes = [ 
@@ -120,6 +122,8 @@ const appRoutes : Routes = [
     ListboxModule, 
     SpinnerModule, 
     PaginatorModule,
+    FileUploadModule,
+    TableModule,
  
     //---- Connexion avec Spring ----// 
     HttpClientModule, 
@@ -133,7 +137,7 @@ const appRoutes : Routes = [
     PanelModule, 
     CarouselModule 
   ], 
-  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent], 
+  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent, CartService], 
   bootstrap: [AppComponent] 
 }) 
 export class AppModule { } 

@@ -56,12 +56,12 @@
       <div class="ui-lg-8 ui-lg-nopad">
         <p-card title="{{event.name}}" subtitle="{{event.dateEvent | dateFr}} {{event.dateEvent | dateFrMonthEntire}}">
           <div class="ui-lg-12"><img src="{{event.imgMin}}"></div>
-          <div class="ui-lg-12"><span>Quantité </span><p-spinner [size]="2" [min]="0" [max]="30"></p-spinner></div>
-          <div class="ui-lg-12">En stock</div>
-          <div class="ui-lg-12">00.00€</div>
+          <div class="ui-lg-12"><span>Quantité </span><p-spinner [(ngModel)]="quantitySelected" [size]="2" [min]="0" [max]="30"></p-spinner></div>
+          <div class="ui-lg-12">{{stockStatusMsg}}</div>
+          <div class="ui-lg-12">{{event.price}}€</div>
           <div class="ui-lg-12">
             <button class="boutonPageAccueil" (click)="addToCart()">
-              <a href="http://localhost:4200/Evenements">Réserver</a>
+              Ajouter au panier
             </button>
           </div>
         </p-card>
