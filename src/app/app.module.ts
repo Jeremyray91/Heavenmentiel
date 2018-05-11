@@ -65,6 +65,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CgvComponent } from './cgv/cgv.component';
 import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
 import { ContactComponent } from './contact/contact.component';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
 
  
 const appRoutes : Routes = [ 
@@ -79,11 +80,10 @@ const appRoutes : Routes = [
   {path : 'ConnectionAdmin', component : ConnectionAdminComponent}, 
   {path : 'Evenement', component : EventDetailsComponent}, 
   {path : 'Evenement/:id', component : EventDetailsComponent}, 
-  {path : 'MonPanier', component : CartComponent},
+  {path : 'MonPanier', component : CartDetailsComponent},
   {path : 'CGV', component : CgvComponent}, 
   {path : 'Mentions', component : MentionsLegalesComponent}, 
   {path : 'Contact', component : ContactComponent}
-   
 ]; 
  
 @NgModule({ 
@@ -107,7 +107,7 @@ const appRoutes : Routes = [
     SearchEventsUserComponent, 
     ProfileComponent, 
     CartComponent ,
-    EventPaginatorComponent,
+    CartDetailsComponent,
     FooterComponent,
     CgvComponent,
     MentionsLegalesComponent,

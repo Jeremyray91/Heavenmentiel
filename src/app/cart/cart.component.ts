@@ -30,9 +30,9 @@ export class CartComponent implements OnInit {
     }
   }
 
-  deleteItem(id: number)
+  deleteItem(item: CartItem)
   {
-    this.cartService.removeItemById(id);
+    this.cartService.removeItem(item);
   }
 
 }

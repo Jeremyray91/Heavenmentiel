@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { CartService } from '../cart.service';
 import { CartItem } from '../cart-item';
+import { Message } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-event-details',
@@ -19,6 +20,7 @@ export class EventDetailsComponent implements OnInit {
   category : string ;  
 
   //---- Attributs de la partie commande ----//
+  commandMsgs : Message[] = [];
   stockStatusMsg : string;
   quantitySelected : number;
   isInCart : boolean;
@@ -34,7 +36,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.quantitySelected = 0;
+    this.quantitySelected = 1;
 
     this.mapPosition = {lat: 43.604587, lng: 1.447928};
     this.mapOverlays = 
@@ -95,26 +97,53 @@ export class EventDetailsComponent implements OnInit {
         this.index = (this.index === 0) ? 2 : this.index - 1;
     }
 
-    addToCart()
+  addToCart()
+  {
+    console.log("Commande :");
+    console.log("Event : " + this.event.name)
+    console.log("Quantité : " + this.quantitySelected);
+    if(this.quantitySelected > 0)
     {
-      console.log("Commande :");
-      console.log("Event : " + this.event.name)
-      console.log("Quantité : " + this.quantitySelected);
-      if(this.quantitySelected > 0)
+      if(!this.isInCart)
       {
-        if(!this.isInCart)
+        this.cartService.addItem(new CartItem(this.event, this.quantitySelected));
+        this.isInCart = true;
+        this.showSucces();
+      }
+      else
+      {
+        let newQuantity : number = 0;
+        let actualQuantity : number = this.cartService.getItemQuantity(this.event.name);
+        newQuantity = (actualQuantity + this.quantitySelected <= 30) ? (actualQuantity + this.quantitySelected) : 30
+        if(newQuantity <= this.event.stock && actualQuantity < this.event.stock)
         {
-          this.cartService.addItem(new CartItem(this.event, this.quantitySelected));
+          this.cartService.updateItemQuantity(this.event.name, newQuantity);
+          this.showSucces();
+        }
+        else if (newQuantity > this.event.stock && actualQuantity < this.event.stock)
+        {
+          newQuantity = this.event.stock;
+          this.cartService.updateItemQuantity(this.event.name, newQuantity);
+          this.showSucces();
         }
         else
         {
-          let newQuantity : number = 0;
-          let actualQuantity : number = this.cartService.getItemQuantity(this.event.name);
-          newQuantity = (actualQuantity + this.quantitySelected <= 30) ? (actualQuantity + this.quantitySelected) : 30
-          this.cartService.updateItemQuantity(this.event.name, newQuantity);
+          this.showFailure("Quantité maximum atteinte");
         }
       }
-      console.log(this.cartService.myItems);
+      
     }
+    console.log(this.cartService.myItems);
+  }
+
+  showSucces() {
+    this.commandMsgs = [];
+    this.commandMsgs.push({ severity: 'success', summary: 'Ajout réussi', detail: 'L\'article ' + this.event.name + ' a bien été ajouté au panier' });
+  }
+
+  showFailure(message: string) {
+    this.commandMsgs = [];
+    this.commandMsgs.push({ severity: 'error', summary: 'Ajout échoué', detail: message });
+  }
 
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ConnectionComponent } from '../connection/connection.component';
 import { MenuItem } from 'primeng/api';
 import { AccueilComponent } from '../accueil/accueil.component';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-menu',
@@ -21,11 +22,12 @@ export class MenuComponent implements OnInit {
   index: number = 1;
   itemsBurger: MenuItem[];
   items: MenuItem[];
-  itemsCartLength: number = 10;
+  itemsCartLength: number;
 
-  constructor(private connectionService: ConnectionService, private router: Router) {
+  constructor(private connectionService: ConnectionService, private router: Router, private cartService : CartService) {
     this.connectionService = connectionService;
     this.router = router;
+    this.cartService = cartService;
   }
 
   ngOnInit() {
@@ -57,6 +59,9 @@ export class MenuComponent implements OnInit {
     console.log("MenuComponent - UserIsConnected : " + this.connectionService.userIsConnected);
     //console.log(this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected));
     //this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
+
+    //Panier
+    this.cartService.getItems().subscribe(cartItems => this.itemsCartLength = cartItems.length);
   }
 
   redirect(direction: string) {
