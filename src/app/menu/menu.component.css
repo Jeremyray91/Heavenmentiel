@@ -1,24 +1,36 @@
+.fa-shopping-basket{
+    color: white;
+    font-size: 25px;
+}
+ 
+.navigation a{
+    color: white;
+}
+ 
+.navigation a:hover{
+    color : #C40018;
+}
+ 
+.logo{
+    margin:auto!important;
+}
+ 
 .header
 {
     background-color : #2b2b2b;
     color: whitesmoke;
 }
-
-.cart
-{
-    margin-left: 80%;
-}
-
+ 
 #inscription-test
 {
     font-weight: bold;
 }
-
+ 
 #logo
 {
     color: crimson;
 }
-
+ 
 #logo :hover
 {
     color: #910a0a;
@@ -29,11 +41,29 @@
     background: #C40018;
     border: 1px solid #C40018;
 }
-
+ 
+.search-button:hover{
+    background: rgb(168, 0, 20)!important;
+    border: 1px solid rgb(168, 0, 20)!important;
+}
+ 
 .menu-burger{
     display : none;
 }
-
+ 
+.menu-no-burger{
+    display: flex;
+    justify-content: space-between;
+}
+ 
+.cart-search{
+    margin-right:20px!important;
+}
+ 
+.fa-shopping-basket{
+    position: relative;
+}
+ 
 @media screen and (max-width:415px){
     .menu-burger{
         display:block!important;

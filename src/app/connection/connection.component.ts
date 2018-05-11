@@ -87,7 +87,7 @@ export class ConnectionComponent implements OnInit {
   }
 
   reini(){
-    window.location.reload();
+    location.reload();
     this.router.navigate(['/']);
   }
 
