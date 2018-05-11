@@ -13,10 +13,12 @@
                 <p>{{e.description}}</p>
             </td>
             <td>Le {{e.date}} à {{e.place}}</td>
+            <td>Le {{e.dateEvent | date : "dd/MM/yyyy"}} à {{e.place}}</td>
             <td>{{e.type}}</td>
             <td>{{e.stock}}</td>
             <td>
                 <p-inputSwitch [(ngModel)]="e.available"></p-inputSwitch>
+                <p-inputSwitch [(ngModel)]="e.available" (click)=onChange(e)></p-inputSwitch>
             </td>
             <td><h3>{{e.price}}€</h3></td>
             <td>

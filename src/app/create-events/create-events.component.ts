@@ -18,6 +18,7 @@ export class CreateEventsComponent implements OnInit {
   eventService : EventService;
   types = Type;
   events:Array<Event>;
+  model : Event = new Event("", "", Type.CONCERT, null, 0.0, null, "", "", false, "","");
   msgs: Message[];
   @ViewChild('fileInputMin') fileInputMin: FileUpload;
   @ViewChild('fileInput') fileInput: FileUpload;
@@ -36,6 +37,7 @@ export class CreateEventsComponent implements OnInit {
     console.log(this.eventUp);
     if(this.eventUp != null) {
       this.model = this.eventUp;
+      this.model.type = Type.CONCERT;
     }
     for (let i in this.types){
       console.log(this.types[i]);
