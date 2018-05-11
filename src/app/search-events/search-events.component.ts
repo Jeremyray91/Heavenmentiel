@@ -15,8 +15,9 @@ export class SearchEventsComponent implements OnInit {
   events:Array<Event>;
   model = {name : null, dateMin : new Date(), dateMax : new Date(), place : null, type: null, price : [0,150]};
   types : SelectItem[] = new Array<SelectItem>();
-  pages : number;
   submitted : boolean;
+  itemsByPage : number = 4;
+  totalRecords: number = 0;
 
   constructor(eventService : EventService) {
     this.eventService = eventService;
@@ -32,10 +33,10 @@ export class SearchEventsComponent implements OnInit {
       }
   }
 
-  onSubmit(){
-    this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.price).subscribe(events => {
+  onSubmit(page:number){
+    this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.price,page).subscribe(events => {
       this.events = events["events"];
-      this.pages = events["pages"];
+      this.totalRecords = events["pages"]*this.itemsByPage;
       this.submitted = true;
     });
     /*this.eventService.getEvents().subscribe(events => {

@@ -6,7 +6,7 @@
 
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-3">
-        <form class="form pl-3 pt-3 pb-3 pr-3 rounded" (ngSubmit)="onSubmit()" style="background-color:#f7b32d">
+        <form class="form pl-3 pt-3 pb-3 pr-3 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
                 <div class="form-group horizontal-form">
                     <label class="control-label" for="keyword">Nom de l'événement : </label>
                     <input class="form-control" type="text" id="name" name="name"[(ngModel)]="model.name"/>
@@ -47,8 +47,8 @@
 
       <div class="col-lg-8 col-md-8 col-sm-8">
           <app-events-user-side  [events]="events"></app-events-user-side>
-          <div class="row text-center" *ngIf="submitted">
-                <app-event-paginator [nbEvents]="events.length" [pages]="pages"></app-event-paginator>
+          <div class="row" *ngIf="submitted">
+                <app-event-paginator [totalRecords]="totalRecords" [itemsByPage]="itemsByPage" (valueChange)='onSubmit($event)'></app-event-paginator>
             </div>
       </div>
     </div>
