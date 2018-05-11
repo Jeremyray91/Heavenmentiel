@@ -22,6 +22,7 @@ export class MenuComponent implements OnInit {
   index: number = 1;
   itemsBurger: MenuItem[];
   items: MenuItem[];
+  @Input()
   itemsCartLength: number;
 
   constructor(private connectionService: ConnectionService, private router: Router, private cartService : CartService) {
@@ -61,7 +62,7 @@ export class MenuComponent implements OnInit {
     //this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
 
     //Panier
-    this.cartService.getItems().subscribe(cartItems => this.itemsCartLength = cartItems.length);
+    this.cartService.getCartLength().subscribe(cartLength => this.itemsCartLength = cartLength);
   }
 
   redirect(direction: string) {
@@ -84,4 +85,9 @@ export class MenuComponent implements OnInit {
     this.ngOnInit();
   }
 
+  onCartUpdate(quantity : number)
+  {
+    console.log("OnCartUpdate()");
+    this.itemsCartLength = quantity;
+  }
 }

@@ -50,7 +50,7 @@
       <div class="search">
         <a class="nav-link" routerLink="/MonPanier">
           <i class="fa fa-shopping-basket">
-            <span class="badge badge-primary badge-pill">{{itemsCartLength}}</span>
+            <span class="badge badge-primary badge-pill" (onCartServiceUpdate)="onCartUpdate($event)">{{itemsCartLength}}</span>
           </i>
         </a>
       </div>

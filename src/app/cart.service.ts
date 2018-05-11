@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { CartItem } from './cart-item';
 import { Type } from './enum-event';
 import { Event } from './event';
@@ -9,6 +9,8 @@ export class CartService {
 
   myItems : CartItem[];
   event : Event;
+  @Output()
+  onCartServiceUpdate = new EventEmitter<number>();
 
   constructor() {
     if(localStorage.getItem('cart'))
@@ -25,10 +27,16 @@ export class CartService {
    {
     this.myItems.push(item);
     localStorage.setItem('cart', JSON.stringify(this.myItems));
+    this.onCartServiceUpdate.emit(this.myItems.length);
    }
 
    getItems() : Observable<CartItem[]> {
      return Observable.of(this.myItems);
+   }
+
+   getCartLength()
+   {
+     return Observable.of(this.myItems.length);
    }
 
    itemInCart(event : Event) : boolean
@@ -58,6 +66,7 @@ export class CartService {
    {
      this.myItems = new Array<CartItem>();
      localStorage.removeItem('cart');
+     this.onCartServiceUpdate.emit(this.myItems.length);
    }
 
    removeItem(item: CartItem)
@@ -67,6 +76,7 @@ export class CartService {
      {
        this.myItems.splice(index, 1);
        localStorage.setItem('cart', JSON.stringify(this.myItems));
+       this.onCartServiceUpdate.emit(this.myItems.length);
      }
    }
 
