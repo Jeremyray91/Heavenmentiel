@@ -38,7 +38,8 @@ import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';  
 import { MenuItem } from 'primeng/api';  
 import { PanelMenuModule } from 'primeng/panelmenu';  
-import { AccordionModule } from 'primeng/accordion';  
+import { AccordionModule } from 'primeng/accordion';
+import { MenubarModule } from 'primeng/menubar';  
 import { GrowlModule } from 'primeng/growl';  
 import { KeyFilterModule } from 'primeng/keyfilter';  
 import { MessageModule } from 'primeng/message';  
@@ -124,6 +125,7 @@ const appRoutes : Routes = [
     PaginatorModule,
     FileUploadModule,
     TableModule,
+    MenubarModule,
  
     //---- Connexion avec Spring ----// 
     HttpClientModule, 

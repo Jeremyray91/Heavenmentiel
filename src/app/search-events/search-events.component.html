@@ -3,7 +3,7 @@
     <p>Bienvenue dans le module de recherche d'événements, entrez les critères que vous souhaitez remplir et lancez la recherche ! 
       Vous pouvez séléctionner 1 à n critères, ils seront cumulés !
     </p>
-    <form class="form pl-3 pt-3 pb-3 rounded" (ngSubmit)="onSubmit()" style="background-color:#f7b32d">
+    <form class="form pl-3 pt-3 pb-3 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
 
         <div class="row">
           
@@ -43,11 +43,12 @@
                 <button type="submit" class="btn btn-success" >Lancer la recherche</button>
             </div>
         </div>
-        
     </form>
+
+    <app-events [events]="events"></app-events>
+    <div class="row" *ngIf="submitted">
+        <app-event-paginator [totalRecords]="totalRecords" [itemsByPage]="itemsByPage" (valueChange)='onSubmit($event)'></app-event-paginator>
+    </div>
 </div>
 
-<app-events [events]="events"></app-events>
-<div class="row text-center" *ngIf="submitted">
-    <app-event-paginator [nbEvents]="events.length" [pages]="events.length"></app-event-paginator>
-</div>
+

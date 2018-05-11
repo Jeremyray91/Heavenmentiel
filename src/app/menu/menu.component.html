@@ -1,65 +1,58 @@
 <div class="header ui-g">
   <div class="menu-burger">
     <button type="button" pButton icon="fa fa-list" (click)="menu.toggle($event)"></button>
-    <p-menu #menu popup="popup" [model]="items"></p-menu>
+    <p-menu #menu popup="popup" [model]="itemsBurger"></p-menu>
   </div>
 
-  <div class="ui-g-2">
-    <a id="logo" class="nav-link" routerLink="/">Logo Heaven'Mentiel</a>
+  <div class="ui-g-2 logo">
+    <a id="logo" class="nav-link" routerLink="/">Heaven'Mentiel</a>
   </div>
 
   <div class="menu-no-burger ui-g-10">
-    <div class="search ui-g-6">
-      
-    </div>
     <!-- <div>
       <button pButton (click)="disconnect()" type="button" label="Deconnexion" class="ui-button-secondary"></button>
     </div> -->
+    <div>
+      <nav class="navigation navbar navbar-expand-lg navbar-light container">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/SearchEvents">Liste des événements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/CreateEvents">Ajouts des événements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Events">Évènements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Profile">Profil</a>
+          </li>
+          <li *ngIf="!user" class="nav-item">
+            <a class="nav-link" routerLink="/Connection">Connexion/Inscription</a>
+          </li>
 
-    <nav class="navigation navbar navbar-expand-lg navbar-light container">
-      <a class="navbar-brand" routerLink="/">Accueil</a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/SearchEvents">Liste des événements</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/CreateEvents">Ajouts des événements</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/Events">Évènements</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/Profile">Profil</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/Connection">Connexion/Inscription</a></li>
-      </ul>
-      <button class="search-button" pButton type="button" icon="fa fa-search"></button>
-    </nav>
-
-    <div class="member ui-g-2">
-      <p-accordion>
-        <p-accordionTab *ngIf="!user" header="Me connecter">
-          <button pButton (click)="redirect('inscription')" type="button" label="Se connecter" class="ui-button-secondary"></button>
-          <div>
-            Première connexion ?
-            <a id="inscription-text" [routerLink]="['/Connection', 'test']">Inscrivez-vous</a>
-          </div>
-        </p-accordionTab>
-        <p-accordionTab *ngIf="user" header="Mon compte">
-          <div>
-            Bienvenue
-            <span>{{user.firstName}}</span>
-          </div>
-          <div>
-            <button pButton type="button" routerLink= "/Profile" label="Mon Compte" class="ui-button-secondary"></button>
-          </div>
-          <div>
-            <button pButton type="button" routerLink= "/Order" label="Mes Commandes" class="ui-button-secondary"></button>
-          </div>
-          <div>
-            <button pButton (click)="disconnect()" type="button" label="Deconnexion" class="ui-button-secondary"></button>
-          </div>
-        </p-accordionTab>
-      </p-accordion>
-      <!--<button pButton type="button" label="Se connecter" class="ui-button-secondary"></button>
-    Se connecter-->
+          <li *ngIf="user" class="nav-item">
+            <p-menubar [model]="items"></p-menubar>
+          </li>
+          <li *ngIf="user" class="nav-item">
+            <a class="nav-link" (click)="disconnect()" style="cursor: pointer">Déconnexion</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <div class="ui-g-2">
-      <div class="cart">
-        <a class="nav-link" routerLink="/MonPanier">Panier</a>
-        <!--<app-mini-cart></app-mini-cart>-->
+    <div class="ui-g cart-search">
+      <div class="cart ui-g-nopad">
+        <button class="search-button" pButton type="button" icon="fa fa-search"></button>
+      </div>
+      <div class="search">
+        <a class="nav-link" routerLink="/MonPanier">
+          <i class="fa fa-shopping-basket">
+            <span class="badge badge-primary badge-pill">{{itemsCartLength}}</span>
+          </i>
+        </a>
       </div>
     </div>
   </div>

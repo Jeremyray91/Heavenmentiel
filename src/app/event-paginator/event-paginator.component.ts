@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { EventService } from '../event.service'
 
 @Component({
   selector: 'app-event-paginator',
@@ -7,10 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EventPaginatorComponent implements OnInit {
   
-  @Input()  nbEvents:number = 0;
-  @Input()  pages:number = 0;
+  @Input()  totalRecords:number = 0;
+  @Input()  itemsByPage:number = 0;
+  eventService : EventService;
+  @Output() valueChange = new EventEmitter();
   
-  constructor() { }
+  constructor(eventService : EventService) {
+    this.eventService = eventService;
+  }
 
   ngOnInit() {
   }
@@ -20,8 +25,7 @@ export class EventPaginatorComponent implements OnInit {
     //event.rows = Number of rows to display in new page
     //event.page = Index of the new page
     //event.pageCount = Total number of pages
-    console.log(event.page);
-    console.log("test")
-}
+    this.valueChange.emit(event.page+1);
+  };
 
 }
