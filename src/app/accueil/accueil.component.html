@@ -19,7 +19,7 @@
   </ol>
   <div class="carousel-inner">
     <div *ngFor="let e of listFiveEvents ; let i = index" [ngClass]="(i == 0) ? 'ng-star-inserted carousel-item active' : 'ng-star-inserted carousel-item'">
-      <img class="d-block w-100 carouselimg" src="{{e.img}}" alt="{{e.name}}">
+      <a routerLink="/SearchEvents"><img class="d-block w-100 carouselimg" src="{{e.img}}" alt="{{e.name}}"></a>
       <div class="carousel-caption d-none d-md-block">
         <p>{{e.date | dateFr}} {{e.date | dateFrMonthEntire}} - {{e.date | date:'HH'}}h{{e.date | date:'mm'}}</p>
         <h5>{{e.name | eventNameUpper}}</h5><br>

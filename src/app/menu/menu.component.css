@@ -19,6 +19,9 @@
 {
     background-color : #2b2b2b;
     color: whitesmoke;
+    /*position: fixed;*/
+    z-index: 99;
+    width:100%
 }
  
 #inscription-test

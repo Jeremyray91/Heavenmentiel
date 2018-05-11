@@ -18,7 +18,8 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { DatePipe } from './pipes/date.pipe';  
 import { DateFrMonthPipe } from './pipes/date-fr-month.pipe';  
 import { DateFrMonthEntirePipe } from './pipes/date-fr-month-entire.pipe';  
-import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';  
+import { EventNameUpperPipe } from './pipes/event-name-upper.pipe';
+import { CommandService } from './command.service';  
 
 //---- PrimeNG Imports ----//  
 import { ListboxModule } from 'primeng/listbox';  
@@ -61,6 +62,12 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { ProfileComponent } from './profile/profile.component';  
 import { CartComponent } from './cart/cart.component'; 
 import { CartService } from './cart.service';
+import { FooterComponent } from './footer/footer.component';
+import { CgvComponent } from './cgv/cgv.component';
+import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.component';
+import { ContactComponent } from './contact/contact.component';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
+import { CommandsComponent } from './commands/commands.component';
 
  
 const appRoutes : Routes = [ 
@@ -75,7 +82,11 @@ const appRoutes : Routes = [
   {path : 'ConnectionAdmin', component : ConnectionAdminComponent}, 
   {path : 'Evenement', component : EventDetailsComponent}, 
   {path : 'Evenement/:id', component : EventDetailsComponent}, 
-  {path : 'MonPanier', component : CartComponent} 
+  {path : 'MonPanier', component : CartDetailsComponent},
+  {path : 'CGV', component : CgvComponent}, 
+  {path : 'Mentions', component : MentionsLegalesComponent}, 
+  {path : 'Contact', component : ContactComponent}
+  {path : 'Commands', component : CommandsComponent}
 ]; 
  
 @NgModule({ 
@@ -99,7 +110,13 @@ const appRoutes : Routes = [
     SearchEventsUserComponent, 
     ProfileComponent, 
     CartComponent ,
-    EventPaginatorComponent
+    CartDetailsComponent,
+    FooterComponent,
+    CgvComponent,
+    MentionsLegalesComponent,
+    ContactComponent
+    EventPaginatorComponent,
+    CommandsComponent
   ], 
   imports: [ 
     HttpClientModule, 
@@ -139,7 +156,8 @@ const appRoutes : Routes = [
     PanelModule, 
     CarouselModule 
   ], 
-  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent, CartService], 
+  providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent, 
+    CartService,CommandService], 
   bootstrap: [AppComponent] 
 }) 
 export class AppModule { } 

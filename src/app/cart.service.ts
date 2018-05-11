@@ -7,34 +7,24 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CartService {
 
-  myItems = new Array<CartItem>();
+  myItems : CartItem[];
   event : Event;
 
   constructor() {
-    this.event = new Event(
-      "Evenement 1",
-      "Toulouse",
-      Type.CINEMA,
-      new Date('05/06/2018'),
-      10,
-      10,
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.",
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.",
-      true, 
-      "assets/img_carousel/slide1.jpg",
-      "assets/img_miniature/min1.jpg"
-    )
-
-    this.myItems.push(new CartItem(this.event,3));
-    this.myItems.push(new CartItem(this.event,1));
-    this.myItems.push(new CartItem(this.event,5));
-    this.myItems.push(new CartItem(this.event,2));
-    this.myItems.push(new CartItem(this.event,2));
+    if(localStorage.getItem('cart'))
+    {
+      this.myItems = JSON.parse(localStorage.getItem('cart'));
+    }
+    else
+    {
+      this.myItems = new Array<CartItem>();
+    }
    }
 
    addItem(item: CartItem)
    {
     this.myItems.push(item);
+    localStorage.setItem('cart', JSON.stringify(this.myItems));
    }
 
    getItems() : Observable<CartItem[]> {
@@ -43,9 +33,9 @@ export class CartService {
 
    itemInCart(event : Event) : boolean
    {
-    for (let i in this.myItems)
+    for (let itm of this.myItems)
     {
-       if (this.myItems[i][0].name === event.name)
+       if (itm.event.name === event.name)
        {
          return true;
        }
@@ -61,21 +51,22 @@ export class CartService {
    updateItemQuantity(name: string, quantity: number)
    {
     this.myItems.find(i => i.event.name === name).quantity = quantity;
+    localStorage.setItem('cart', JSON.stringify(this.myItems));
    }
 
    removeAllItems()
    {
      this.myItems = new Array<CartItem>();
+     localStorage.removeItem('cart');
    }
 
-   removeItemById(id: number)
+   removeItem(item: CartItem)
    {
-     for (let i in this.myItems)
+     let index = this.myItems.indexOf(item);
+     if (index > -1)
      {
-        if (this.myItems[i][0].id === id)
-        {
-          delete this.myItems[i];
-        }
+       this.myItems.splice(index, 1);
+       localStorage.setItem('cart', JSON.stringify(this.myItems));
      }
    }
 
