@@ -4,10 +4,27 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";  
 @import "../node_modules/font-awesome/css/font-awesome.css";
  
+header{
+    /*position: fixed;*/
+    top:0;
+    width:100%
+}
+
+footer{
+    /*position: fixed;*/
+    bottom:0;
+    width:100%;
+}
+
 .nav-link{
     padding:0!important;
     margin-left:20px!important;
 }
+
+.nav-link:focus{
+    color : #C40018!important;
+}
+
  
 .ui-menubar{
     background: transparent!important;
