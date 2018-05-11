@@ -4,7 +4,7 @@ import { Event } from '../event';
 import { EventService } from '../event.service'
 import { EventsComponent } from '../events/events.component';
 import { Type } from '../enum-event';
-import { Message } from 'primeng/api';
+import { Message, SelectItem } from 'primeng/api';
 import { FileUpload } from 'primeng/primeng';
 
 @Component({
@@ -16,8 +16,9 @@ export class CreateEventsComponent implements OnInit {
   eventUp : Event;
   eventsCompo : EventsComponent;
   eventService : EventService;
-  types = Type;
-  events:Array<Event>;
+  events: Array<Event>;
+  types: SelectItem[] = new Array<SelectItem>();
+  typeEvent: string;
   model : Event = new Event("", "", Type.CONCERT, null, 0.0, null, "", "", false, "","");
   msgs: Message[];
   @ViewChild('fileInputMin') fileInputMin: FileUpload;
@@ -35,9 +36,20 @@ export class CreateEventsComponent implements OnInit {
   ngOnInit() {
     this.eventUp = JSON.parse(localStorage.getItem('event'));
     console.log(this.eventUp);
+    for (let t in Type) {
+      if (isNaN(Number(t))) {
+        this.types.push({"label" : t, "value" : t});
+        console.log(t);
+      }
+    }
+    console.log(this.types);
     if(this.eventUp != null) {
       this.model = this.eventUp;
-      this.model.type = Type.CONCERT;
+      this.model.dateEvent.setDate(this.eventUp.dateEvent.getDate());
+      this.model.dateEvent.setMonth(this.eventUp.dateEvent.getMonth());
+      this.model.dateEvent.setFullYear(this.eventUp.dateEvent.getFullYear());
+      this.model.type = this.eventUp.type;
+      console.log(this.model.dateEvent.getMonth())
     }
     for (let i in this.types){
       console.log(this.types[i]);

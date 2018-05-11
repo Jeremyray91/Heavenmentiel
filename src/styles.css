@@ -87,7 +87,7 @@ h3{
 .card-event-bottom{background-color:rgb(46, 46, 46);margin:0;padding:4px 0px;}  
 .price{font-size:1.3em;background-color:#fd2e2e;}
  
-.badge{
+.badge-panier{
     font-size:50%!important;
     position: absolute;
     left: 50%;

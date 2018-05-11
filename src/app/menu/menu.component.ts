@@ -32,6 +32,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = JSON.parse(sessionStorage.getItem('currentUser'));
     if (localStorage.getItem('currentUser')) {
       this.user = JSON.parse(sessionStorage.getItem('currentUser'));
       console.log("JSON parse");

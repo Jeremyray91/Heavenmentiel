@@ -9,27 +9,25 @@
   </div>
 
   <div class="menu-no-burger ui-g-10">
-    <!-- <div>
-      <button pButton (click)="disconnect()" type="button" label="Deconnexion" class="ui-button-secondary"></button>
-    </div> -->
     <div>
       <nav class="navigation navbar navbar-expand-lg navbar-light container">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" routerLink="/">Accueil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/SearchEvents">Liste des événements</a>
+          <li *ngIf="user && (user.role =='ADMIN')" class="nav-item">
+              <a class="nav-link" routerLink="/CreateEvents">Ajouter un événement</a>
+            </li>
+          <li *ngIf="!user || (user.role =='USER')" class="nav-item">
+            <a class="nav-link" routerLink="/SearchEventsUser">Liste des événements</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/CreateEvents">Ajouts des événements</a>
+          <li *ngIf="user && (user.role =='ADMIN')" class="nav-item">
+              <a class="nav-link" routerLink="/SearchEvents">Liste des événements</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Events">Évènements</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/Profile">Profil</a>
-          </li>
+          <li *ngIf="user && (user.role =='ADMIN')" class="nav-item">
+              <a class="nav-link" routerLink="/CreateEvents">Rechercher une commande</a>
+            </li>
+          
           <li *ngIf="!user" class="nav-item">
             <a class="nav-link" routerLink="/Connection">Connexion/Inscription</a>
           </li>
@@ -42,15 +40,17 @@
           </li>
         </ul>
       </nav>
+
     </div>
     <div class="ui-g cart-search">
       <div class="cart ui-g-nopad">
-        <button class="search-button" pButton type="button" icon="fa fa-search"></button>
+        <button class="search-button" routerLink="/SearchEventsUser" pButton type="button" icon="fa fa-search"></button>
       </div>
       <div class="search">
         <a class="nav-link" routerLink="/MonPanier">
           <i class="fa fa-shopping-basket">
             <span class="badge badge-primary badge-pill" (onCartServiceUpdate)="onCartUpdate($event)">{{itemsCartLength}}</span>
+            <span class="badge-panier badge badge-primary badge-pill">{{itemsCartLength}}</span>
           </i>
         </a>
       </div>

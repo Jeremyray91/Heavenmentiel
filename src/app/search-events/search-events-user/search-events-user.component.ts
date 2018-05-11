@@ -14,7 +14,7 @@ export class SearchEventsUserComponent implements OnInit {
   
   eventService : EventService;
   events:Array<Event>;
-  model = {name : null, dateMin : new Date(), dateMax : new Date(), place : null, type: null, price : [0,150]};
+  model = {name : null, dateMin : null, dateMax : null, place : null, type: null, price : [0,30]};
   types : SelectItem[] = new Array<SelectItem>();
   totalRecords: number = 0;
   itemsByPage : number = 4;
