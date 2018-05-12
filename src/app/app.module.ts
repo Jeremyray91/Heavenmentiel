@@ -69,14 +69,15 @@ import { ContactComponent } from './contact/contact.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { CommandsComponent } from './commands/commands.component';
 import { CartMiniComponent } from './cart-mini/cart-mini.component';
-
+import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardAdminService } from './auth-guard-admin.service';
  
 const appRoutes : Routes = [ 
   {path : '', component : AccueilComponent}, 
-  {path : 'SearchEvents', component : SearchEventsComponent}, 
+  {path : 'SearchEvents', canActivate : [AuthGuardAdminService], component : SearchEventsComponent}, 
   {path : 'SearchEventsUser', component : SearchEventsUserComponent}, 
-  {path : 'Profile', component : ProfileComponent}, 
-  {path : 'CreateEvents', component : CreateEventsComponent}, 
+  {path : 'Profile', canActivate : [AuthGuardService], component : ProfileComponent}, 
+  {path : 'CreateEvents', canActivate : [AuthGuardAdminService], component : CreateEventsComponent}, 
   {path : 'Events', component : EventsComponent}, 
   {path : 'Connection', component : ConnectionComponent}, 
   {path : 'Connection/:type', component : ConnectionComponent}, 
@@ -87,7 +88,7 @@ const appRoutes : Routes = [
   {path : 'CGV', component : CgvComponent}, 
   {path : 'Mentions', component : MentionsLegalesComponent}, 
   {path : 'Contact', component : ContactComponent},
-  {path : 'Commands', component : CommandsComponent}
+  {path : 'Commands', canActivate : [AuthGuardService], component : CommandsComponent}
 ]; 
  
 @NgModule({ 
@@ -159,7 +160,7 @@ const appRoutes : Routes = [
     CarouselModule 
   ], 
   providers: [ConnectionService, EventService, EventsComponent, UserService, ConnectionComponent, MenuComponent, 
-    CartService,CommandService], 
+    CartService,CommandService, AuthGuardService, AuthGuardAdminService], 
   bootstrap: [AppComponent] 
 }) 
 export class AppModule { } 

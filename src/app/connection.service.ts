@@ -42,6 +42,7 @@ export class ConnectionService {
   disconnect()
   {
     console.log("Disconnect()");
+    sessionStorage.removeItem('currentUser');
     return this.http.post<HttpResponse<any>>(this.urlRoot + "logout", null);
   }
 
@@ -60,6 +61,29 @@ export class ConnectionService {
   getStatus() : Observable<boolean>
   {
     return Observable.of(this.userIsConnected);
+  }
+
+  isAuthenticated()
+  {
+    let token = sessionStorage.getItem('currentUser');
+    if (token)
+    {
+      return true;
+    }
+
+    return false;
+  }
+
+  isAdminAuthenticated()
+  {
+
+    let token : User = JSON.parse(sessionStorage.getItem('currentUser'));
+    if (token && token.role === "ADMIN")
+    {
+      return true;
+    }
+
+    return false;
   }
 
 }
