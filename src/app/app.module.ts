@@ -68,6 +68,7 @@ import { MentionsLegalesComponent } from './mentions-legales/mentions-legales.co
 import { ContactComponent } from './contact/contact.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { CommandsComponent } from './commands/commands.component';
+import { CartMiniComponent } from './cart-mini/cart-mini.component';
 
  
 const appRoutes : Routes = [ 
@@ -116,7 +117,8 @@ const appRoutes : Routes = [
     MentionsLegalesComponent,
     ContactComponent,
     EventPaginatorComponent,
-    CommandsComponent
+    CommandsComponent,
+    CartMiniComponent
   ], 
   imports: [ 
     HttpClientModule, 

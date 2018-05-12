@@ -49,7 +49,8 @@
       <div class="search">
         <a class="nav-link" routerLink="/MonPanier">
           <i class="fa fa-shopping-basket">
-            <span class="badge-panier badge badge-primary badge-pill" (onCartServiceUpdate)="onCartUpdate($event)">{{itemsCartLength}}</span>
+            <app-cart-mini [cartLength] = "itemsCartLength" (onCartServiceUpdate)="onCartUpdate($event)"></app-cart-mini>
+            <!-- <span class="badge-panier badge badge-primary badge-pill">{{itemsCartLength}}</span> -->
           </i>
         </a>
       </div>

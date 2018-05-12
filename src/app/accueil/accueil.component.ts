@@ -20,7 +20,12 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit() {
     //this.listEvents = EVENTS;
-    this.eventService.getEventsByDate().subscribe(events => this.listEvents = events);
+    this.eventService.getEventsByDate().subscribe(events => {this.listEvents = events;
+    for (let e of this.listEvents){
+      let date = new Date(e.dateEvent);
+      e.dateEvent = date;
+      console.log(e.dateEvent);
+    }});
     this.eventService.getEventsLastFiveAdd().subscribe(eventsFive => this.listFiveEvents = eventsFive);
   }
 

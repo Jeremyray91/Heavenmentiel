@@ -19,7 +19,7 @@ export class CreateEventsComponent implements OnInit {
   events: Array<Event>;
   types: SelectItem[] = new Array<SelectItem>();
   typeEvent: string;
-  model : Event = new Event("", "", Type.CONCERT, null, 0.0, null, "", "", false, "","");
+  model : Event = new Event("", "", null, null, 0.0, null, "", "", false, "","");
   msgs: Message[];
   @ViewChild('fileInputMin') fileInputMin: FileUpload;
   @ViewChild('fileInput') fileInput: FileUpload;
@@ -35,58 +35,52 @@ export class CreateEventsComponent implements OnInit {
 
   ngOnInit() {
     this.eventUp = JSON.parse(localStorage.getItem('event'));
-    console.log(this.eventUp);
     for (let t in Type) {
       if (isNaN(Number(t))) {
         this.types.push({"label" : t, "value" : t});
-        console.log(t);
       }
     }
-    console.log(this.types);
     if(this.eventUp != null) {
       this.model = this.eventUp;
-      this.model.dateEvent.setDate(this.eventUp.dateEvent.getDate());
-      this.model.dateEvent.setMonth(this.eventUp.dateEvent.getMonth());
-      this.model.dateEvent.setFullYear(this.eventUp.dateEvent.getFullYear());
+      let date = new Date(this.eventUp.dateEvent);
+      this.model.dateEvent = new Date(date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
       this.model.type = this.eventUp.type;
-      console.log(this.model.dateEvent.getMonth())
-    }
-    for (let i in this.types){
-      console.log(this.types[i]);
     }
   }
 
   onUploadMin(event) {
     for(let file of event.files) {
-      console.log(file.name);
       this.model.imgMin = this.imgUrlRoot + "/img_miniature/" + file.name;
     }
-    
-    console.log(this.model.imgMin);
     this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+    this.msgs.push({severity: 'info', summary: 'Fichier enregistré', detail: ''});
   }
 
   onUpload(event) {
     for(let file of event.files) {
-      console.log(file.name);
       this.model.img = this.imgUrlRoot + "/img_carousel/" + file.name;
     }
-   
-    console.log(this.model.img);
     this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+    this.msgs.push({severity: 'info', summary: 'Fichier enregistré', detail: ''});
   }
   onSubmit(event){
-    console.log(this.model);
     if(this.eventUp != null){
+      let date = new Date(this.model.dateEvent);
+      date.setHours(20);
+      this.model.dateEvent = date;
       this.eventService.updateEvent(this.model).subscribe();
+      localStorage.removeItem('event');
+      this.msgs = [];
+      this.msgs.push({severity: 'success', summary: 'Événement mis à jour', detail: ''});
     } else {
+      let date = new Date(this.model.dateEvent);
+      date.setHours(20);
+      this.model.dateEvent = date;
       this.eventService.createEvent(this.model);
-      if(this.eventService.createEvent(this.model)){
       this.fileInput.upload();
       this.fileInputMin.upload();
-      }
+      this.msgs = [];
+      this.msgs.push({severity: 'success', summary: 'Événement créé', detail: ''});
     }
     this.model = new Event("", "", null, null, 0.0, 0, "", "", false, "","");
   }

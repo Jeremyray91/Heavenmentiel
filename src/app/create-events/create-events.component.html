@@ -39,15 +39,8 @@
       <div class="col-lg-6 col-md-6">
         <div class="form-group">
           <div class="type">
+            Type de l'événement : {{model.type}}
             <p-listbox [options]="types" [(ngModel)]="model.type" name="type" [style]="{'width':'200px'}"></p-listbox>
-            {{model.type}}
-            <!-- <label for="type">Type d'événement :</label>
-            <select class="col-lg-12 col-md-12" multiple id="type" name="type" [(ngModel)]="model.type">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select> -->
           </div>
         </div>
         <div class="form-group">
@@ -59,16 +52,6 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-6 col-md-6">
-        <div class="form-group">
-          <div class="imgMin">
-            <label for="imgMin">Ajouter l'image miniature :</label><br>
-            <p-fileUpload #fileInputMin mode="basic" name="myFile" id="imgMin" url="http://localhost:8082/heavenmentiel/api/images/min" (onSelect)="onUploadMin($event)" accept="image/*" maxFileSize="1000000">
-            </p-fileUpload>
-          </div>
-        </div>
-      </div>
-
       <div *ngIf="!eventUp" class="col-lg-6 col-md-6">
         <div class="form-group">
 
@@ -99,13 +82,6 @@
 
         </div>
       </div>
-
-      <div class="form-group">
-        <div class="description">
-          <label for="description">Description</label>
-          <textarea class="col-lg-12 col-md-12" id="description" name="description" [(ngModel)]="model.description"></textarea>
-        </div>
-      </div>
     </div>
     <div class="available">
       <div class="form-inline">
@@ -115,11 +91,9 @@
         </div>
       </div>
       <div class="form pt-2 pb-2">
-        <p-slider id="available" name="available" [(ngModel)]="model.stock" [animate]="true"></p-slider>
+        <label for="available">Activé : </label>
+        <p-inputSwitch id="available" onLabel="Oui" offLabel="Non" [(ngModel)]="model.available" name="available"></p-inputSwitch>
       </div>
-    </div>
-    <div class="row">
-
     </div>
     <div class="row">
       <div class="col-lg-5 col-md-6"></div>

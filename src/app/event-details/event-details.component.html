@@ -26,27 +26,10 @@
     </div>
     <hr>
     <div class="ui-lg-12">
-      <!--
-        <button type="button" pButton icon="fa fa-chevron-up" (click)="openPrev()"></button>
-        <button type="button" pButton icon="fa fa-chevron-down" (click)="openNext()"></button>
-        
-        <p-tabView [activeIndex]="index">
-            <p-tabPanel header="Header 1">
-                Content 1
-            </p-tabPanel>
-            <p-tabPanel header="Header 2">
-                Content 2
-            </p-tabPanel>
-            <p-tabPanel header="Header 3">
-                Content 3    
-            </p-tabPanel>
-        </p-tabView>
-      -->
       <h2>
-        Adresse
+        Adresse : {{event.place}}
       </h2>
       <p-gmap #gmap [options]="mapOptions" [overlays]="mapOverlays" [style]="{'width':'100%','height':'320px'}" ></p-gmap>
-      {{event.place}}
     </div>
   </div>
 
@@ -56,10 +39,10 @@
       </div>
       <div class="ui-lg-8 ui-lg-nopad">
         <p-card title="{{event.name}}" subtitle="{{event.dateEvent | dateFr}} {{event.dateEvent | dateFrMonthEntire}}">
-          <div class="ui-lg-12"><img src="{{event.imgMin}}"></div>
+          <div class="ui-lg-12"><img src="{{event.imgMin}}" width="100%"></div>
           <div class="ui-lg-12"><span>Quantité </span><p-spinner [(ngModel)]="quantitySelected" [size]="2" [min]="1" [max]="event.stock >= 30 ? 30 : event.stock"></p-spinner></div>
           <div class="ui-lg-12">{{stockStatusMsg}}</div>
-          <div class="ui-lg-12">{{event.price}}€</div>
+          <div class="ui-lg-12">{{event.price*quantitySelected}}€ ({{quantitySelected}})</div>
           <div class="ui-lg-12">
             <button class="boutonPageAccueil" (click)="addToCart()">
               Ajouter au panier

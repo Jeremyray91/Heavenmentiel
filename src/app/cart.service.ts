@@ -3,16 +3,16 @@ import { CartItem } from './cart-item';
 import { Type } from './enum-event';
 import { Event } from './event';
 import { Observable } from 'rxjs';
+import { MenuComponent } from './menu/menu.component';
 
 @Injectable()
 export class CartService {
 
-  myItems : CartItem[];
+  myItems : CartItem[] = new Array<CartItem>();
   event : Event;
-  @Output()
-  onCartServiceUpdate = new EventEmitter<number>();
+  menu : MenuComponent;
 
-  constructor() {
+  constructor(menu: MenuComponent) {
     if(localStorage.getItem('cart'))
     {
       this.myItems = JSON.parse(localStorage.getItem('cart'));
@@ -21,13 +21,14 @@ export class CartService {
     {
       this.myItems = new Array<CartItem>();
     }
+
+    this.menu = menu;
    }
 
    addItem(item: CartItem)
    {
     this.myItems.push(item);
     localStorage.setItem('cart', JSON.stringify(this.myItems));
-    this.onCartServiceUpdate.emit(this.myItems.length);
    }
 
    getItems() : Observable<CartItem[]> {
@@ -66,7 +67,8 @@ export class CartService {
    {
      this.myItems = new Array<CartItem>();
      localStorage.removeItem('cart');
-     this.onCartServiceUpdate.emit(this.myItems.length);
+     this.menu.itemsCartLength--;
+     //this.onCartServiceUpdate.emit(this.myItems.length);
    }
 
    removeItem(item: CartItem)
@@ -76,7 +78,8 @@ export class CartService {
      {
        this.myItems.splice(index, 1);
        localStorage.setItem('cart', JSON.stringify(this.myItems));
-       this.onCartServiceUpdate.emit(this.myItems.length);
+       this.menu.itemsCartLength = 0;
+       //this.onCartServiceUpdate.emit(this.myItems.length);
      }
    }
 

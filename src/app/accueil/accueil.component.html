@@ -1,13 +1,3 @@
-<!--<ul>
-  <li *ngFor="let e of listEvents">
-    {{e.name}}
-    {{e.date}}
-    {{e.type}}
-    {{e.price}}
-    {{e.img}}
-  </li>
-</ul>-->
-
 <!-- Carousel des 5 derniers events -->
 <div id="carouselAccueil" class="carousel slide" data-ride="carousel" data-interval="5000">
   <ol class="carousel-indicators">
@@ -19,9 +9,9 @@
   </ol>
   <div class="carousel-inner">
     <div *ngFor="let e of listFiveEvents ; let i = index" [ngClass]="(i == 0) ? 'ng-star-inserted carousel-item active' : 'ng-star-inserted carousel-item'">
-      <a routerLink="/SearchEvents"><img class="d-block w-100 carouselimg" src="{{e.img}}" alt="{{e.name}}"></a>
+      <a (click)="redirect(e.id)" href="http://localhost:4200/Evenement/"><img class="d-block w-100 carouselimg" src="{{e.img}}" alt="{{e.name}}"></a>
       <div class="carousel-caption d-none d-md-block">
-        <p>{{e.date | dateFr}} {{e.date | dateFrMonthEntire}} - {{e.date | date:'HH'}}h{{e.date | date:'mm'}}</p>
+        <p>{{e.dateEvent | dateFr}} {{e.dateEvent | dateFrMonthEntire}} - {{e.dateEvent | date:'HH'}}h{{e.dateEvent | date:'mm'}}</p>
         <h5>{{e.name | eventNameUpper}}</h5><br>
         <button (click)="redirect(e.id)" class="boutonPageAccueil"><a href="http://localhost:4200/Evenement/">Réserver</a></button>
       </div>
@@ -49,17 +39,17 @@
         <p-panel [style]="{'text-align':'center'}">
           <div class="flex-event">
             <div class="event-img">
-              <img src="{{event.imgMin}}" width="208,67">
+                <a (click)="redirect(event.id)" href="http://localhost:4200/Evenement/"><img src="{{event.imgMin}}" width="208,67"></a>
             </div>
             <div class="flex-event-detail">
               <div class="flex-event-date-name">
                 <div class="event-date">
-                  <p>{{event.date | dateFr}}
-                    <br>{{event.date | dateFrMonth}}</p>
+                  <p>{{event.dateEvent | dateFr}}
+                    <br>{{event.dateEvent | dateFrMonth}}</p>
                 </div>
                 <div class="event-name-stock">
                   <div class="event-name">{{event.name}}</div>
-                  <div class="event-type">{{event.date | date:'HH'}}h{{event.date | date:'mm'}} - {{event.type}}</div>
+                  <div class="event-type">{{event.dateEvent | date:'HH'}}h{{event.dateEvent | date:'mm'}} - {{event.type}}</div>
                   <div class="event-stock">Encore {{event.stock}} places restantes</div>
                 </div>
               </div>

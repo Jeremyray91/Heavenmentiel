@@ -8,6 +8,7 @@ import { switchMap } from 'rxjs/operators';
 import { CartService } from '../cart.service';
 import { CartItem } from '../cart-item';
 import { Message } from 'primeng/components/common/api';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-event-details',
@@ -18,6 +19,7 @@ export class EventDetailsComponent implements OnInit {
   
   event : Event = new Event("",null,null,null,0,0,"",null,false, "", "");
   category : string ;  
+  menu : MenuComponent;
 
   //---- Attributs de la partie commande ----//
   commandMsgs : Message[] = [];
@@ -30,13 +32,15 @@ export class EventDetailsComponent implements OnInit {
   mapPosition : any;
   mapOverlays : any[];
 
-  constructor(private eventService : EventService, private cartService : CartService, private route : ActivatedRoute, private router: Router) {
+  constructor(private eventService : EventService, private cartService : CartService, private route : ActivatedRoute, private router: Router, menu : MenuComponent) {
     this.eventService = eventService;
     this.cartService = cartService;
+    this.menu = menu;
   }
 
   ngOnInit() {
     this.quantitySelected = 1;
+    
 
     this.mapPosition = {lat: 43.604587, lng: 1.447928};
     this.mapOverlays = 
@@ -62,8 +66,6 @@ export class EventDetailsComponent implements OnInit {
       this.checkIsInCart();
       console.log(this.event);
     });
-      
-    
   }
 
   checkStockStatus()
@@ -78,7 +80,7 @@ export class EventDetailsComponent implements OnInit {
     }
     else
     {
-      this.stockStatusMsg = "Plus disponible"
+      this.stockStatusMsg = "Complet"
     }
   }
 
@@ -86,13 +88,10 @@ export class EventDetailsComponent implements OnInit {
   {
     this.isInCart = this.cartService.itemInCart(this.event);
   }
-
   index: number = 0;
-
     openNext() {
         this.index = (this.index === 2) ? 0 : this.index + 1;
     }
-
     openPrev() {
         this.index = (this.index === 0) ? 2 : this.index - 1;
     }
@@ -109,6 +108,8 @@ export class EventDetailsComponent implements OnInit {
         this.cartService.addItem(new CartItem(this.event, this.quantitySelected));
         this.isInCart = true;
         this.showSucces();
+        this.menu.itemsCartLength++;
+        console.log(this.menu.itemsCartLength)
       }
       else
       {
@@ -119,12 +120,14 @@ export class EventDetailsComponent implements OnInit {
         {
           this.cartService.updateItemQuantity(this.event.name, newQuantity);
           this.showSucces();
+          this.menu.itemsCartLength++;
         }
         else if (newQuantity > this.event.stock && actualQuantity < this.event.stock)
         {
           newQuantity = this.event.stock;
           this.cartService.updateItemQuantity(this.event.name, newQuantity);
           this.showSucces();
+          this.menu.itemsCartLength++;
         }
         else
         {
