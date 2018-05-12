@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ConnectionService } from '../connection.service';
 import { ConnectionBean } from '../connection-bean';
 import { Observable } from 'rxjs';
@@ -29,10 +29,14 @@ export class ConnectionComponent implements OnInit {
   test : any;
   menu : MenuComponent;
 
+  index : number;
+
+
   constructor(private connectionService : ConnectionService, private route : ActivatedRoute, menu : MenuComponent, private router: Router) 
   {
     this.connectionService = connectionService;
     this.menu = menu;
+    this.index = 0;
   }
 
   ngOnInit() {
@@ -89,6 +93,18 @@ export class ConnectionComponent implements OnInit {
   reini(){
     location.reload();
     this.router.navigate(['/']);
+  }
+
+  onCreateComplete(name: String)
+  {
+    this.index = 0;
+    this.msgs = [];
+    this.msgs.push({severity: 'success', summary: 'Compte créé avec succès', detail: 'Bienvenue parmi nous' + name + " !"});
+  }
+
+  onTabChange(event)
+  {
+    this.index = event.index;
   }
 
 }

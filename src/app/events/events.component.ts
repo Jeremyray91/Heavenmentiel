@@ -12,8 +12,7 @@ import { Type } from '../enum-event'
 export class EventsComponent implements OnInit {
   
   eventUp : Event;
-
-  model:Event = new Event("",null,null,null,0,0,"",null,false, "", "");
+  
   model:Event = new Event("", "", null, null, 0.0, null, "", "", false, "","");
   @Input()
   events:Array<Event> = new Array<Event>();

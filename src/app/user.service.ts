@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from './user';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class UserService {
@@ -14,6 +15,11 @@ export class UserService {
 
   updateUser(user:User):Observable<User>{
     return this.httpClient.put<User>("http://localhost:8082/heavenmentiel/user", user);
+  }
+
+  checkUserMail(mail: string) : Observable<boolean>
+  {
+    return this.httpClient.get<boolean>("http://localhost:8082/heavenmentiel/user"+"/check", {params: new HttpParams().set('username', mail)});
   }
 
 }

@@ -8,7 +8,7 @@
         <h1>
             Connexion
         </h1>
-        <p-tabView [activeIndex]="index">
+        <p-tabView [activeIndex]="index" (onChange)="onTabChange($event)">
           <p-tabPanel header="Se connecter" [selected]="index === 0">
             <p-card>
               <form (ngSubmit)="onSubmit()" >
@@ -32,7 +32,7 @@
           </p-tabPanel>
 
           <p-tabPanel header="Créer un compte" [selected]="index === 1">
-            <app-create-user></app-create-user>
+            <app-create-user (onCreate)="onCreateComplete($event)"></app-create-user>
           </p-tabPanel>
           
         </p-tabView>

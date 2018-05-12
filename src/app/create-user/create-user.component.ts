@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { Message } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -19,8 +20,14 @@ export class CreateUserComponent implements OnInit {
   mailReg : RegExp = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
   msgs: Message[];
 
-  constructor(userService : UserService) {
+  userCreated : boolean;
+
+  @Output()
+  onCreate = new EventEmitter<string>();
+
+  constructor(userService : UserService, private router : Router) {
     this.userService = userService;
+    this.userCreated = false;
    }
 
   ngOnInit() {
@@ -36,11 +43,29 @@ export class CreateUserComponent implements OnInit {
     }
   }
 
-  onSubmit(){
-    this.userService.createUser(this.model).subscribe();
-    this.model = new User("", "", null, "", null, "", "", null, "", "USER");
-    this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'File Uploaded', detail: ''});
+onSubmit(){
+  this.userService.checkUserMail(this.model.mail).subscribe(result => {
+    if(result)
+    {
+      this.msgs = [];
+      this.msgs.push({severity: 'error', summary: 'Echec de création de l\'utilisateur', detail: 'Adresse mail déjà utilisée'});
+    }
+    else
+    {
+      this.userService.createUser(this.model).subscribe(
+        data => {
+          this.onCreate.emit(this.model.firstName);
+          this.model = new User("", "", null, "", null, "", "", null, "", "USER");
+          this.confirmPwd = "";
+          this.userCreated = true;
+        },
+        error =>
+        {
+          this.msgs = [];
+          this.msgs.push({severity: 'error', summary: 'Echec de création de l\'utilisateur', detail: ''});
+        });
+      }
+    });
   }
 
   pwdEqual(){
@@ -49,6 +74,12 @@ export class CreateUserComponent implements OnInit {
     } else {
       this.equals = false;
     }
+  }
+
+  switchUserCreated() : boolean
+  {
+    this.userCreated = false;
+    return true;
   }
 
 }

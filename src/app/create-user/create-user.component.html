@@ -1,6 +1,7 @@
 <p-growl [(value)]="msgs"></p-growl>
 <p-card>
   <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <span [ngClass]="(userCreated && (switchUserCreated() && form.reset()))? 'a' : 'b'"></span>
     <div class="flex-form">
       <div class="form-left">
         <div class="form-group">

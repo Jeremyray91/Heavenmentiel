@@ -85,7 +85,7 @@ const appRoutes : Routes = [
   {path : 'MonPanier', component : CartDetailsComponent},
   {path : 'CGV', component : CgvComponent}, 
   {path : 'Mentions', component : MentionsLegalesComponent}, 
-  {path : 'Contact', component : ContactComponent}
+  {path : 'Contact', component : ContactComponent},
   {path : 'Commands', component : CommandsComponent}
 ]; 
  
@@ -114,7 +114,7 @@ const appRoutes : Routes = [
     FooterComponent,
     CgvComponent,
     MentionsLegalesComponent,
-    ContactComponent
+    ContactComponent,
     EventPaginatorComponent,
     CommandsComponent
   ], 
