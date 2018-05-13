@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ConnectionService } from '../connection.service';
 import { User } from '../user';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { ConnectionComponent } from '../connection/connection.component';
 import { MenuItem } from 'primeng/api';
 import { AccueilComponent } from '../accueil/accueil.component';
 import { CartService } from '../cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menu',
@@ -22,13 +23,16 @@ export class MenuComponent implements OnInit {
   index: number = 1;
   itemsBurger: MenuItem[];
   items: MenuItem[];
-  @Input()
-  itemsCartLength: number = 0;
 
-  constructor(private connectionService: ConnectionService, private router: Router, /*private cartService : CartService*/) {
+  cartQuantity : Observable<number>;
+
+  //Test maj panier
+  testCartQuantity : number = 0;
+
+  constructor(private connectionService: ConnectionService, private router: Router, private cartService : CartService) {
     this.connectionService = connectionService;
     this.router = router;
-    //this.cartService = cartService;
+    //this.cartService.cartQuantityUpdated.subscribe(quantity => this.testCartQuantity = quantity);
   }
 
   ngOnInit() {
@@ -63,7 +67,7 @@ export class MenuComponent implements OnInit {
     //this.connectionService.getStatus().subscribe(isConnected => this.userConnected = isConnected);
 
     //Panier
-    //this.cartService.getCartLength().subscribe(cartLength => this.itemsCartLength = cartLength);
+    this.cartQuantity = this.cartService.getCartLength();
   }
 
   redirect(direction: string) {
@@ -86,9 +90,9 @@ export class MenuComponent implements OnInit {
     this.ngOnInit();
   }
 
-  onCartUpdate(event)
+  updateCartMenuQuantity(quantity)
   {
-    console.log("pouet" + this.itemsCartLength);
-    this.itemsCartLength = 10;
+    this.cartQuantity = quantity;
+    console.log("Menu quantity updated");
   }
 }

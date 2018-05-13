@@ -24,7 +24,6 @@ export class AccueilComponent implements OnInit {
     for (let e of this.listEvents){
       let date = new Date(e.dateEvent);
       e.dateEvent = date;
-      console.log(e.dateEvent);
     }});
     this.eventService.getEventsLastFiveAdd().subscribe(eventsFive => this.listFiveEvents = eventsFive);
   }

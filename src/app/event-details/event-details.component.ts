@@ -19,7 +19,6 @@ export class EventDetailsComponent implements OnInit {
   
   event : Event = new Event("",null,null,null,0,0,"",null,false, "", "");
   category : string ;  
-  menu : MenuComponent;
 
   //---- Attributs de la partie commande ----//
   commandMsgs : Message[] = [];
@@ -32,10 +31,9 @@ export class EventDetailsComponent implements OnInit {
   mapPosition : any;
   mapOverlays : any[];
 
-  constructor(private eventService : EventService, private cartService : CartService, private route : ActivatedRoute, private router: Router, menu : MenuComponent) {
+  constructor(private eventService : EventService, private cartService : CartService, private route : ActivatedRoute, private router: Router) {
     this.eventService = eventService;
     this.cartService = cartService;
-    this.menu = menu;
   }
 
   ngOnInit() {
@@ -108,8 +106,6 @@ export class EventDetailsComponent implements OnInit {
         this.cartService.addItem(new CartItem(this.event, this.quantitySelected));
         this.isInCart = true;
         this.showSucces();
-        this.menu.itemsCartLength++;
-        console.log(this.menu.itemsCartLength)
       }
       else
       {
@@ -120,14 +116,12 @@ export class EventDetailsComponent implements OnInit {
         {
           this.cartService.updateItemQuantity(this.event.name, newQuantity);
           this.showSucces();
-          this.menu.itemsCartLength++;
         }
         else if (newQuantity > this.event.stock && actualQuantity < this.event.stock)
         {
           newQuantity = this.event.stock;
           this.cartService.updateItemQuantity(this.event.name, newQuantity);
           this.showSucces();
-          this.menu.itemsCartLength++;
         }
         else
         {

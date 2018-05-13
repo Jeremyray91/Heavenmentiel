@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CartItem } from '../cart-item';
 import { CartService } from '../cart.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart-mini',
@@ -9,26 +10,25 @@ import { CartService } from '../cart.service';
 })
 export class CartMiniComponent implements OnInit {
 
-  myItems : CartItem[]
-  cartService : CartService;
+  itemsCartLength: Observable<number>;
+
 
   @Input()
-  cartLength: number = 0;
+  cartLength : Observable<number>;
+  
+  subscription : Subscription;
 
-  @Output()
-  onCartServiceUpdate = new EventEmitter<number>();
-
-  constructor(cartService : CartService) {
-    this.cartService = cartService;
+  constructor(private cartService : CartService) {
+    this.subscription = cartService.cartQuantityUpdated.subscribe(
+      quantity => this.cartLength = quantity
+    );
    }
 
   ngOnInit() {
-    this.myItems = this.cartService.myItems;
-  }
-
-  addItemCart(){
-    this.cartLength++;
-    this.onCartServiceUpdate.emit(this.cartLength);
+    this.cartService.getCartLength().subscribe(length => {
+      console.log("update du panier");
+      
+    });
   }
 
 }
