@@ -95,6 +95,41 @@ h3{
     background-color: #C40018;
 }
 
+/*---- Styles refonte recherche events coté User ----*/
+#user-search-zone .ui-card-body
+{
+    padding: 0em;
+}
+
+#user-search-zone .ui-calendar-w-btn .ui-calendar-button
+{
+    border: 1px solid #FF6107;
+    background: #FF6107;
+}
+
+/* #user-search-zone .ui-calendar-w-btn .ui-calendar-button :hover
+{
+    border: 1px solid rgb(199, 34, 12);
+    background: rgb(199, 34, 12);
+} */
+
+#user-search-zone #launch-search
+{
+    color: #fff;
+    background-color: #FF6107;
+    border-color: #FF6107
+}
+
+/* #user-search-zone #launch-search .btn-success :focus
+{
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 35, 0.5)
+} */
+
+#user-search-zone .ui-slider-range
+{
+    background: #C40018
+}
+
 /*---- Styles pour Display Order Component ----*/
 
 .order-panel .v-separator

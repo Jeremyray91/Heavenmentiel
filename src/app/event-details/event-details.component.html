@@ -42,7 +42,7 @@
           <div class="ui-lg-12"><img src="{{event.imgMin}}" width="100%"></div>
           <div class="ui-lg-12"><span>Quantité </span><p-spinner [(ngModel)]="quantitySelected" [size]="2" [min]="1" [max]="event.stock >= 30 ? 30 : event.stock"></p-spinner></div>
           <div class="ui-lg-12">{{stockStatusMsg}}</div>
-          <div class="ui-lg-12">{{event.price*quantitySelected}}€ ({{quantitySelected}})</div>
+          <div class="ui-lg-12">{{event.price*quantitySelected}}€ ({{event.price}}€ x {{quantitySelected}})</div>
           <div class="ui-lg-12">
             <button class="boutonPageAccueil" (click)="addToCart()">
               Ajouter au panier

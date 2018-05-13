@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Event } from '../../event';
+import { EventService } from '../../event.service';
 
 @Component({
   selector: 'app-events-user-side',
@@ -11,9 +12,24 @@ export class EventsUserSideComponent implements OnInit {
   model:Event = new Event("",null,null,null,0,0,"",null,false, "", "");
   @Input()
   events:Array<Event> = new Array<Event>();
-  constructor() { }
+
+  @Input()  totalRecords:number = 0;
+  @Input()  itemsByPage:number = 0;
+  eventService : EventService;
+  @Output() valueChange = new EventEmitter();
+
+  constructor(eventService : EventService) {
+    this.eventService = eventService;
+  }
 
   ngOnInit() {
   }
 
+  redirect(id : string)
+  {
+    if(id)
+    {
+      localStorage.setItem("requestedEvent", id);
+    }
+  }
 }

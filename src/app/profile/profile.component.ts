@@ -47,9 +47,14 @@ export class ProfileComponent implements OnInit {
 
   toggleDisabled(){
     this.disabled = !this.disabled;
-    if(this.disabled && this.modifPwd)
+    if(this.disabled)
     {
-      this.toggleModifPwd();
+      this.user = JSON.parse(sessionStorage.getItem('currentUser'));
+      this.user.birthDay = new Date(this.user.birthDay);
+      if(this.modifPwd)
+      {
+        this.toggleModifPwd();
+      }
     }
   }
 

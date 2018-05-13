@@ -17,8 +17,11 @@ export class SearchEventsUserComponent implements OnInit {
   model = {name : null, dateMin : null, dateMax : null, place : null, type: null, price : [0,30]};
   types : SelectItem[] = new Array<SelectItem>();
   totalRecords: number = 0;
-  itemsByPage : number = 4;
+  itemsByPage : number = 10;
   submitted : boolean;
+
+  fr: any;
+  eventNameReg : RegExp = /^[0-9A-Za-z \-]+/
 
   constructor(eventService : EventService) {
     this.eventService = eventService;
@@ -31,6 +34,17 @@ export class SearchEventsUserComponent implements OnInit {
           type = String(t);
           this.types.push({"label" : type, "value" : type});
         }
+      }
+
+      this.fr = {
+        firstDayOfWeek: 1,
+        dayNames: [ "dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi" ],
+        dayNamesShort: [ "dim","lun","mar","mer","jeu","ven","sam" ],
+        dayNamesMin: [ "D","L","M","M","J","V","S" ],
+        monthNames: [ "janvier","fevrier","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre" ],
+        monthNamesShort: [ "janv","fevr","mars","avr","mai","juin","jull","août","sept","oct","nov","dec" ],
+        today: 'Aujourd\'hui',
+        clear: 'Effacer'
       }
   }
 

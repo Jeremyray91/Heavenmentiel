@@ -6,50 +6,66 @@
 
     <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-3">
-        <form class="form pl-3 pt-3 pb-3 pr-3 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
-                <div class="form-group horizontal-form">
-                    <label class="control-label" for="keyword">Nom de l'événement : </label>
-                    <input class="form-control" type="text" id="name" name="name"[(ngModel)]="model.name"/>
+        <p-card id="user-search-zone">
+            <form class="form pl-3 pt-3 pb-3 pr-3 rounded" (ngSubmit)="onSubmit(null)">
+                    <div class="form-group horizontal-form">
+
+                            <span class="ui-float-label">
+                                <input [pKeyFilter]="eventNameReg" id="name-event" type="text" [(ngModel)]="model.name" name="ngModel" pInputText/>
+                                <label for="name-event">Nom de l'événement</label>
+                            </span>
+
+                        <!-- <span class="ui-float-label">
+                            <label for="keyword">Nom de l'événement : </label>
+                            <input [pKeyFilter]="nameReg" type="text" id="keyword" name="name" [(ngModel)]="model.name" #keyword="ngModel" pInputText/>
+                        </span> -->
+                    </div>
+
+                    <div class="form-group" >
+                        <span class="ui-float-label">
+                            <p-calendar id="startDay" [(ngModel)]="model.dateMin" name="startDay" #startday="ngModel" dateFormat="dd/mm/yy" [locale]="fr" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2030" showButtonBar="true" [showIcon]="true"></p-calendar>
+                            <label class="control-label" for="dateMin">Du</label>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <span class="ui-float-label">
+                            <p-calendar id="endDay" [(ngModel)]="model.dateMax" name="endDay" #endDay="ngModel" dateFormat="dd/mm/yy" [locale]="fr" [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2030" showButtonBar="true" [showIcon]="true"></p-calendar>
+                            <label class="control-label" for="endDay">Au</label>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <span class="ui-float-label">
+                            <input [pKeyFilter]="eventNameReg" id="place" type="text" [(ngModel)]="model.place" name="place" pInputText/>
+                            <label class="control-label" for="place">Lieu :</label>
+                        </span>
+                    </div>
+
+                <div class="form-group">
+                    <p-listbox [options]="types" [(ngModel)]="model.type" multiple="multiple" checkbox="checkbox" optionLabel="label" name="type">
+                    <p-header>
+                        Type d'événement
+                    </p-header>
+                    </p-listbox>
                 </div>
-
-                <div class="form-group" >
-                    <label class="control-label" for="dateMin">Du</label>
-                    <p-calendar id="dateMin" [(ngModel)]="model.dateMin" name="dateMin" dateFormat="dd/mm/yy"></p-calendar>
-                    <label class="control-label" for="dateMax">au</label>
-                    <p-calendar id="dateMax" [(ngModel)]="model.dateMax" name="dateMax" dateFormat="dd/mm/yy"></p-calendar>
-
-                <label class="control-label" for="place">Lieu :</label>
-                <input class="form-control" type="text" id="place" name="place" [(ngModel)]="model.place"/>
-              </div>
-
-              <div class="form-group">
-                <p-listbox [options]="types" [(ngModel)]="model.type" multiple="multiple" checkbox="checkbox" optionLabel="label" name="type">
-                  <p-header>
-                    Type d'événement
-                  </p-header>
-                </p-listbox>
-              </div>
-          
-
-            <div class="form-group">
-                <h3>Prix : {{model.price[0] + '€ - ' + model.price[1] + '€'}}</h3>
-                <p-slider [(ngModel)]="model.price"  [range]="true" name="price" [min]=0 [max]=200 [step]="5"></p-slider>
-            </div>
-
-            <div class="form-row text-center">
-                <div class="col-12">
-                    <button type="submit" class="btn btn-success" >Lancer la recherche</button>
-                </div>
-            </div>
             
-        </form>
+
+                <div class="form-group">
+                    <h3>Prix : {{model.price[0] + '€ - ' + model.price[1] + '€'}}</h3>
+                    <p-slider [(ngModel)]="model.price"  [range]="true" name="price" [min]=0 [max]=200 [step]="5"></p-slider>
+                </div>
+
+                <div class="form-row text-center">
+                    <div class="col-12">
+                        <button type="submit" id="launch-search" class="btn btn-warning" >Lancer la recherche</button>
+                    </div>
+                </div>
+                
+            </form>
+        </p-card>
       </div>
 
       <div class="col-lg-8 col-md-8 col-sm-8">
-          <app-events-user-side  [events]="events"></app-events-user-side>
-          <div class="row" *ngIf="submitted">
-                <app-event-paginator [totalRecords]="totalRecords" [itemsByPage]="itemsByPage" (valueChange)='onSubmit($event)'></app-event-paginator>
-            </div>
+          <app-events-user-side *ngIf="submitted" [events]="events" [totalRecords]="totalRecords" [itemsByPage]="itemsByPage" (valueChange)='onSubmit($event)'></app-events-user-side>
       </div>
     </div>
 </div>
