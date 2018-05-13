@@ -17,6 +17,8 @@ export class CreateUserComponent implements OnInit {
   equals : boolean;
   confirmPwd : string = "";
   fr: any;
+  nameReg : RegExp = /^[A-Za-z \-]+/
+  adressReg : RegExp = /^[0-9A-Za-z \-]/
   mailReg : RegExp = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
   msgs: Message[];
 

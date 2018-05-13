@@ -15,7 +15,7 @@
             <div class="form-left">
               <div class="form-group">
                 <span class="ui-float-label">
-                  <input pKeyFilter="alpha" type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" #firstname="ngModel" pInputText
+                  <input [pKeyFilter]="nameReg" type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" #firstname="ngModel" pInputText
                     required [disabled]="disabled" />
                   <label for="firstName">Prénom</label>
                   <span [ngClass]="(!firstname.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
@@ -26,7 +26,7 @@
 
               <div class="form-group">
                 <span class="ui-float-label">
-                  <input pKeyFilter="alpha" type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" #lastname="ngModel" pInputText
+                  <input [pKeyFilter]="nameReg" type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" #lastname="ngModel" pInputText
                     required [disabled]="disabled" />
                   <label for="lastName">Nom</label>
                   <span [ngClass]="(!lastname.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
@@ -51,7 +51,7 @@
               <div class="form-group">
                 <div class="mail">
                   <span class="ui-float-label">
-                    <input type="text" id="mail" name="mail" [(ngModel)]="user.mail" #mail="ngModel" pInputText required [disabled]="disabled"
+                    <input [pKeyFilter]="mailReg" type="text" id="mail" name="mail" [(ngModel)]="user.mail" #mail="ngModel" pInputText required [disabled]="disabled"
                     />
                     <label for="mail">Mail</label>
                     <span [ngClass]="(!mail.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
@@ -79,7 +79,7 @@
               <div class="form-group">
                 <div class="adress">
                   <span class="ui-float-label">
-                    <input type="text" id="adress" name="adress" [(ngModel)]="user.adress" pKeyFilter="alphanum" #adress="ngModel" pInputText
+                    <input [pKeyFilter]="adressReg" type="text" id="adress" name="adress" [(ngModel)]="user.adress" #adress="ngModel" pInputText
                       required [disabled]="disabled" />
                     <label for="adress">Adresse</label>
                     <span [ngClass]="(!adress.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
@@ -105,7 +105,7 @@
               <div class="form-group">
                 <div class="city">
                   <span class="ui-float-label">
-                    <input pKeyFilter="alpha" type="text" id="city" name="city" [(ngModel)]="user.city" #city="ngModel" pInputText required [disabled]="disabled"
+                    <input [pKeyFilter]="nameReg" type="text" id="city" name="city" [(ngModel)]="user.city" #city="ngModel" pInputText required [disabled]="disabled"
                     />
                     <label for="city">Ville</label>
                     <span [ngClass]="(!city.valid) ? 'ng-invalid hidden' : 'visible'" style="color:green">
@@ -117,7 +117,7 @@
 
               <div class="form-group">
                 <div class="modifPwd">
-                  <button (click)="toggleModifPwd()" pButton type="button" label="Modifier le mot de passe"></button>
+                  <button (click)="toggleModifPwd()" [disabled]="disabled" pButton type="button" label="Modifier le mot de passe"></button>
                 </div>
               </div>
 
@@ -163,7 +163,7 @@
           <div *ngIf="!disabled" style="width:50%">
             <div class="inscription">
               <button class="ui-button-success" pButton type="submit" icon="fa fa-fw fa-check" label="Valider"></button>
-              <button class="ui-button-warning" (click)="cancel()" pButton type="button" icon="fa fa-fw fa-close" label="Annuler"></button>
+              <button class="ui-button-warning" (click)="toggleDisabled()" pButton type="button" icon="fa fa-fw fa-close" label="Annuler"></button>
             </div>
           </div>
         </form>

@@ -8,7 +8,9 @@
 
 
 #carouselAccueil h5, #carouselAccueil p {
+    font-family: 'Ostrich Sans Inline', 'Righteous', cursive;
     font-weight: 700;
+    font-size: 2em;
     text-shadow: 0 0 10px #FF6107, 0 0 20px #FF6107, 0 0 30px #FF6107, 0 0 40px #C40018, 0 0 70px #C40018, 0 0 80px #C40018, 0 0 100px #C40018, 0 0 150px #C40018;
     color: #ffb283;
     letter-spacing: 2px;

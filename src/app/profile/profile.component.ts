@@ -18,7 +18,12 @@ export class ProfileComponent implements OnInit {
   equals : boolean;
   confirmPwd : string = "";
   newPwd : string;
+  pwdChanged : boolean;
+  oldMail : string;
   fr : any;
+  nameReg : RegExp = /^[A-Za-z \-]+/
+  adressReg : RegExp = /^[0-9A-Za-z \-]/
+  mailReg : RegExp = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
 
   constructor(userService : UserService) {
     this.userService = userService;
@@ -27,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(sessionStorage.getItem('currentUser'));
     this.user.birthDay = new Date(this.user.birthDay);
-    console.log(this.user);
+    this.oldMail = this.user.mail;
     this.fr = {
       firstDayOfWeek: 1,
       dayNames: [ "dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi" ],
@@ -42,10 +47,19 @@ export class ProfileComponent implements OnInit {
 
   toggleDisabled(){
     this.disabled = !this.disabled;
+    if(this.disabled && this.modifPwd)
+    {
+      this.toggleModifPwd();
+    }
   }
 
   toggleModifPwd(){
     this.modifPwd = !this.modifPwd;
+    if(!this.modifPwd)
+    {
+      this.newPwd = null;
+      this.confirmPwd = null;
+    }
   }
 
   pwdEqual(){
@@ -56,22 +70,33 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onSubmit(){
-    if(this.newPwd != null){
+  async onSubmit(){
+    if(this.modifPwd && this.newPwd != null){
       this.user.pwd = this.newPwd;
+      this.pwdChanged = true;
+      console.log("ici");
     }
-    this.disabled = !this.disabled;
-    this.showSucces();
-    this.userService.updateUser(this.user).subscribe(() => this.showSucces());
+    else
+    {
+      this.pwdChanged = false;
+      this.user.pwd = await this.userService.getOldPwd(this.oldMail);
+      console.log("old path");
+    }
+    console.log("user pwd : " + this.user.pwd);
+    this.toggleDisabled();
+    this.userService.updateUser(this.user, this.pwdChanged).subscribe(() => {
+      this.showSucces();
+      this.user.pwd = null;
+      this.newPwd = null;
+      this.confirmPwd = null;
+      this.oldMail = this.user.mail;
+      sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+    });
   }
 
   showSucces() {
     this.msgs = [];
     this.msgs.push({ severity: 'success', summary: 'OK !', detail: 'Modification effectuée' });
-  }
-
-  cancel(){
-    this.disabled = !this.disabled;
   }
 
 }

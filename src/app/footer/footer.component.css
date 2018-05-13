@@ -1,8 +1,17 @@
 .footer{
     background-color : #2b2b2b;
     color: whitesmoke;
-    bottom:0;
-}  
+}
+
+.footer-static
+{
+    position: static;
+}
+
+.footer-fixed
+{
+    position: fixed;
+}
 
 .navigation a{
     color: white;

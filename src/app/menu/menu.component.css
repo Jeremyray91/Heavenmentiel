@@ -31,12 +31,15 @@
  
 #logo
 {
-    color: crimson;
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em;
+    color: #C40018;
 }
  
 #logo :hover
 {
-    color: #910a0a;
+    color: rgb(168, 0, 20);
 }
 
 .search-button{
@@ -60,6 +63,7 @@
 }
  
 .cart-search{
+    margin-top: 0.7em;
     margin-right:20px!important;
 }
  

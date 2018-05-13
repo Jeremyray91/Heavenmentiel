@@ -88,6 +88,7 @@ export class MenuComponent implements OnInit {
     this.connectionService.disconnect().subscribe();
     sessionStorage.clear();
     this.ngOnInit();
+    this.router.navigate(['/']);
   }
 
   updateCartMenuQuantity(quantity)

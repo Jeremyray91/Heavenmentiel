@@ -6,7 +6,7 @@
       <div class="form-left">
         <div class="form-group">
           <span class="ui-float-label">
-            <input pKeyFilter="alpha" type="text" id="firstName" name="firstName" [(ngModel)]="model.firstName" #firstname="ngModel" pInputText required/>
+            <input [pKeyFilter]="nameReg" type="text" id="firstName" name="firstName" [(ngModel)]="model.firstName" #firstname="ngModel" pInputText required/>
             <label for="firstName">Prénom</label>
             <span [ngClass]="(!firstname.valid || !firstname.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
               <i class="fa fa-check-circle"></i>
@@ -16,7 +16,7 @@
 
         <div class="form-group">
           <span class="ui-float-label">
-            <input pKeyFilter="alpha" type="text" id="lastName" name="lastName" [(ngModel)]="model.lastName" #lastname="ngModel" pInputText required/>
+            <input [pKeyFilter]="nameReg" type="text" id="lastName" name="lastName" [(ngModel)]="model.lastName" #lastname="ngModel" pInputText required/>
             <label for="lastName">Nom</label>
             <span [ngClass]="(!lastname.valid || !lastname.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
               <i class="fa fa-check-circle"></i>
@@ -65,7 +65,7 @@
         <div class="form-group">
           <div class="adress">
             <span class="ui-float-label">
-              <input type="text" id="adress" name="adress" [(ngModel)]="model.adress" #adress="ngModel" pInputText required/>
+              <input [pKeyFilter]="adressReg" type="text" id="adress" name="adress" [(ngModel)]="model.adress" #adress="ngModel" pInputText required/>
               <label for="adress">Adresse</label>
               <span [ngClass]="(!adress.valid || !adress.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
                 <i class="fa fa-check-circle"></i>
@@ -89,7 +89,7 @@
         <div class="form-group">
           <div class="city">
             <span class="ui-float-label">
-              <input type="text" id="city" name="city" [(ngModel)]="model.city" #city="ngModel" pInputText required/>
+              <input [pKeyFilter]="nameReg" type="text" id="city" name="city" [(ngModel)]="model.city" #city="ngModel" pInputText required/>
               <label for="city">Ville</label>
               <span [ngClass]="(!city.valid || !city.dirty) ? 'ng-invalid hidden' : 'visible'" style="color:green">
                 <i class="fa fa-check-circle"></i>
