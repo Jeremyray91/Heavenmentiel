@@ -36,7 +36,7 @@
     </p-header>
     <ng-template let-event pTemplate="item">
       <div style="padding:3px" class="ui-lg-4 ui-md-6 ui-sm-12">
-        <p-panel [style]="{'text-align':'center'}">
+        <p-panel [style]="{'text-align':'center'}" class="pannel-accueil">
           <div class="flex-event">
             <div class="event-img">
                 <a (click)="redirect(event.id)" href="http://localhost:4200/Evenement/"><img src="{{event.imgMin}}" width="208,67"></a>

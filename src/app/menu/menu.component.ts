@@ -56,7 +56,7 @@ export class MenuComponent implements OnInit {
         label: 'Bienvenue ' + this.user.firstName,
         items: [
           { label: 'Mon compte', routerLink: ['/Profile'] },
-          { label: 'Mes commandes', routerLink: ['/Order'] }
+          { label: 'Mes commandes', routerLink: ['/MesCommandes'] }
         ]
       }];}
 

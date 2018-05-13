@@ -71,6 +71,8 @@ import { CommandsComponent } from './commands/commands.component';
 import { CartMiniComponent } from './cart-mini/cart-mini.component';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthGuardAdminService } from './auth-guard-admin.service';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { DisplayOrderComponent } from './display-order/display-order.component';
  
 const appRoutes : Routes = [ 
   {path : '', component : AccueilComponent}, 
@@ -88,7 +90,8 @@ const appRoutes : Routes = [
   {path : 'CGV', component : CgvComponent}, 
   {path : 'Mentions', component : MentionsLegalesComponent}, 
   {path : 'Contact', component : ContactComponent},
-  {path : 'Commands', canActivate : [AuthGuardService], component : CommandsComponent}
+  {path : 'Commands', canActivate : [AuthGuardService], component : CommandsComponent},
+  {path : 'MesCommandes', canActivate : [AuthGuardService], component : MyOrdersComponent}
 ]; 
  
 @NgModule({ 
@@ -119,7 +122,9 @@ const appRoutes : Routes = [
     ContactComponent,
     EventPaginatorComponent,
     CommandsComponent,
-    CartMiniComponent
+    CartMiniComponent,
+    MyOrdersComponent,
+    DisplayOrderComponent
   ], 
   imports: [ 
     HttpClientModule, 

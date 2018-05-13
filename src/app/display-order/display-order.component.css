@@ -1,0 +1,25 @@
+/* ---- Mis dans style.css pour faire appliquer les styles ----
+
+.order-panel .ui-panel.ui-widget .ui-panel-titlebar
+{
+    position: relative;
+}
+
+.order-panel>.ui-panel>.ui-panel-titlebar>.ui-panel-titlebar-icon
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+}*/
+
+#order-resume
+{
+    position: relative;
+}
+
+.collapse-button
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

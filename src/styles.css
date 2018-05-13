@@ -54,13 +54,14 @@ footer{
     border:0!important;
 }
  
-.ui-panel .ui-panel-content{  
+.pannel-accueil>.ui-panel .ui-panel-content{  
     padding:0!important;  
 } 
 
-.ui-panel-titlebar{  
+.pannel-accueil>.ui-panel>.ui-panel-titlebar{  
     display:none;  
-}  
+}
+
 .ui-tabview .ui-tabview-panel  
 {  
     opacity : 1!important;  
@@ -97,4 +98,30 @@ h3{
  
 .badge-primary{
     background-color: #C40018;
+}
+
+/*---- Styles pour Display Order Component ----*/
+
+.order-panel .v-separator
+{
+    border-left: 0.05em solid #292725;
+    border-style: none none none dashed;
+}
+
+.order-panel .ui-panel.ui-widget .ui-panel-titlebar
+{
+    position: relative;
+}
+
+.order-panel>.ui-panel>.ui-panel-titlebar>.ui-panel-titlebar-icon
+{
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+#test
+{
+    padding-top: 0;
+    padding-bottom: 0;
 }

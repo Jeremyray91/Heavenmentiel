@@ -1,4 +1,5 @@
 import { Command } from "./command";
+import { Event } from "./event";
 
 export class Achatevent {
     id:number;
