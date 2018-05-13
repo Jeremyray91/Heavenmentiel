@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Event } from './event';
+import { Evenement } from './event';
 import { SelectItem } from 'primeng/api';
 
 @Injectable()
@@ -9,20 +9,20 @@ export class EventService {
 
   constructor(private httpClient : HttpClient) { }
   
-  getEvents() : Observable<Event[]> {
-    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events") as Observable<Event[]>;
+  getEvents() : Observable<Evenement[]> {
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events") as Observable<Evenement[]>;
   }
 
-  getEventsByDate() : Observable<Event[]> {
-    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsbydate") as Observable<Event[]>;
+  getEventsByDate() : Observable<Evenement[]> {
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsbydate") as Observable<Evenement[]>;
   }
 
-  getEventsLastFiveAdd() : Observable<Event[]> {
-    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsLastFiveAdd") as Observable<Event[]>;
+  getEventsLastFiveAdd() : Observable<Evenement[]> {
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsLastFiveAdd") as Observable<Evenement[]>;
   }
 
-  getEventById(id:number) : Observable<Event>{
-    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsById?id="+id) as Observable<Event>;
+  getEventById(id:number) : Observable<Evenement>{
+    return this.httpClient.get("http://localhost:8082/heavenmentiel/api/eventsById?id="+id) as Observable<Evenement>;
   }
 
   getEventMultiCriteria(name:string,dateMin:Date,dateMax:Date,place:string,type:Array<SelectItem>,price:number[],page:number) : Observable<Object>{
@@ -64,11 +64,11 @@ export class EventService {
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/events/multicriteria",{params : params});
   }
 
-  createEvent(event:Event){
-    this.httpClient.post<Event>("http://localhost:8082/heavenmentiel/api/events",event).subscribe();
+  createEvent(event:Evenement){
+    this.httpClient.post<Evenement>("http://localhost:8082/heavenmentiel/api/events",event).subscribe();
   }
-  updateEvent(event:Event):Observable<Event>{
-    return this.httpClient.put<Event>("http://localhost:8082/heavenmentiel/api/events", event) as Observable<Event>;
+  updateEvent(event:Evenement):Observable<Evenement>{
+    return this.httpClient.put<Evenement>("http://localhost:8082/heavenmentiel/api/events", event) as Observable<Evenement>;
   }
   deleteEvent(id:number):Observable<{}>{
     return this.httpClient.delete("http://localhost:8082/heavenmentiel/api/events/"+id);

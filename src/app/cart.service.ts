@@ -1,15 +1,15 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { CartItem } from './cart-item';
 import { Type } from './enum-event';
-import { Event } from './event';
 import { Observable, Subject } from 'rxjs';
+import { Evenement } from './event';
 import { MenuComponent } from './menu/menu.component';
 
 @Injectable()
 export class CartService {
 
   myItems : CartItem[] = new Array<CartItem>();
-  event : Event;
+  event : Evenement;
 
   //Test maj panier sources
   private cartQuantitySource = new Subject<Observable<number>>();
@@ -44,7 +44,7 @@ export class CartService {
      return Observable.of(this.myItems.length);
    }
 
-   itemInCart(event : Event) : boolean
+   itemInCart(event : Evenement) : boolean
    {
     for (let itm of this.myItems)
     {

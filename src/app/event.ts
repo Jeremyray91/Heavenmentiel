@@ -1,7 +1,7 @@
 import { Type } from "./enum-event";
 
 
-export class Event {
+export class Evenement {
     name: string;
     place: string;
     type: Type;
@@ -36,7 +36,5 @@ export class Event {
                             this.available = available;
                             this.img = img;
                             this.imgMin = imgMin;
-    
-    
     }
 }

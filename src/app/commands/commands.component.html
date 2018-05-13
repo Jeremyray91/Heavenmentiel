@@ -3,15 +3,13 @@
   <p>Bienvenue dans le module de recherche de commandes !
   </p>
   <form class="form pl-3 pt-3 pb-3 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
-
-      <div class="row">
-        <div class="form-group col-md-8 col-lg-8 col-sm-8 col-xs-12">
+        <div class="form-group">
           <div class="form-group horizontal-form">
               <h3>Informations sur le client :</h3>
               <label class="control-label" for="keyword">Nom : </label>
-              <input class="form-control" type="text" id="name" name="name" [(ngModel)]="formFields.firstname"/>
-              <label class="control-label" for="keyword">Prénom : </label>
               <input class="form-control" type="text" id="lastname" name="lastname" [(ngModel)]="formFields.lastname"/>
+              <label class="control-label" for="keyword">Prénom : </label>
+              <input class="form-control" type="text" id="name" name="name" [(ngModel)]="formFields.firstname"/>
               <label class="control-label" for="keyword">Id : </label>
               <input class="form-control" type="text" id="idClient" name="idClient" [(ngModel)]="formFields.idClient"/>
               <h3>Informations sur la commande :</h3>
@@ -19,16 +17,19 @@
               <p-calendar id="dateMin" [(ngModel)]="formFields.dateMin" name="datemin" dateFormat="dd/mm/yy"></p-calendar>
               <label class="control-label" for="dateMax">au</label>
               <p-calendar id="dateMax" [(ngModel)]="formFields.dateMax" name="datemax" dateFormat="dd/mm/yy"></p-calendar>
-              
+              <button type="submit" class="btn btn-success" >Lancer la recherche</button>
           </div>
         </div>
-      </div>
   </form>
 
-  <app-events [events]="events"></app-events>
-  <div class="row" *ngIf="submitted">
-      <app-event-paginator [totalRecords]="totalRecords" [itemsByPage]="itemsByPage" (valueChange)='onSubmit($event)'></app-event-paginator>
-  </div>
+  
+  <p-dataTable [value]="commands">
+    <p-column field="id" header="IdCommande"></p-column>
+    <p-column field="date" header="Date"></p-column>
+    <p-column field="user" header="Utilisateur"></p-column>
+    <p-column field="nbEvents" header="Nb articles"></p-column>
+    <p-column field="totalPrice" header="Prix total"></p-column>
+  </p-dataTable>
 </div>
 
 

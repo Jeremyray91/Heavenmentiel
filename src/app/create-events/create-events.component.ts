@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Event } from '../event';
+import { Evenement } from '../event';
 import { EventService } from '../event.service'
 import { EventsComponent } from '../events/events.component';
 import { Type } from '../enum-event';
@@ -13,13 +13,13 @@ import { FileUpload } from 'primeng/primeng';
   styleUrls: ['./create-events.component.css']
 })
 export class CreateEventsComponent implements OnInit {
-  eventUp : Event;
+  eventUp : Evenement;
   eventsCompo : EventsComponent;
   eventService : EventService;
   events: Array<Event>;
   types: SelectItem[] = new Array<SelectItem>();
   typeEvent: string;
-  model : Event = new Event("", "", null, null, 0.0, null, "", "", false, "","");
+  model : Evenement = new Evenement("", "", null, null, 0.0, null, "", "", false, "","");
   msgs: Message[];
   @ViewChild('fileInputMin') fileInputMin: FileUpload;
   @ViewChild('fileInput') fileInput: FileUpload;
@@ -82,6 +82,6 @@ export class CreateEventsComponent implements OnInit {
       this.msgs = [];
       this.msgs.push({severity: 'success', summary: 'Événement créé', detail: ''});
     }
-    this.model = new Event("", "", null, null, 0.0, 0, "", "", false, "","");
+    this.model = new Evenement("", "", null, null, 0.0, 0, "", "", false, "","");
   }
 }

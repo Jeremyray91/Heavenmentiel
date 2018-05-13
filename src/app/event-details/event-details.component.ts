@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../event.service';
-import { Event } from '../event';
+import { Evenement } from '../event';
 import { Type } from '../enum-event';
 import {} from '@types/googlemaps';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -17,7 +17,7 @@ import { MenuComponent } from '../menu/menu.component';
 })
 export class EventDetailsComponent implements OnInit {
   
-  event : Event = new Event("",null,null,null,0,0,"",null,false, "", "");
+  event : Evenement = new Evenement("",null,null,null,0,0,"",null,false, "", "");
   category : string ;  
 
   //---- Attributs de la partie commande ----//
