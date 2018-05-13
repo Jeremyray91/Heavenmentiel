@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EVENTS } from './listEventsMock';
-import { Event } from '../event';
+import { Evenement } from '../event';
 import { EventService } from '../event.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { EventService } from '../event.service';
 })
 export class AccueilComponent implements OnInit {
 
-  listEvents : Array<Event>;
-  listFiveEvents : Array<Event>;
+  listEvents : Array<Evenement>;
+  listFiveEvents : Array<Evenement>;
   dateString : string;
 
   constructor(private eventService : EventService) {

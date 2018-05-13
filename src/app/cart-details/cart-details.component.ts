@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from '../cart-item';
-import { Event } from '../event';
+import { Evenement } from '../event';
 import { Type } from '../enum-event';
 import { CartService } from '../cart.service';
 

@@ -1,10 +1,10 @@
-import { Event } from "./event";
+import { Evenement } from "./event";
 
 export class CartItem {
-    event: Event;
+    event: Evenement;
     quantity: number;
 
-    constructor(event: Event, quantity : number)
+    constructor(event: Evenement, quantity : number)
     {
         this.event = event;
         this.quantity = quantity;

@@ -1,13 +1,13 @@
 import { Command } from "./command";
-import { Event } from "./event";
+import {Evenement} from "./event";
 
 export class Achatevent {
     id:number;
-    event : Event;
+    event : Evenement;
     command : Command;
     qte:number;
 
-    constructor(id:number,event:Event,command:Command,qte:number){
+    constructor(id:number,event:Evenement,command:Command,qte:number){
         this.id = id;
         this.event = event;
         this.command = command;

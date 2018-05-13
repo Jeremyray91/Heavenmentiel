@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Event } from '../../event';
+import { Evenement } from '../../event';
 import { EventService } from '../../event.service'
 import { Type } from '../../enum-event';
 import {SelectItem} from 'primeng/api';
@@ -13,7 +13,7 @@ import {SelectItem} from 'primeng/api';
 export class SearchEventsUserComponent implements OnInit {
   
   eventService : EventService;
-  events:Array<Event>;
+  events:Array<Evenement>;
   model = {name : null, dateMin : null, dateMax : null, place : null, type: null, price : [0,30]};
   types : SelectItem[] = new Array<SelectItem>();
   totalRecords: number = 0;

@@ -1,4 +1,4 @@
-import { Event } from '../event';
+import { Evenement } from '../event';
 import { Type } from '../enum-event';
 
 export const EVENTS : Event[] = [
