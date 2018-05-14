@@ -1,9 +1,11 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { CartItem } from './cart-item';
 import { Type } from './enum-event';
 import { Observable, Subject } from 'rxjs';
 import { Evenement } from './event';
 import { MenuComponent } from './menu/menu.component';
+import { Command } from './command';
 
 @Injectable()
 export class CartService {
@@ -17,7 +19,7 @@ export class CartService {
   //Test maj panier stream
   cartQuantityUpdated = this.cartQuantitySource.asObservable();
   
-  constructor() {
+  constructor(private httpClient : HttpClient) {
     if(localStorage.getItem('cart'))
     {
       this.myItems = JSON.parse(localStorage.getItem('cart'));
@@ -26,7 +28,12 @@ export class CartService {
     {
       this.myItems = new Array<CartItem>();
     }
+    this.httpClient = httpClient;
    }
+
+  createCommand(commande:Command){
+    this.httpClient.post<Command>("http://localhost:8082/heavenmentiel/api/commandes",commande).subscribe();
+  }
 
    addItem(item: CartItem)
    {

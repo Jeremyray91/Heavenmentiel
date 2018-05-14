@@ -2,6 +2,7 @@ import { Type } from "./enum-event";
 
 
 export class Evenement {
+    id: number;
     name: string;
     place: string;
     type: Type;

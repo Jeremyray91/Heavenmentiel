@@ -3,6 +3,8 @@ import { CartItem } from '../cart-item';
 import { Evenement } from '../event';
 import { Type } from '../enum-event';
 import { CartService } from '../cart.service';
+import { Command } from '../command';
+import { Achatevent } from '../achatevent';
 
 @Component({
   selector: 'app-cart-details',
@@ -61,5 +63,14 @@ export class CartDetailsComponent implements OnInit {
         this.totalPrice += itm.event.price * itm.quantity;
       }
     }
+  }
+
+  validateCart(){
+    let achatEvent : Array<Achatevent> = new Array<Achatevent>();
+    for(let ae of this.items){
+      achatEvent.push(new Achatevent(ae.event, null, ae.quantity))
+    }
+    let commande = new Command(new Date(), JSON.parse(sessionStorage.getItem('currentUser')), achatEvent)
+    this.cartService.createCommand(commande);
   }
 }

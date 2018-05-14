@@ -19,7 +19,7 @@ export class DisplayOrderComponent implements OnInit {
 
   constructor() {
     
-    let achatEventTest = new Achatevent(1000, this.eventTest, this.order, 4);
+    let achatEventTest = new Achatevent(this.eventTest, this.order, 4);
     this.events.push(achatEventTest);
     this.events.push(achatEventTest);
     this.events.push(achatEventTest);

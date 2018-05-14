@@ -7,8 +7,7 @@ export class Achatevent {
     command : Command;
     qte:number;
 
-    constructor(id:number,event:Evenement,command:Command,qte:number){
-        this.id = id;
+    constructor(event:Evenement,command:Command,qte:number){
         this.event = event;
         this.command = command;
         this.qte = qte;
