@@ -29,8 +29,8 @@ export class CommandsComponent implements OnInit {
 
         for(let achat of cmd.achatsEvents){
           let e : Evenement = achat.event;
-          totalQte = totalQte + achat.quantite;
-          totalPrice = totalPrice + (e.price*achat.quantite);
+          totalQte = totalQte + achat.qte;
+          totalPrice = totalPrice + (e.price*achat.qte);
         }
         formattedCommand = {'id' : cmd.id, 'date' : cmd.date, 'user' : cmd.user.firstName+' '+cmd.user.lastName, 'nbEvents' : totalQte, 'totalPrice' : totalPrice+"€", 'editButton' : '<a [routerLink]="[\'/DisplayOrder\', '+cmd.id+']" ><button pButton type="button" icon="fa fa-fw fa-wrench" class="ui-button-warning"></button></a>'};
       }

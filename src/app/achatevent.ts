@@ -5,11 +5,11 @@ export class Achatevent {
     id:number;
     event : Evenement;
     command : Command;
-    quantite:number;
+    qte:number;
 
     constructor(event:Evenement,command:Command,qte:number){
         this.event = event;
         this.command = command;
-        this.quantite = qte;
+        this.qte = qte;
     }
 }

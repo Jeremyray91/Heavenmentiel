@@ -32,7 +32,7 @@ export class CartService {
    }
 
   createCommand(commande:Command){
-    this.httpClient.post<Command>("http://localhost:8082/heavenmentiel/api/commandes",commande).subscribe();
+    return this.httpClient.post<Command>("http://localhost:8082/heavenmentiel/api/commandes",commande);
   }
 
    addItem(item: CartItem)

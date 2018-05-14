@@ -28,7 +28,7 @@ export class DisplayOrderComponent implements OnInit {
       this.commandService.getById(this.idCommande).subscribe(command => {
         this.commande = command;
         for(let achat of command.achatsEvents){
-          this.total = this.total + (achat.quantite*achat.event.price);
+          this.total = this.total + (achat.qte*achat.event.price);
         }
         /*for(let achat of command.achatsEvents){
           this.events = [...this.events,achat.event];
