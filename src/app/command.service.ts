@@ -8,7 +8,7 @@ export class CommandService {
 
   constructor(private httpClient : HttpClient) {}
   
-  getMultiCriteria(firstname:string,lastname:string,idClient:number, datemin:Date, datemax:Date, page:number):Observable<Array<Command>>{
+  getMultiCriteria(firstname:string,lastname:string,idClient:number, datemin:Date, datemax:Date):Observable<Array<Command>>{
     let params = new HttpParams();
     let options = {year: "numeric", month: "2-digit", day: "2-digit"};
 
@@ -22,8 +22,6 @@ export class CommandService {
       params = params.set('datemax',datemax.toLocaleString('en-GB',options));
     if(idClient!=null)
       params = params.set('id',idClient.toString());
-    if(page!=null)
-      params = params.set('page',page.toString());
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/commands/multicriteria",{params : params}) as Observable<Array<Command>>;
   }
 
@@ -33,7 +31,7 @@ export class CommandService {
 
   getUserCommands(id:number) : Observable<Array<Command>>
   {
-    return this.getMultiCriteria(null,null,id,null,null,null);
+    return this.getMultiCriteria(null,null,id,null,null);
   }
 
 }

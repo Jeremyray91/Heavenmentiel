@@ -3,6 +3,7 @@ import { CommandService } from '../command.service';
 import { Command } from '../command';
 import { Evenement} from '../event';
 
+
 @Component({
   selector: 'app-commands',
   templateUrl: './commands.component.html',
@@ -22,7 +23,7 @@ export class CommandsComponent implements OnInit {
     this.commands = new Array<Object>();
     let formattedCommand : Object;
     this.commandService.getMultiCriteria(this.formFields['firstname'],this.formFields['lastname'],this.formFields['idClient'],
-    this.formFields['dateMin'],this.formFields['dateMax'],this.formFields['page']).subscribe(commands => {
+    this.formFields['dateMin'],this.formFields['dateMax']).subscribe(commands => {
       for(let cmd of commands){
         let totalPrice = 0;
         let totalQte = 0;
