@@ -1,7 +1,6 @@
 <div class="container mt-3">
   <h2>Rechercher les commandes des utilisateurs</h2>
-  <p>Bienvenue dans le module de recherche de commandes !
-  </p>
+  <p>Bienvenue dans le module de recherche de commandes !</p>
   <form class="form pl-3 pt-3 pb-3 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
         <div class="form-group">
           <div class="form-group horizontal-form">
@@ -23,12 +22,20 @@
   </form>
 
   
-  <p-dataTable [value]="commands">
+  <p-dataTable [value]="commands" [rows]="10" [paginator]="true" [pageLinks]="3">
+    <p-header>Liste des Commandes de la base</p-header>
     <p-column field="id" header="IdCommande"></p-column>
     <p-column field="date" header="Date"></p-column>
     <p-column field="user" header="Utilisateur"></p-column>
-    <p-column field="nbEvents" header="Nb articles"></p-column>
-    <p-column field="totalPrice" header="Prix total"></p-column>
+    <p-column field="nbEvents" header="Nb articles" bodyStyleClass="text-center"></p-column>
+    <p-column field="totalPrice" header="Prix total" bodyStyleClass="text-center"></p-column>
+    <p-column field="id" header="" bodyStyleClass="text-center">
+      <ng-template let-cmd="rowData" pTemplate="body">
+          <a [routerLink]="['/DisplayOrder', cmd.id]">
+            <button pButton type="button" icon="fa fa-fw fa-eye" class="ui-button-info"></button>
+          </a>
+      </ng-template>
+    </p-column>
   </p-dataTable>
 </div>
 

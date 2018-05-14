@@ -3,6 +3,8 @@ import { Command } from '../command';
 import { Achatevent } from '../achatevent';
 import { Evenement } from '../event';
 import { Type } from '../enum-event';
+import { ActivatedRoute } from '@angular/router';
+import { CommandService } from '../command.service';
 
 @Component({
   selector: 'app-display-order',
@@ -11,24 +13,28 @@ import { Type } from '../enum-event';
 })
 export class DisplayOrderComponent implements OnInit {
 
-  @Input()
-  order : Command;
+  private sub: any;
+  idCommande : number;
+  commande : Command = new Command(1,null,null,null);
+  //events : Array<Evenement> = new Array<Evenement>();
+  total:number = 0;
 
-  events = new Array<Achatevent>();
-  eventTest = new Evenement("event1", "Toulouse", Type.CINEMA, new Date(), 10.0, 20, "Description Test", "Short Description Test", true, "assets/img_carousel/slide1.jpg","assets/img_miniature/min1.jpg");
-
-  constructor() {
-    
-    let achatEventTest = new Achatevent(this.eventTest, this.order, 4);
-    this.events.push(achatEventTest);
-    this.events.push(achatEventTest);
-    this.events.push(achatEventTest);
-    this.events.push(achatEventTest);
-    console.log(achatEventTest);
+  constructor(private route : ActivatedRoute, private commandService : CommandService) {
   }
 
   ngOnInit() {
-    console.log(this.events);
-    //this.order = new Command(1000,new Date(),JSON.parse(sessionStorage.getItem('currentUser')),achatEvents);
+    this.sub = this.route.params.subscribe(params => {
+      this.idCommande = +params['id'];
+      this.commandService.getById(this.idCommande).subscribe(command => {
+        this.commande = command;
+        for(let achat of command.achatsEvents){
+          this.total = this.total + (achat.quantite*achat.event.price);
+        }
+        /*for(let achat of command.achatsEvents){
+          this.events = [...this.events,achat.event];
+        }*/
+      });
+    });
+
   }
 }

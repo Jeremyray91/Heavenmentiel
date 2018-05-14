@@ -92,8 +92,9 @@ const appRoutes : Routes = [
   {path : 'CGV', component : CgvComponent}, 
   {path : 'Mentions', component : MentionsLegalesComponent}, 
   {path : 'Contact', component : ContactComponent},
-  {path : 'Commands', canActivate : [AuthGuardService], component : CommandsComponent},
-  {path : 'MesCommandes', canActivate : [AuthGuardService], component : MyOrdersComponent}
+  {path : 'Commands', component : CommandsComponent},
+  {path : 'MesCommandes', canActivate : [AuthGuardService], component : MyOrdersComponent},
+  {path : 'DisplayOrder/:id', component : DisplayOrderComponent}
 ]; 
  
 @NgModule({ 

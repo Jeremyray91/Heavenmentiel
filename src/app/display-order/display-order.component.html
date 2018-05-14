@@ -1,39 +1,42 @@
+<div class="container mt-3">
 <div class="ui-lg-12">
+  <h3 class="mb-3">Détails de la commande n°{{commande.id}}</h3>
   <p-panel class="order-panel" [toggleable]="true" [collapsed]="true">
       <p-header>
           <div class="ui-g ui-g-nopad">
               <div class="ui-lg-4">
-                <span style="display: block">Date commande : 01/01/2018</span>
-                <span style="display: block">Commande n° : xxxxxxxxx</span>
+                <span style="display: block">Date commande : {{ commande.date }}</span>
+                <span style="display: block">Commande n° : {{commande.id}}</span>
                 <span style="display: block">Adresse :</span>
                 <div id="test" class="ui-lg-12">
-                  <span style="display: block">344 rue du test</span>
-                  <span style="display: block">34000 Montpellier</span>
+                  <span style="display: block">{{commande.user.adresse}}</span>
+                  <span style="display: block">{{commande.user.CodePostal}} {{commande.user.ville}}</span>
                 </div>
                 <span style="display: block">E-mail :</span>
-                <span style="display: block">test@test.com</span>
+                <span style="display: block">{{commande.user.mail}}</span>
+                <h3 class="mt-2">Montant total : <span class="badge badge-primary">{{total}}€</span></h3>
               </div>
               <div class="v-separator ui-lg-8">
                 <div class="ui-lg-12">
-                  Évènements réservés : xx
+                  Évènements réservés : {{commande.achatsEvents.length}}
                 </div>
                 <div class="ui-lg-12 ui-g-nopad">
                   <div class="ui-g">
-                    <div *ngFor="let achat of events" class="ui-lg-4">
-                      <img src="{{achat.event.imgMin}}">
+                    <div *ngFor="let achat of commande.achatsEvents" class="ui-lg-2">
+                      <img src="{{achat.event.imgMin}}" width="100%">
                     </div>
                   </div>
                 </div>
               </div>
           </div>
       </p-header>
-      <p-table [value]="events">
+      <p-table [value]="commande.achatsEvents">
           <ng-template pTemplate="body" let-achat>
               <tr>
                   <td>
                     <div class="ui-g">
                     <div class="ui-lg-2">
-                        <img src="{{achat.event.imgMin}}" width="100%">
+                        <img src="{{achat.event.imgMin}}" width="150px">
                     </div>
                     <div class="ui-lg-8">
                       <div class="ui-g">
@@ -50,7 +53,9 @@
                     </div>
                     <div class="ui-lg-2">
                       <div>
-                        {{achat.event.price}}€
+                        Quantité : {{achat.quantite}}<br/>
+                        Prix unitaire : {{achat.event.price}}€<br/>
+                        <span class="badge badge-primary">Prix Total : {{achat.event.price*achat.quantite}}€</span>
                       </div>
                     </div>                    
                     </div>
@@ -76,4 +81,5 @@
       </div>
     </div>
   </p-card> -->
+</div>
 </div>
