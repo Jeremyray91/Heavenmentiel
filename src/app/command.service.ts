@@ -24,7 +24,6 @@ export class CommandService {
       params = params.set('id',idClient.toString());
     if(page!=null)
       params = params.set('page',page.toString());
-      console.log(params);
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/commands/multicriteria",{params : params}) as Observable<Array<Command>>;
   }
 

@@ -51,7 +51,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table'; 
 import { DataTableModule } from 'primeng/datatable';
   
-//---- Connexion avec Spring Imports ----//  
+//---- Connexion avec Spring Imports ----//
 import { ConnectionService } from './connection.service';  
 import { MenuComponent } from './menu/menu.component';  
 import { CreateUserComponent } from './create-user/create-user.component';  
@@ -78,7 +78,7 @@ import { ValidationCartComponent } from './validation-cart/validation-cart.compo
  
 const appRoutes : Routes = [ 
   {path : '', component : AccueilComponent}, 
-  {path : 'SearchEvents', canActivate : [AuthGuardAdminService], component : SearchEventsComponent}, 
+  {path : 'SearchEvents', component : SearchEventsComponent}, 
   {path : 'SearchEventsUser', component : SearchEventsUserComponent}, 
   {path : 'Profile', canActivate : [AuthGuardService], component : ProfileComponent}, 
   {path : 'CreateEvents', canActivate : [AuthGuardAdminService], component : CreateEventsComponent}, 

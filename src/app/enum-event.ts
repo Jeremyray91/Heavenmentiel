@@ -1,6 +1,6 @@
 export enum Type {
     CONCERT = "Concert",
-    CINEMA = "Cinéma",
+    CINEMA = "Cinema",
     SPECTACLE = "Spectacle",
     SPORT = "Sport",
     JEUX = "Jeux"

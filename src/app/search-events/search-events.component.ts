@@ -4,6 +4,7 @@ import { Evenement } from '../event';
 import { EventService } from '../event.service'
 import { Type } from '../enum-event';
 import {SelectItem} from 'primeng/api';
+import { User } from '../user';
 
 @Component({
   selector: 'app-search-events',
@@ -34,7 +35,12 @@ export class SearchEventsComponent implements OnInit {
   }
 
   onSubmit(page:number){
-    this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.price,page).subscribe(events => {
+    let user : User = null;
+    user = JSON.parse(sessionStorage.getItem("currentUser"));
+    let role : string = "";
+    if(user != null)
+      role = user.role;
+    this.eventService.getEventMultiCriteria(this.model.name,this.model.dateMin,this.model.dateMax,this.model.place,this.model.type,this.model.price,page, role).subscribe(events => {
       this.events = events["events"];
       this.totalRecords = events["pages"]*this.itemsByPage;
       this.submitted = true;
