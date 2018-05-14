@@ -17,7 +17,7 @@ export class SearchEventsUserComponent implements OnInit {
   model = {name : null, dateMin : null, dateMax : null, place : null, type: null, price : [0,30]};
   types : SelectItem[] = new Array<SelectItem>();
   totalRecords: number = 0;
-  itemsByPage : number = 10;
+  itemsByPage : number = 4;
   submitted : boolean;
 
   fr: any;

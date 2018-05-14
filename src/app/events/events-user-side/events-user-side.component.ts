@@ -32,4 +32,12 @@ export class EventsUserSideComponent implements OnInit {
       localStorage.setItem("requestedEvent", id);
     }
   }
+
+  paginate(event) {
+    //event.first = Index of the first record
+    //event.rows = Number of rows to display in new page
+    //event.page = Index of the new page
+    //event.pageCount = Total number of pages
+    this.valueChange.emit(event.first);
+  };
 }

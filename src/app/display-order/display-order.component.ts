@@ -15,7 +15,7 @@ export class DisplayOrderComponent implements OnInit {
 
   private sub: any;
   idCommande : number;
-  commande : Command = new Command(1,null,null,null);
+  commande : Command = new Command(null,null,null);
   //events : Array<Evenement> = new Array<Evenement>();
   total:number = 0;
 

@@ -8,7 +8,7 @@
 </div>
 
 <div class="row" *ngIf="totalRecords > 0">
-<p-dataGrid [value]="events" [paginator]="true" [rows]="itemsByPage" [totalRecords]="totalRecords" (onPageChange)="paginate($event)">
+<p-dataGrid [value]="events" [paginator]="true" [lazy]="true" [rows]="itemsByPage" [totalRecords]="totalRecords" (onPage)="paginate($event)">
     <p-header>
       Évènements correspondants 
     </p-header>
