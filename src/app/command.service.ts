@@ -31,4 +31,9 @@ export class CommandService {
     return this.httpClient.get("http://localhost:8082/heavenmentiel/api/commands/getById?id="+id) as Observable<Command>;
   }
 
+  getUserCommands(id:number) : Observable<Array<Command>>
+  {
+    return this.getMultiCriteria(null,null,id,null,null,null);
+  }
+
 }

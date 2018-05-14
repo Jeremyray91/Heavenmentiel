@@ -14,6 +14,7 @@ import { CommandService } from '../command.service';
 export class DisplayOrderComponent implements OnInit {
 
   private sub: any;
+  @Input()
   idCommande : number;
   commande : Command = new Command(null,null,null);
   //events : Array<Evenement> = new Array<Evenement>();

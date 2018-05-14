@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Command } from '../command';
+import { CommandService } from '../command.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-my-orders',
@@ -10,12 +12,25 @@ export class MyOrdersComponent implements OnInit {
 
   myOrders = new Array<Command>();
   isEmpty : boolean = false;
+  
+  currentUser : User = null;
 
 
-  constructor() { }
+  constructor(private commandService : CommandService ) {
+    this.commandService = commandService;
+  }
 
   ngOnInit() {
-    //this.checkIsEmpty();
+    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    if(this.currentUser != null)
+    {
+      //parseInt(this.currentUser.id)
+      this.commandService.getUserCommands(5).subscribe(result =>
+      {
+        this.myOrders = result;
+        this.checkIsEmpty();
+      })
+    }
   }
 
   checkIsEmpty()

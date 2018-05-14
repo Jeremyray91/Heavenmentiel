@@ -73,10 +73,11 @@ export class ValidationCartComponent implements OnInit {
     let achatEvent : Array<Achatevent> = new Array<Achatevent>();
     for(let ae of this.items){
       achatEvent.push(new Achatevent(ae.event, null, ae.quantity))
+      console.log(ae.quantity);
     }
     let userCmd : User = JSON.parse(sessionStorage.getItem('currentUser'));
     let commande = new Command(new Date(), userCmd , achatEvent);
-    //this.cartService.createCommand(commande);
+    this.cartService.createCommand(commande).subscribe();
     localStorage.setItem('CommandesUID'+userCmd.id,JSON.stringify(commande));
     this.cartService.removeAllItems();
     this.items = new Array<CartItem>();

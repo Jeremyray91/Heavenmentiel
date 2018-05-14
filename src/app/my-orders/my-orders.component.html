@@ -12,11 +12,10 @@
       </div>
       <div class="ui-g" *ngIf="!isEmpty">
         <div class="ui-lg-12">
-          <app-display-order></app-display-order>
+          <app-display-order *ngFor="let cmd of myOrders" [idCommande]="cmd.id"></app-display-order>
         </div>
       </div>
     </div>
     <div class="ui-lg-2"></div>
   </div>
 </div>
-
