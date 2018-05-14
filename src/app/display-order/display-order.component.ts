@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Command } from '../command';
 import { Achatevent } from '../achatevent';
-import { Event } from '../event';
+import { Evenement } from '../event';
 import { Type } from '../enum-event';
 
 @Component({
@@ -15,7 +15,7 @@ export class DisplayOrderComponent implements OnInit {
   order : Command;
 
   events = new Array<Achatevent>();
-  eventTest = new Event("event1", "Toulouse", Type.CINEMA, new Date(), 10.0, 20, "Description Test", "Short Description Test", true, "assets/img_carousel/slide1.jpg","assets/img_miniature/min1.jpg");
+  eventTest = new Evenement("event1", "Toulouse", Type.CINEMA, new Date(), 10.0, 20, "Description Test", "Short Description Test", true, "assets/img_carousel/slide1.jpg","assets/img_miniature/min1.jpg");
 
   constructor() {
     

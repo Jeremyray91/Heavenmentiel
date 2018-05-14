@@ -11,7 +11,7 @@ export class EventsUserSideComponent implements OnInit {
 
   model:Evenement = new Evenement("",null,null,null,0,0,"",null,false, "", "");
   @Input()
-  events:Array<Event> = new Array<Event>();
+  events:Array<Evenement> = new Array<Evenement>();
 
   @Input()  totalRecords:number = 0;
   @Input()  itemsByPage:number = 0;
