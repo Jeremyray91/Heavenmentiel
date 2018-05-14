@@ -49,6 +49,8 @@ import { GMapModule } from 'primeng/gmap';
 import { SpinnerModule } from 'primeng/spinner'; 
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table'; 
+import {DataTableModule} from 'primeng/datatable';
+
   
 //---- Connexion avec Spring Imports ----//  
 import { ConnectionService } from './connection.service';  
@@ -151,7 +153,7 @@ const appRoutes : Routes = [
     FileUploadModule,
     TableModule,
     MenubarModule,
- 
+    DataTableModule,
     //---- Connexion avec Spring ----// 
     HttpClientModule, 
     InputSwitchModule, 
