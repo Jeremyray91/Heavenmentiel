@@ -49,8 +49,7 @@ import { GMapModule } from 'primeng/gmap';
 import { SpinnerModule } from 'primeng/spinner'; 
 import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table'; 
-import {DataTableModule} from 'primeng/datatable';
-
+import { DataTableModule } from 'primeng/datatable';
   
 //---- Connexion avec Spring Imports ----//  
 import { ConnectionService } from './connection.service';  
@@ -75,6 +74,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthGuardAdminService } from './auth-guard-admin.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { DisplayOrderComponent } from './display-order/display-order.component';
+import { ValidationCartComponent } from './validation-cart/validation-cart.component';
  
 const appRoutes : Routes = [ 
   {path : '', component : AccueilComponent}, 
@@ -92,8 +92,9 @@ const appRoutes : Routes = [
   {path : 'CGV', component : CgvComponent}, 
   {path : 'Mentions', component : MentionsLegalesComponent}, 
   {path : 'Contact', component : ContactComponent},
-  {path : 'Commands', component : CommandsComponent},
+  {path : 'Commands', canActivate : [AuthGuardService], component : CommandsComponent},
   {path : 'MesCommandes', canActivate : [AuthGuardService], component : MyOrdersComponent},
+  {path : 'ValiderPanier', canActivate : [AuthGuardService], component : ValidationCartComponent},
   {path : 'DisplayOrder/:id', component : DisplayOrderComponent}
 ]; 
  
@@ -127,7 +128,8 @@ const appRoutes : Routes = [
     CommandsComponent,
     CartMiniComponent,
     MyOrdersComponent,
-    DisplayOrderComponent
+    DisplayOrderComponent,
+    ValidationCartComponent
   ], 
   imports: [ 
     HttpClientModule, 

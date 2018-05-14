@@ -3,8 +3,8 @@ import { CartItem } from '../cart-item';
 import { Evenement } from '../event';
 import { Type } from '../enum-event';
 import { CartService } from '../cart.service';
-import { Command } from '../command';
-import { Achatevent } from '../achatevent';
+import { Router } from '@angular/router';
+import { ConnectionService } from '../connection.service';
 
 @Component({
   selector: 'app-cart-details',
@@ -17,7 +17,7 @@ export class CartDetailsComponent implements OnInit {
   isEmpty: boolean = true;
   totalPrice : number = 0;
   
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private router: Router, private connectionService: ConnectionService) {
     this.cartService = cartService;
   }
 
@@ -65,12 +65,17 @@ export class CartDetailsComponent implements OnInit {
     }
   }
 
-  validateCart(){
-    let achatEvent : Array<Achatevent> = new Array<Achatevent>();
-    for(let ae of this.items){
-      achatEvent.push(new Achatevent(ae.event, null, ae.quantity))
+  validateCart()
+  {
+    if (this.connectionService.isAuthenticated())
+    {
+      localStorage.setItem('FromValidateCart', "connected");
+      this.router.navigate(['/ValiderPanier']);
     }
-    let commande = new Command(new Date(), JSON.parse(sessionStorage.getItem('currentUser')), achatEvent)
-    this.cartService.createCommand(commande);
+    else
+    {
+      localStorage.setItem('FromValidateCart', "notConnected");
+      this.router.navigate(['/Connection']);
+    }    
   }
 }

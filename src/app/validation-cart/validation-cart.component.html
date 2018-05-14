@@ -1,27 +1,10 @@
 <div class="ui-lg-12">
-  <div class="ui-g">
+  <div class="ui-g" *ngIf="!isEmpty">
     <div class="ui-lg-2"></div>
     <div class="ui-lg-6">
-      <div class="ui-lg-12"><h2>Mon panier ({{items.length}} évènements)</h2></div>
-      <div class="ui-g" *ngIf="isEmpty">
-        <div class="ui-lg-4 ui-lg-nopad"></div>
-        <div class="ui-lg-4 ui-lg-nopad">
-          <h3>Votre panier est vide :(</h3>
-        </div>
-        <div class="ui-lg-4"></div>
-      </div>
+      <div class="ui-lg-12"><h2>Mon panier - Récapitulatif ({{items.length}} évènements)</h2></div>
       <div class="ui-g" *ngIf="!isEmpty">
         <p-table [value]="items">
-          <!-- <ng-template pTemplate="header">
-              <tr>
-                  <th>Votre selection</th>
-
-                  <th>date</th>
-                  <th>description</th>
-                  <th>quantité</th>
-                  <th>supprimer</th>
-              </tr>
-          </ng-template> -->
           <ng-template pTemplate="body" let-item>
               <tr>
                   <td>
@@ -43,10 +26,8 @@
                       </div>
                     </div>
                     <div class="ui-lg-2">
-                      <p-spinner [(ngModel)]="item.quantity" [size]="2" [min]="1" [max]="item.event.stock >= 30 ? 30 : item.event.stock" (onChange)="updateItem(item, item.quantity)"></p-spinner>
-                      <button pButton type="button" (click)="deleteItem(item)" icon="fa-close" class="ui-button-warning"></button>
                       <div>
-                        {{item.event.price * item.quantity}}€
+                        {{item.event.price}} x {{item.quantity}} = {{item.event.price * item.quantity}}€
                       </div>
                     </div>                    
                     </div>
@@ -73,7 +54,7 @@
         <div class="ui-g">
           <div class="ui-lg-1"></div>
           <div class="ui-lg-10">
-              <button pButton type="button" (click)="validateCart()" icon="fa-shopping-basket" class="ui-button-warning" label="Valider le panier" [disabled]="isEmpty"></button>
+              <button pButton type="button" (click)="confirmCart()" icon="fa-shopping-basket" class="ui-button-success" label="Confirmer le panier"></button>
           </div>
           <div class="ui-lg-1"></div>
         </div>
@@ -81,4 +62,29 @@
     </div>
     <div class="ui-lg-2"></div>
   </div>
+  <div class="ui-g" *ngIf="isEmpty">
+    <div class="ui-lg-3 ui-lg-nopad"></div>
+    <div class="ui-lg-6 ui-lg-nopad">
+      <p-card styleClass="ui-card-shadow">
+        <div class="ui-g">
+          <div class="ui-lg-2 ui-lg-nopad"></div>
+          <div class="ui-lg-8 ui-lg-nopad">
+            <img src="assets/img_divers/fire-firework.jpg" width="100%">
+          </div>
+          <div class="ui-lg-2"></div>
+        </div>
+        
+        <div class="ui-g">
+          <div class="ui-lg-4 ui-lg-nopad"></div>
+          <div class="ui-lg-4 ui-lg-nopad">
+              <h3 style="text-align: center">Merci pour votre commande :)</h3>
+              <button pButton type="button" (click)="redirect()" id="end-cart" icon="fa-chevron-circle-left" class="ui-button-warning" label="Retour Accueil"></button>
+          </div>
+          <div class="ui-lg-4"></div>
+        </div>
+      </p-card>
+    </div>
+    <div class="ui-lg-3"></div>
+  </div>
 </div>
+

@@ -95,6 +95,16 @@ h3{
     background-color: #C40018;
 }
 
+/*---- Styles Validation Commande ----*/
+#end-cart
+{
+    color: #fff;
+    background-color: #FF6107;
+    border-color: #FF6107;
+    margin-left: 25%;
+}
+
+
 /*---- Styles refonte recherche events coté User ----*/
 #user-search-zone .ui-card-body
 {

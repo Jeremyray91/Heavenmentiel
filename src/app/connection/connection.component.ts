@@ -91,8 +91,19 @@ export class ConnectionComponent implements OnInit {
   }
 
   reini(){
-    location.reload();
-    this.router.navigate(['/']);
+    if(localStorage.getItem('FromValidateCart') === "notConnected")
+    {
+      console.log("ici");
+      localStorage.removeItem('FromValidateCart');
+      location.reload();
+      this.router.navigate(['/MonPanier']);
+    }
+    else
+    {
+      console.log("là");
+      location.reload();
+      this.router.navigate(['/']);
+    }
   }
 
   onCreateComplete(name: String)
