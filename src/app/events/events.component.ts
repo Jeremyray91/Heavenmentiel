@@ -11,11 +11,11 @@ import { Type } from '../enum-event'
 
 export class EventsComponent implements OnInit {
   
-  eventUp : Event;
+  eventUp : Evenement;
   
   model:Evenement = new Evenement("", "", null, null, 0.0, null, "", "", false, "","");
   @Input()
-  events:Array<Event> = new Array<Event>();
+  events:Array<Evenement> = new Array<Evenement>();
 
   constructor(private eventService : EventService) {
     this.eventService = eventService;
@@ -24,7 +24,7 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
   }
 
-  linkUpdate(event: Event){
+  linkUpdate(event: Evenement){
     localStorage.setItem('event', JSON.stringify(event));
     console.log(event);
   }
