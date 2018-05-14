@@ -76,7 +76,7 @@ export class EventService {
     let date : string;
     date = this.parseDateFr(event.dateEvent);
     event.dateEvent = null;
-    return this.httpClient.put<Evenement>("http://localhost:8082/heavenmentiel/api/events", event) as Observable<Evenement>;
+    return this.httpClient.put<Evenement>("http://localhost:8082/heavenmentiel/api/eventsById", event) as Observable<Evenement>;
   }
 
   deleteEvent(id:number):Observable<{}>{
