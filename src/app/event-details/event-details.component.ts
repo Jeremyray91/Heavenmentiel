@@ -25,6 +25,7 @@ export class EventDetailsComponent implements OnInit {
   stockStatusMsg : string;
   quantitySelected : number;
   isInCart : boolean;
+  isOutOfStock : boolean;
 
   //---- Attributs pour module Google Map ----//
   mapOptions : any;
@@ -71,14 +72,17 @@ export class EventDetailsComponent implements OnInit {
     if(this.event.stock > 30)
     {
       this.stockStatusMsg = "En stock"
+      this.isOutOfStock = false;
     }
     else if (this.event.stock > 0)
     {
       this.stockStatusMsg = "Il n'en reste plus que " + this.event.stock + " !"
+      this.isOutOfStock = false;
     }
     else
     {
       this.stockStatusMsg = "Complet"
+      this.isOutOfStock = true;
     }
   }
 

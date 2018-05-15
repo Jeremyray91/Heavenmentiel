@@ -50,13 +50,16 @@
                 <div class="event-name-stock">
                   <div class="event-name">{{event.name}}</div>
                   <div class="event-type">{{event.dateEvent | date:'HH'}}h{{event.dateEvent | date:'mm'}} - {{event.type}}</div>
-                  <div class="event-stock">Encore {{event.stock}} places restantes</div>
+                  <div class="event-stock" *ngIf="event.stock > 30">En stock</div>
+                  <div class="event-stock" *ngIf="event.stock > 0 && event.stock <= 30">Encore {{event.stock}} places restantes</div>
+                  <div class="event-stock" *ngIf="event.stock < 1">Complet</div>
                 </div>
               </div>
               <div class="event-price">
                 <div>
                   <button (click)="redirect(event.id)" class="boutonPageAccueil">
-                    <a href="http://localhost:4200/Evenement/">Réserver</a>
+                    <a href="http://localhost:4200/Evenement/" *ngIf="event.stock > 0">Réserver</a>
+                    <a href="http://localhost:4200/Evenement/" *ngIf="event.stock < 1">Infos</a>
                   </button>
                 </div>
                 <div>Tarif : {{event.price}}€ </div>
