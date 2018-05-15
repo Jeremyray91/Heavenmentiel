@@ -95,6 +95,13 @@ h3{
     background-color: #C40018;
 }
 
+#contact-submit
+{
+    color: #fff;
+    background-color: #FF6107;
+    border-color: #FF6107;
+}
+
 /*---- Styles Validation Commande ----*/
 #end-cart
 {

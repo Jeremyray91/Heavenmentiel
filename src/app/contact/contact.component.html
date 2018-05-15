@@ -1,3 +1,44 @@
-<p>
-  contact works!
-</p>
+<p-growl [(value)]="msgs"></p-growl>
+<div class="ui-g">
+    <div class="ui-g-2 ui-md-2"></div>
+    <div class="ui-g-8 ui-md-8">
+      
+      <div class="ui-g-3 ui-md-1"></div>
+      <div class="ui-g-6 ui-md-10">
+          <h1>
+              Nous contacter
+          </h1>
+          <p-card>
+            <form (ngSubmit)="onSubmit()" >
+              <div class="ui-g contact-form">
+                <span class="ui-float-label">
+                  <input id="fname-input" [(ngModel)]="nom" type="text" name="firstname" pInputText/>
+                  <label for="fname-input">Prenom</label>
+                </span>
+              </div>
+              <div class="ui-g contact-form">
+                <span class="ui-float-label">
+                  <input id="name-input" [(ngModel)]="prenom" type="text" name="name" pInputText/>
+                  <label for="name-input">Nom</label>
+                </span>
+              </div>
+              <div class="ui-g contact-form">
+                  <span class="ui-float-label">
+                    <input id="mail-input" [(ngModel)]="mail" type="text" name="mail" pInputText/>
+                    <label for="mail-input">E-mail</label>
+                  </span>
+                </div>
+              <label>Votre message :</label>
+              <div class="ui-g contact-form-area">
+                  <textarea id="msg-input" [(ngModel)]="message" rows="5" cols="30" pInputTextarea autoResize="autoResize" name="message"></textarea>
+              </div>
+              <div class="ui-g contact-form">
+                <button pButton id="contact-submit" class="ui-button-warning" type="submit" label="Envoyer"></button>
+              </div>
+            </form>
+          </p-card>
+      </div>
+      <div class="ui-g-3 ui-md-1"></div>
+    </div>
+    <div class="ui-g-2 ui-md-2"></div>
+</div>
