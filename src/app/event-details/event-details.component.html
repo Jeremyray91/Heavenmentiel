@@ -44,7 +44,7 @@
           <div class="ui-lg-12">{{stockStatusMsg}}</div>
           <div class="ui-lg-12">{{event.price*quantitySelected}}€ ({{event.price}}€ x {{quantitySelected}})</div>
           <div class="ui-lg-12">
-            <button (click)="addToCart()" pButton type="button" icon="fa-shopping-basket" label="Ajouter au panier" [disabled]="isOutOfStock">
+            <button (click)="addToCart()" pButton type="button" id="add-cart-button" icon="fa-shopping-basket" label="Ajouter au panier" [disabled]="isOutOfStock">
             </button>
           </div>
         </p-card>

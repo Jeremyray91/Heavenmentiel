@@ -104,6 +104,12 @@ h3{
     margin-left: 25%;
 }
 
+#add-cart-button
+{
+    color: #fff;
+    background-color: #FF6107;
+    border-color: #FF6107;
+}
 
 /*---- Styles refonte recherche events coté User ----*/
 #user-search-zone .ui-card-body
