@@ -193,3 +193,16 @@ body
     position: relative;
     min-height: 90%;
 }
+
+#carouselAccueil{
+    max-height:500px;
+    overflow:hidden;
+}
+
+.carousel-inner img{
+    max-height: 500px;
+}
+
+.event-img{
+overflow:hidden;
+}

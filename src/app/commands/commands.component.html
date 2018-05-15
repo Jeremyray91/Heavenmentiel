@@ -1,24 +1,29 @@
 <div class="container mt-3">
   <h2>Rechercher les commandes des utilisateurs</h2>
   <p>Bienvenue dans le module de recherche de commandes !</p>
-  <form class="form pl-3 pt-3 pb-3 mb-3 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
-        <div class="form-group">
-          <div class="form-group horizontal-form">
-              <h3>Informations sur le client :</h3>
+  <form class="form  mb-2 rounded" (ngSubmit)="onSubmit(null)" style="background-color:#f7b32d">
+    <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+          <div class="form-group horizontal-form pl-3 pt-2">
+              <h3 class="text-center">Informations sur le client :</h3>
               <label class="control-label" for="keyword">Nom : </label>
               <input class="form-control" type="text" id="lastname" name="lastname" [(ngModel)]="formFields.lastname"/>
               <label class="control-label" for="keyword">Prénom : </label>
               <input class="form-control" type="text" id="name" name="name" [(ngModel)]="formFields.firstname"/>
               <label class="control-label" for="keyword">Id : </label>
               <input class="form-control" type="text" id="idClient" name="idClient" [(ngModel)]="formFields.idClient"/>
-              <h3>Informations sur la commande :</h3>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 pt-2">
+              <h3 class="text-center mt-3">Informations sur la commande :</h3>
               <label class="control-label" for="dateMin">Du</label>
               <p-calendar id="dateMin" [(ngModel)]="formFields.dateMin" name="datemin" dateFormat="dd/mm/yy"></p-calendar>
               <label class="control-label" for="dateMax">au</label>
               <p-calendar id="dateMax" [(ngModel)]="formFields.dateMax" name="datemax" dateFormat="dd/mm/yy"></p-calendar>
-              <button type="submit" class="btn btn-success" >Lancer la recherche</button>
-          </div>
         </div>
+        <button type="submit" class="btn btn-success" >Lancer la recherche</button>
+    </div>
   </form>
 
   
