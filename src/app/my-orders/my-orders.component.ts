@@ -25,7 +25,7 @@ export class MyOrdersComponent implements OnInit {
     if(this.currentUser != null)
     {
       //parseInt(this.currentUser.id)
-      this.commandService.getUserCommands(5).subscribe(result =>
+      this.commandService.getUserCommands(parseInt(this.currentUser.id)).subscribe(result =>
       {
         this.myOrders = result;
         this.checkIsEmpty();

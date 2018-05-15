@@ -25,7 +25,10 @@ export class DisplayOrderComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.idCommande = +params['id'];
+      if(!isNaN(params['id'] ) )
+      {
+        this.idCommande = +params['id'];
+      }
       this.commandService.getById(this.idCommande).subscribe(command => {
         this.commande = command;
         for(let achat of command.achatsEvents){
