@@ -15,14 +15,16 @@
           </div>
         </div>
 
-        <div class="form-group col-lg-6 col-md-6 col-sm-12 pt-2">
-              <h3 class="text-center mt-3">Informations sur la commande :</h3>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 pt-2 pl-3">
+              <h3 class="text-center mb-3">Informations sur la commande :</h3>
               <label class="control-label" for="dateMin">Du</label>
-              <p-calendar id="dateMin" [(ngModel)]="formFields.dateMin" name="datemin" dateFormat="dd/mm/yy"></p-calendar>
-              <label class="control-label" for="dateMax">au</label>
-              <p-calendar id="dateMax" [(ngModel)]="formFields.dateMax" name="datemax" dateFormat="dd/mm/yy"></p-calendar>
+              <p-calendar id="dateMin" [(ngModel)]="formFields.dateMin" [showIcon]="true" name="datemin" dateFormat="dd/mm/yy"></p-calendar><br/>
+              <label class="control-label" for="dateMax">Au</label>
+              <p-calendar id="dateMax" [(ngModel)]="formFields.dateMax" [showIcon]="true" name="datemax" dateFormat="dd/mm/yy"></p-calendar>
         </div>
-        <button type="submit" class="btn btn-success" >Lancer la recherche</button>
+    </div>
+    <div class="row pl-3 pr-3">
+        <button type="submit" class="btn btn-success btn-block" >Lancer la recherche</button>
     </div>
   </form>
 
