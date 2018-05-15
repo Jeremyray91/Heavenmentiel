@@ -68,6 +68,7 @@ export class CreateEventsComponent implements OnInit {
       let date = new Date(this.model.dateEvent);
       date.setHours(20);
       this.model.dateEvent = date;
+      this.model.type = ((this.model.type).toUpperCase() as String) as Type;
       this.eventService.updateEvent(this.model).subscribe();
       localStorage.removeItem('event');
       this.msgs = [];
